@@ -26,6 +26,9 @@ export default defineNuxtConfig({
     appManifest: false,
   },
   compatibilityDate: '2025-01-01',
+  nitro: {
+    preset: 'static',
+  },
   app: {
     head: {
       title: 'DDS — Design System',
