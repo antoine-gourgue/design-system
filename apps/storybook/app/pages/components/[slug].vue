@@ -39,7 +39,7 @@ const compoundSlugs = [
   'table', 'calendar', 'stat-card', 'pagination',
   'select', 'radio-group', 'slider', 'number-input', 'otp-input',
   'empty-state', 'timeline', 'stepper',
-  'sheet', 'collapsible', 'command-palette', 'context-menu',
+  'sheet', 'drawer', 'collapsible', 'command-palette', 'context-menu',
   'alert-dialog', 'popover', 'date-picker',
   'toggle', 'toggle-group', 'data-table',
   'hover-card', 'carousel', 'scroll-area',
@@ -240,6 +240,8 @@ const numberValue = ref(3)
 const otpValue = ref('')
 const sheetOpen = ref(false)
 const sheetSide = ref<'left' | 'right' | 'bottom'>('right')
+const drawerOpen = ref(false)
+const drawerSide = ref<'left' | 'right' | 'bottom' | 'top'>('right')
 const collapsibleOpen = ref(false)
 const commandOpen = ref(false)
 const stepperStep = ref(1)
@@ -364,6 +366,25 @@ const open = ref(false)
       <DsButton @click="open = false">Save</DsButton>
     </template>
   </DsSheet>
+</template>`
+
+const drawerCode = `<script setup lang="ts">
+const open = ref(false)
+const side = ref('right')
+<\/script>
+<template>
+  <DsButton @click="side = 'right'; open = true">Open drawer</DsButton>
+
+  <DsDrawer v-model="open" :side="side" size="md">
+    <DsDrawerHeader title="User settings" description="Manage your account preferences." />
+    <DsDrawerContent>
+      <p class="text-sm text-ds-fg-muted">Drawer content goes here.</p>
+    </DsDrawerContent>
+    <DsDrawerFooter>
+      <DsButton variant="outline" class="flex-1" @click="open = false">Cancel</DsButton>
+      <DsButton class="flex-1" @click="open = false">Save changes</DsButton>
+    </DsDrawerFooter>
+  </DsDrawer>
 </template>`
 
 const collapsibleCode = `<script setup lang="ts">
@@ -1128,6 +1149,45 @@ const phoneValue = ref('')
             <DsButton class="flex-1" @click="sheetOpen = false">Save</DsButton>
           </template>
         </DsSheet>
+      </div>
+
+      <!-- Drawer examples -->
+      <div v-else-if="doc.slug === 'drawer'" class="space-y-6">
+        <div class="rounded-ds-xl border border-ds-border overflow-hidden">
+          <div class="px-4 py-2.5 border-b border-ds-border bg-ds-bg">
+            <span class="text-xs font-medium text-ds-fg-muted font-ds">Side options</span>
+          </div>
+          <div class="p-10 bg-ds-bg flex flex-wrap items-center justify-center gap-3">
+            <DsButton variant="secondary" @click="drawerSide = 'right'; drawerOpen = true">Right</DsButton>
+            <DsButton variant="secondary" @click="drawerSide = 'left'; drawerOpen = true">Left</DsButton>
+            <DsButton variant="secondary" @click="drawerSide = 'bottom'; drawerOpen = true">Bottom</DsButton>
+            <DsButton variant="secondary" @click="drawerSide = 'top'; drawerOpen = true">Top</DsButton>
+          </div>
+          <div class="border-t border-ds-border">
+            <DocsCodeBlock :code="drawerCode" language="vue" />
+          </div>
+        </div>
+
+        <DsDrawer v-model="drawerOpen" :side="drawerSide" size="md">
+          <DsDrawerHeader title="User settings" description="Manage your account preferences." />
+          <DsDrawerContent>
+            <div class="space-y-4">
+              <p class="text-sm text-ds-fg-muted">
+                This drawer slides in from the <strong class="text-ds-fg">{{ drawerSide }}</strong> edge.
+                It uses a compound pattern: <code class="font-mono text-ds-primary text-xs">DsDrawerHeader</code>,
+                <code class="font-mono text-ds-primary text-xs">DsDrawerContent</code> and
+                <code class="font-mono text-ds-primary text-xs">DsDrawerFooter</code>.
+              </p>
+              <DsInput placeholder="Full name" />
+              <DsInput placeholder="Email address" />
+              <DsSwitch label="Email notifications" />
+            </div>
+          </DsDrawerContent>
+          <DsDrawerFooter>
+            <DsButton variant="outline" class="flex-1" @click="drawerOpen = false">Cancel</DsButton>
+            <DsButton class="flex-1" @click="drawerOpen = false">Save changes</DsButton>
+          </DsDrawerFooter>
+        </DsDrawer>
       </div>
 
       <!-- Collapsible examples -->

@@ -117,6 +117,7 @@ export const nav: NavGroup[] = [
     items: [
       { title: 'AlertDialog', href: '/components/alert-dialog' },
       { title: 'Collapsible', href: '/components/collapsible' },
+      { title: 'Drawer', href: '/components/drawer' },
       { title: 'Command Palette', href: '/components/command-palette' },
       { title: 'Context Menu', href: '/components/context-menu' },
       { title: 'Modal', href: '/components/modal' },

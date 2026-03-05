@@ -92,6 +92,11 @@ const componentList = [
   // Overlay
   'DsModal',
   'DsSheet',
+  'DsDrawer',
+  'DsDrawerHeader',
+  'DsDrawerContent',
+  'DsDrawerFooter',
+  'DsDrawerSkeleton',
   'DsCollapsible',
   'DsCommandPalette',
   'DsContextMenu',

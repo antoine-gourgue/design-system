@@ -1999,6 +1999,41 @@ export const componentDocs: ComponentDoc[] = [
     },
     accessibility: ['Decorative SVG — add aria-hidden="true" when used purely for visual trend.'],
   },
+
+  /* ── Drawer ── */
+  {
+    slug: 'drawer',
+    componentName: 'DsDrawer',
+    displayName: 'Drawer',
+    description: 'A compound side drawer that slides in from any edge. Composed of DsDrawerHeader, DsDrawerContent and DsDrawerFooter sub-components for a structured layout.',
+    category: 'Overlay',
+    defaultProps: { side: 'right', size: 'md' },
+    controls: [
+      { name: 'side', label: 'Side', type: 'select', options: ['left', 'right', 'bottom', 'top'], default: 'right' },
+      { name: 'size', label: 'Size', type: 'select', options: ['sm', 'md', 'lg', 'xl', 'full'], default: 'md' },
+    ],
+    propDefs: [
+      { name: 'modelValue', type: 'boolean', default: 'false', description: 'Controls the open/closed state. Use v-model.' },
+      { name: 'side', type: '"left" | "right" | "bottom" | "top"', default: '"right"', description: 'Edge from which the drawer slides in.' },
+      { name: 'size', type: '"sm" | "md" | "lg" | "xl" | "full"', default: '"md"', description: 'Width (left/right) or height (top/bottom) of the drawer.' },
+      { name: 'class', type: 'string', default: '–', description: 'Additional CSS classes for the panel.' },
+    ],
+    examples: [],
+    skeleton: {
+      componentName: 'DsDrawerSkeleton',
+      examples: [
+        { label: 'Default (right)', props: {} },
+        { label: 'With more rows', props: { rows: 6 } },
+      ],
+    },
+    accessibility: [
+      'role="dialog" and aria-modal="true" are set on the overlay container.',
+      'Pressing Escape closes the drawer.',
+      'Clicking the backdrop closes the drawer.',
+      'Focus is managed — trap focus inside the drawer when open.',
+      'The close button has an aria-label="Close drawer".',
+    ],
+  },
 ]
 
 export function getComponentDoc(slug: string): ComponentDoc | undefined {
