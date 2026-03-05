@@ -1,0 +1,76 @@
+{
+  "name": "@my-scope/nuxt-ds",
+  "version": "0.1.0",
+  "description": "A minimal, Apple-inspired Design System for Nuxt 4 — components, tokens, Tailwind preset.",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": "./dist/module.mjs",
+      "require": "./dist/module.cjs",
+      "types": "./dist/module.d.ts"
+    },
+    "./module": {
+      "import": "./dist/module.mjs",
+      "require": "./dist/module.cjs",
+      "types": "./dist/module.d.ts"
+    },
+    "./tailwind/preset": {
+      "import": "./tailwind/preset.js",
+      "require": "./tailwind/preset.js",
+      "types": "./tailwind/preset.d.ts"
+    },
+    "./dist/runtime/*": "./dist/runtime/*"
+  },
+  "main": "./dist/module.cjs",
+  "module": "./dist/module.mjs",
+  "types": "./dist/module.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": ["./dist/*", "./dist/index.d.ts"]
+    }
+  },
+  "files": [
+    "dist",
+    "tailwind",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "nuxt-module-build build",
+    "stub": "nuxt-module-build build --stub",
+    "typecheck": "vue-tsc --noEmit",
+    "lint": "eslint src"
+  },
+  "dependencies": {
+    "@nuxt/kit": "^3.15.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.6.0"
+  },
+  "devDependencies": {
+    "@nuxt/module-builder": "^0.8.4",
+    "@nuxt/schema": "^3.15.0",
+    "nuxt": "^3.15.0",
+    "typescript": "^5.8.0",
+    "vue": "^3.5.0",
+    "vue-tsc": "^2.2.0"
+  },
+  "peerDependencies": {
+    "@nuxtjs/tailwindcss": ">=6.0.0",
+    "nuxt": ">=3.0.0",
+    "tailwindcss": ">=3.0.0 <4.0.0",
+    "vue": ">=3.4.0"
+  },
+  "peerDependenciesMeta": {
+    "@nuxtjs/tailwindcss": {
+      "optional": true
+    },
+    "tailwindcss": {
+      "optional": true
+    }
+  }
+}
