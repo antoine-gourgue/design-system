@@ -20,6 +20,12 @@ jobs:
         with:
           node-version: 20
 
+      - name: Inject Vercel project config into apps/storybook
+        run: |
+          mkdir -p apps/storybook/.vercel
+          echo '{"projectId":"${{ secrets.VERCEL_PROJECT_ID }}","orgId":"${{ secrets.VERCEL_ORG_ID }}"}' \
+            > apps/storybook/.vercel/project.json
+
       - name: Deploy storybook to Vercel
         id: deploy
         run: |
