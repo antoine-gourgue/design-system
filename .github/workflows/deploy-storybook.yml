@@ -21,11 +21,14 @@ jobs:
           node-version: 20
           cache: npm
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Install dependencies (skip postinstall)
+        run: npm ci --ignore-scripts
 
       - name: Build UI library
         run: npm run build -w packages/ui
+
+      - name: Prepare Nuxt storybook
+        run: npm run postinstall -w apps/storybook
 
       - name: Pull Vercel environment
         run: npx vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
