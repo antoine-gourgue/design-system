@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "composite": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./app/*"],
+      "~~/*": ["./app/*"]
+    }
+  },
+  "include": [
+    "app",
+    "nuxt.config.ts",
+    "tailwind.config.ts"
+  ]
+}
