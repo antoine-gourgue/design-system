@@ -169,6 +169,44 @@ const componentList = [
   'DsPaginationSkeleton',
   // Utilities
   'DsKbd',
+  'DsAspectRatio',
+  'DsVisuallyHidden',
+  // New form components
+  'DsCombobox',
+  'DsComboboxSkeleton',
+  'DsMultiSelect',
+  'DsMultiSelectSkeleton',
+  'DsTagInput',
+  'DsTagInputSkeleton',
+  'DsDateRangePicker',
+  'DsDateRangePickerSkeleton',
+  'DsTimePicker',
+  'DsTimePickerSkeleton',
+  // New display components
+  'DsAvatarGroup',
+  'DsAvatarGroupSkeleton',
+  'DsStatusBadge',
+  'DsStatusBadgeSkeleton',
+  'DsNotificationItem',
+  'DsNotificationItemSkeleton',
+  'DsCodeBlock',
+  'DsCodeBlockSkeleton',
+  'DsTreeView',
+  'DsTreeViewSkeleton',
+  // New overlay/nav components
+  'DsBanner',
+  'DsBannerSkeleton',
+  'DsConfirmDialog',
+  'DsConfirmDialogSkeleton',
+  'DsLoadingOverlay',
+  'DsLoadingOverlaySkeleton',
+  'DsNavigationMenu',
+  'DsNavigationMenuSkeleton',
+  'DsMenubar',
+  'DsMenubarSkeleton',
+  // Charts
+  'DsRadarChart',
+  'DsRadarChartSkeleton',
 ]
 
 export default defineNuxtModule<ModuleOptions>({

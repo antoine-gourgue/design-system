@@ -1553,7 +1553,7 @@ export const componentDocs: ComponentDoc[] = [
     controls: [
       { name: 'placeholder', label: 'Placeholder', type: 'text', default: 'Pick a date' },
       { name: 'format', label: 'Format', type: 'select', options: ['DD/MM/YYYY', 'MM/DD/YYYY', 'YYYY-MM-DD'], default: 'DD/MM/YYYY' },
-      { name: 'disabled', label: 'Disabled', type: 'checkbox', default: false },
+      { name: 'disabled', label: 'Disabled', type: 'boolean', default: false },
     ],
     propDefs: [
       { name: 'modelValue', type: 'Date | null', default: 'null', description: 'Selected date (v-model).' },
@@ -1584,10 +1584,10 @@ export const componentDocs: ComponentDoc[] = [
     category: 'Actions',
     defaultProps: { modelValue: false, variant: 'outline', size: 'md' },
     controls: [
-      { name: 'modelValue', label: 'Pressed', type: 'checkbox', default: false },
+      { name: 'modelValue', label: 'Pressed', type: 'boolean', default: false },
       { name: 'variant', label: 'Variant', type: 'select', options: ['outline', 'ghost'], default: 'outline' },
       { name: 'size', label: 'Size', type: 'select', options: ['sm', 'md', 'lg'], default: 'md' },
-      { name: 'disabled', label: 'Disabled', type: 'checkbox', default: false },
+      { name: 'disabled', label: 'Disabled', type: 'boolean', default: false },
     ],
     propDefs: [
       { name: 'modelValue', type: 'boolean', default: 'false', description: 'Pressed state (v-model).' },
@@ -1627,13 +1627,13 @@ export const componentDocs: ComponentDoc[] = [
     controls: [
       { name: 'type', label: 'Type', type: 'select', options: ['single', 'multiple'], default: 'single' },
       { name: 'size', label: 'Size', type: 'select', options: ['sm', 'md', 'lg'], default: 'md' },
-      { name: 'disabled', label: 'Disabled', type: 'checkbox', default: false },
+      { name: 'disabled', label: 'Disabled', type: 'boolean', default: false },
     ],
     propDefs: [
       { name: 'modelValue', type: 'string | string[]', default: '–', description: 'Selected value(s) (v-model).' },
       { name: 'items', type: 'DsToggleGroupItem[]', default: '–', description: 'Items: { value, label, disabled? }', required: true },
       { name: 'type', type: '"single" | "multiple"', default: '"single"', description: 'Selection mode.' },
-      { name: 'size', label: 'Size', type: '"sm" | "md" | "lg"', default: '"md"', description: 'Size.' },
+      { name: 'size', type: '"sm" | "md" | "lg"', default: '"md"', description: 'Size.' },
       { name: 'disabled', type: 'boolean', default: 'false', description: 'Disables all items.' },
     ],
     examples: [],
@@ -1659,9 +1659,9 @@ export const componentDocs: ComponentDoc[] = [
     category: 'Data',
     defaultProps: { searchable: true, striped: false, compact: false, perPage: 5 },
     controls: [
-      { name: 'searchable', label: 'Searchable', type: 'checkbox', default: true },
-      { name: 'striped', label: 'Striped', type: 'checkbox', default: false },
-      { name: 'compact', label: 'Compact', type: 'checkbox', default: false },
+      { name: 'searchable', label: 'Searchable', type: 'boolean', default: true },
+      { name: 'striped', label: 'Striped', type: 'boolean', default: false },
+      { name: 'compact', label: 'Compact', type: 'boolean', default: false },
     ],
     propDefs: [
       { name: 'columns', type: 'DataTableColumn[]', default: '–', description: 'Column definitions: { key, label, sortable?, align?, format? }', required: true },
@@ -1723,10 +1723,10 @@ export const componentDocs: ComponentDoc[] = [
     category: 'Display',
     defaultProps: { count: 3, arrows: true, dots: true, autoplay: false, loop: true },
     controls: [
-      { name: 'arrows', label: 'Arrows', type: 'checkbox', default: true },
-      { name: 'dots', label: 'Dots', type: 'checkbox', default: true },
-      { name: 'autoplay', label: 'Autoplay', type: 'checkbox', default: false },
-      { name: 'loop', label: 'Loop', type: 'checkbox', default: true },
+      { name: 'arrows', label: 'Arrows', type: 'boolean', default: true },
+      { name: 'dots', label: 'Dots', type: 'boolean', default: true },
+      { name: 'autoplay', label: 'Autoplay', type: 'boolean', default: false },
+      { name: 'loop', label: 'Loop', type: 'boolean', default: true },
     ],
     propDefs: [
       { name: 'count', type: 'number', default: '1', description: 'Number of slides (matches slot children).' },
@@ -1785,8 +1785,8 @@ export const componentDocs: ComponentDoc[] = [
     category: 'Form',
     defaultProps: { multiple: false },
     controls: [
-      { name: 'multiple', label: 'Multiple', type: 'checkbox', default: false },
-      { name: 'disabled', label: 'Disabled', type: 'checkbox', default: false },
+      { name: 'multiple', label: 'Multiple', type: 'boolean', default: false },
+      { name: 'disabled', label: 'Disabled', type: 'boolean', default: false },
     ],
     propDefs: [
       { name: 'modelValue', type: 'File[]', default: '[]', description: 'Selected files (v-model).' },
@@ -1817,8 +1817,8 @@ export const componentDocs: ComponentDoc[] = [
     category: 'Form',
     defaultProps: { modelValue: '#7f00ff', showInput: true },
     controls: [
-      { name: 'showInput', label: 'Show hex input', type: 'checkbox', default: true },
-      { name: 'disabled', label: 'Disabled', type: 'checkbox', default: false },
+      { name: 'showInput', label: 'Show hex input', type: 'boolean', default: true },
+      { name: 'disabled', label: 'Disabled', type: 'boolean', default: false },
     ],
     propDefs: [
       { name: 'modelValue', type: 'string', default: '"#7f00ff"', description: 'Selected hex color (v-model).' },
@@ -1848,7 +1848,7 @@ export const componentDocs: ComponentDoc[] = [
     defaultProps: { placeholder: '6 00 00 00 00' },
     controls: [
       { name: 'placeholder', label: 'Placeholder', type: 'text', default: '6 00 00 00 00' },
-      { name: 'disabled', label: 'Disabled', type: 'checkbox', default: false },
+      { name: 'disabled', label: 'Disabled', type: 'boolean', default: false },
     ],
     propDefs: [
       { name: 'modelValue', type: 'string', default: '""', description: 'Full phone number with dial code (v-model).' },
@@ -1876,10 +1876,10 @@ export const componentDocs: ComponentDoc[] = [
     category: 'Charts',
     defaultProps: { showArea: false, showDots: true, showGrid: true, showLegend: true, height: 240 },
     controls: [
-      { name: 'showArea', label: 'Area fill', type: 'checkbox', default: false },
-      { name: 'showDots', label: 'Show dots', type: 'checkbox', default: true },
-      { name: 'showGrid', label: 'Show grid', type: 'checkbox', default: true },
-      { name: 'showLegend', label: 'Show legend', type: 'checkbox', default: true },
+      { name: 'showArea', label: 'Area fill', type: 'boolean', default: false },
+      { name: 'showDots', label: 'Show dots', type: 'boolean', default: true },
+      { name: 'showGrid', label: 'Show grid', type: 'boolean', default: true },
+      { name: 'showLegend', label: 'Show legend', type: 'boolean', default: true },
     ],
     propDefs: [
       { name: 'labels', type: 'string[]', default: '–', description: 'X-axis labels.', required: true },
@@ -1909,10 +1909,10 @@ export const componentDocs: ComponentDoc[] = [
     category: 'Charts',
     defaultProps: { showGrid: true, showValues: false, showLegend: true, grouped: true, height: 240 },
     controls: [
-      { name: 'showGrid', label: 'Show grid', type: 'checkbox', default: true },
-      { name: 'showValues', label: 'Show values', type: 'checkbox', default: false },
-      { name: 'showLegend', label: 'Show legend', type: 'checkbox', default: true },
-      { name: 'grouped', label: 'Grouped', type: 'checkbox', default: true },
+      { name: 'showGrid', label: 'Show grid', type: 'boolean', default: true },
+      { name: 'showValues', label: 'Show values', type: 'boolean', default: false },
+      { name: 'showLegend', label: 'Show legend', type: 'boolean', default: true },
+      { name: 'grouped', label: 'Grouped', type: 'boolean', default: true },
     ],
     propDefs: [
       { name: 'labels', type: 'string[]', default: '–', description: 'X-axis labels.', required: true },
@@ -1942,8 +1942,8 @@ export const componentDocs: ComponentDoc[] = [
     category: 'Charts',
     defaultProps: { thickness: 28, radius: 70, showLegend: true, showTotal: true, totalLabel: 'Total', size: 200 },
     controls: [
-      { name: 'showLegend', label: 'Show legend', type: 'checkbox', default: true },
-      { name: 'showTotal', label: 'Show total', type: 'checkbox', default: true },
+      { name: 'showLegend', label: 'Show legend', type: 'boolean', default: true },
+      { name: 'showTotal', label: 'Show total', type: 'boolean', default: true },
       { name: 'thickness', label: 'Thickness', type: 'number', default: 28 },
     ],
     propDefs: [
@@ -1975,9 +1975,9 @@ export const componentDocs: ComponentDoc[] = [
     defaultProps: { type: 'line', color: '#7f00ff', showArea: true, width: 100, height: 36, showValue: false, trendColor: false },
     controls: [
       { name: 'type', label: 'Type', type: 'select', options: ['line', 'bar'], default: 'line' },
-      { name: 'showArea', label: 'Area fill', type: 'checkbox', default: true },
-      { name: 'showValue', label: 'Show value', type: 'checkbox', default: false },
-      { name: 'trendColor', label: 'Trend color', type: 'checkbox', default: false },
+      { name: 'showArea', label: 'Area fill', type: 'boolean', default: true },
+      { name: 'showValue', label: 'Show value', type: 'boolean', default: false },
+      { name: 'trendColor', label: 'Trend color', type: 'boolean', default: false },
     ],
     propDefs: [
       { name: 'data', type: 'number[]', default: '–', description: 'Array of numeric values.', required: true },
@@ -1986,7 +1986,7 @@ export const componentDocs: ComponentDoc[] = [
       { name: 'showArea', type: 'boolean', default: 'true', description: 'Fill area under line.' },
       { name: 'width', type: 'number', default: '100', description: 'Width in pixels.' },
       { name: 'height', type: 'number', default: '36', description: 'Height in pixels.' },
-      { name: 'showValue', label: 'showValue', type: 'boolean', default: 'false', description: 'Show last value as text.' },
+      { name: 'showValue', type: 'boolean', default: 'false', description: 'Show last value as text.' },
       { name: 'trendColor', type: 'boolean', default: 'false', description: 'Auto-color: green if up, red if down.' },
     ],
     examples: [],
@@ -2032,6 +2032,480 @@ export const componentDocs: ComponentDoc[] = [
       'Clicking the backdrop closes the drawer.',
       'Focus is managed — trap focus inside the drawer when open.',
       'The close button has an aria-label="Close drawer".',
+    ],
+  },
+
+  // ─── Combobox ────────────────────────────────────────────────────────────
+  {
+    slug: 'combobox',
+    componentName: 'DsCombobox',
+    displayName: 'Combobox',
+    description: 'Select searchable avec filtre intégré. Idéal pour les longues listes d\'options.',
+    category: 'Form',
+    defaultProps: { options: [], placeholder: 'Select an option…', size: 'md' },
+    controls: [
+      { name: 'placeholder', label: 'Placeholder', type: 'text', default: 'Select an option…' },
+      { name: 'size', label: 'Size', type: 'select', options: ['sm', 'md', 'lg'], default: 'md' },
+      { name: 'disabled', label: 'Disabled', type: 'boolean', default: false },
+      { name: 'clearable', label: 'Clearable', type: 'boolean', default: false },
+    ],
+    propDefs: [
+      { name: 'modelValue', type: 'string', default: 'undefined', description: 'Valeur sélectionnée (v-model).' },
+      { name: 'options', type: 'DsComboboxOption[]', default: '[]', description: 'Liste des options { label, value, disabled? }.' },
+      { name: 'placeholder', type: 'string', default: '"Select an option…"', description: 'Texte affiché quand rien n\'est sélectionné.' },
+      { name: 'searchPlaceholder', type: 'string', default: '"Search…"', description: 'Placeholder du champ de recherche.' },
+      { name: 'disabled', type: 'boolean', default: 'false', description: 'Désactive le composant.' },
+      { name: 'clearable', type: 'boolean', default: 'false', description: 'Affiche un bouton pour effacer la sélection.' },
+      { name: 'size', type: '"sm" | "md" | "lg"', default: '"md"', description: 'Taille du composant.' },
+    ],
+    examples: [],
+    skeleton: { componentName: 'DsComboboxSkeleton', examples: [{ label: 'Default', props: {} }] },
+    accessibility: [
+      'aria-haspopup="listbox" et aria-expanded sont gérés sur le trigger.',
+      'Les options ont role="option" avec aria-selected.',
+      'Navigation clavier supportée (Escape ferme la liste).',
+    ],
+  },
+
+  // ─── MultiSelect ─────────────────────────────────────────────────────────
+  {
+    slug: 'multi-select',
+    componentName: 'DsMultiSelect',
+    displayName: 'MultiSelect',
+    description: 'Sélection multiple avec chips pour chaque option choisie.',
+    category: 'Form',
+    defaultProps: { options: [], placeholder: 'Select options…' },
+    controls: [
+      { name: 'placeholder', label: 'Placeholder', type: 'text', default: 'Select options…' },
+      { name: 'disabled', label: 'Disabled', type: 'boolean', default: false },
+    ],
+    propDefs: [
+      { name: 'modelValue', type: 'string[]', default: '[]', description: 'Valeurs sélectionnées (v-model).' },
+      { name: 'options', type: 'DsMultiSelectOption[]', default: '[]', description: 'Liste des options.' },
+      { name: 'placeholder', type: 'string', default: '"Select options…"', description: 'Placeholder.' },
+      { name: 'max', type: 'number', default: 'undefined', description: 'Nombre maximum de sélections.' },
+      { name: 'disabled', type: 'boolean', default: 'false', description: 'Désactive le composant.' },
+    ],
+    examples: [],
+    skeleton: { componentName: 'DsMultiSelectSkeleton', examples: [{ label: 'Default', props: {} }] },
+    accessibility: [
+      'Chaque chip de sélection a un bouton de suppression avec aria-label.',
+      'Navigation clavier : Escape ferme la liste.',
+    ],
+  },
+
+  // ─── TagInput ────────────────────────────────────────────────────────────
+  {
+    slug: 'tag-input',
+    componentName: 'DsTagInput',
+    displayName: 'TagInput',
+    description: 'Input qui crée des tags/étiquettes au fur et à mesure de la saisie.',
+    category: 'Form',
+    defaultProps: { placeholder: 'Add tag…' },
+    controls: [
+      { name: 'placeholder', label: 'Placeholder', type: 'text', default: 'Add tag…' },
+      { name: 'disabled', label: 'Disabled', type: 'boolean', default: false },
+      { name: 'allowDuplicates', label: 'Allow duplicates', type: 'boolean', default: false },
+    ],
+    propDefs: [
+      { name: 'modelValue', type: 'string[]', default: '[]', description: 'Tags actuels (v-model).' },
+      { name: 'placeholder', type: 'string', default: '"Add tag…"', description: 'Placeholder du champ.' },
+      { name: 'disabled', type: 'boolean', default: 'false', description: 'Désactive le composant.' },
+      { name: 'max', type: 'number', default: 'undefined', description: 'Nombre maximum de tags.' },
+      { name: 'allowDuplicates', type: 'boolean', default: 'false', description: 'Autorise les tags en double.' },
+    ],
+    examples: [],
+    skeleton: { componentName: 'DsTagInputSkeleton', examples: [{ label: 'Default', props: {} }] },
+    accessibility: [
+      'Appuyer sur Entrée ajoute le tag.',
+      'Backspace sur un champ vide supprime le dernier tag.',
+      'Chaque tag a un bouton de suppression avec aria-label.',
+    ],
+  },
+
+  // ─── AvatarGroup ─────────────────────────────────────────────────────────
+  {
+    slug: 'avatar-group',
+    componentName: 'DsAvatarGroup',
+    displayName: 'AvatarGroup',
+    description: 'Groupe d\'avatars empilés avec un compteur de débordement.',
+    category: 'Display',
+    defaultProps: { max: 4, size: 'md' },
+    controls: [
+      { name: 'size', label: 'Size', type: 'select', options: ['xs', 'sm', 'md', 'lg'], default: 'md' },
+      { name: 'max', label: 'Max visible', type: 'number', default: 4 },
+    ],
+    propDefs: [
+      { name: 'items', type: 'DsAvatarGroupItem[]', default: '[]', description: 'Liste d\'avatars { src?, alt?, initials? }.' },
+      { name: 'max', type: 'number', default: '4', description: 'Nombre maximum d\'avatars affichés avant le compteur.' },
+      { name: 'size', type: '"xs" | "sm" | "md" | "lg"', default: '"md"', description: 'Taille des avatars.' },
+    ],
+    examples: [],
+    skeleton: { componentName: 'DsAvatarGroupSkeleton', examples: [{ label: 'Default (4)', props: { count: 4 } }, { label: 'Large (6)', props: { count: 6 } }] },
+    accessibility: [
+      'Chaque avatar a un title pour le nom.',
+    ],
+  },
+
+  // ─── DateRangePicker ─────────────────────────────────────────────────────
+  {
+    slug: 'date-range-picker',
+    componentName: 'DsDateRangePicker',
+    displayName: 'DateRangePicker',
+    description: 'Sélecteur de plage de dates avec deux calendriers côte à côte.',
+    category: 'Form',
+    defaultProps: { placeholder: 'Pick a date range' },
+    controls: [
+      { name: 'placeholder', label: 'Placeholder', type: 'text', default: 'Pick a date range' },
+      { name: 'disabled', label: 'Disabled', type: 'boolean', default: false },
+    ],
+    propDefs: [
+      { name: 'modelValue', type: '{ start: Date | null, end: Date | null }', default: '{ start: null, end: null }', description: 'Plage sélectionnée (v-model).' },
+      { name: 'placeholder', type: 'string', default: '"Pick a date range"', description: 'Texte affiché quand rien n\'est sélectionné.' },
+      { name: 'disabled', type: 'boolean', default: 'false', description: 'Désactive le composant.' },
+    ],
+    examples: [],
+    skeleton: { componentName: 'DsDateRangePickerSkeleton', examples: [{ label: 'Default', props: {} }] },
+    accessibility: [
+      'Cliquer hors du calendrier le ferme.',
+      'Keyboard navigation supportée.',
+    ],
+  },
+
+  // ─── TimePicker ──────────────────────────────────────────────────────────
+  {
+    slug: 'time-picker',
+    componentName: 'DsTimePicker',
+    displayName: 'TimePicker',
+    description: 'Sélecteur d\'heure avec format 12h ou 24h, secondes optionnelles.',
+    category: 'Form',
+    defaultProps: { format: '24', placeholder: '--:--' },
+    controls: [
+      { name: 'format', label: 'Format', type: 'select', options: ['12', '24'], default: '24' },
+      { name: 'showSeconds', label: 'Show seconds', type: 'boolean', default: false },
+      { name: 'disabled', label: 'Disabled', type: 'boolean', default: false },
+    ],
+    propDefs: [
+      { name: 'modelValue', type: 'string', default: 'undefined', description: 'Valeur HH:MM ou HH:MM:SS (v-model).' },
+      { name: 'format', type: '"12" | "24"', default: '"24"', description: 'Format d\'affichage.' },
+      { name: 'showSeconds', type: 'boolean', default: 'false', description: 'Affiche la saisie des secondes.' },
+      { name: 'disabled', type: 'boolean', default: 'false', description: 'Désactive le composant.' },
+    ],
+    examples: [],
+    skeleton: { componentName: 'DsTimePickerSkeleton', examples: [{ label: 'Default', props: {} }] },
+    accessibility: [
+      'Chaque spinner heure/minute/seconde est un input numérique natif.',
+      'Escape ou clic extérieur ferme le sélecteur.',
+    ],
+  },
+
+  // ─── StatusBadge ─────────────────────────────────────────────────────────
+  {
+    slug: 'status-badge',
+    componentName: 'DsStatusBadge',
+    displayName: 'StatusBadge',
+    description: 'Badge avec indicateur de statut coloré (online, offline, busy, away, pending).',
+    category: 'Display',
+    defaultProps: { status: 'online', showLabel: true, pulse: false, size: 'md' },
+    controls: [
+      { name: 'status', label: 'Status', type: 'select', options: ['online', 'offline', 'busy', 'away', 'pending'], default: 'online' },
+      { name: 'size', label: 'Size', type: 'select', options: ['sm', 'md', 'lg'], default: 'md' },
+      { name: 'showLabel', label: 'Show label', type: 'boolean', default: true },
+      { name: 'pulse', label: 'Pulse animation', type: 'boolean', default: false },
+    ],
+    propDefs: [
+      { name: 'status', type: '"online" | "offline" | "busy" | "away" | "pending"', default: '"online"', description: 'Statut affiché.' },
+      { name: 'label', type: 'string', default: 'auto', description: 'Label personnalisé (remplace le label par défaut du statut).' },
+      { name: 'showLabel', type: 'boolean', default: 'true', description: 'Affiche ou cache le label.' },
+      { name: 'pulse', type: 'boolean', default: 'false', description: 'Animation ping pour le statut online.' },
+      { name: 'size', type: '"sm" | "md" | "lg"', default: '"md"', description: 'Taille.' },
+    ],
+    examples: [
+      { label: 'Online', props: { status: 'online', showLabel: true } },
+      { label: 'Offline', props: { status: 'offline', showLabel: true } },
+      { label: 'Busy', props: { status: 'busy', showLabel: true } },
+      { label: 'Away', props: { status: 'away', showLabel: true } },
+      { label: 'Pending', props: { status: 'pending', showLabel: true } },
+      { label: 'Pulse animation', props: { status: 'online', pulse: true } },
+      { label: 'Dot only', props: { status: 'online', showLabel: false } },
+    ],
+    skeleton: { componentName: 'DsStatusBadgeSkeleton', examples: [{ label: 'Default', props: {} }] },
+    accessibility: ['Le point de couleur est purement décoratif (aria-hidden implicite). Le label texte porte l\'information.'],
+  },
+
+  // ─── NotificationItem ────────────────────────────────────────────────────
+  {
+    slug: 'notification-item',
+    componentName: 'DsNotificationItem',
+    displayName: 'NotificationItem',
+    description: 'Élément de liste de notifications avec avatar, titre, description et heure.',
+    category: 'Display',
+    defaultProps: { title: 'New message', description: 'You have a new message from Alice.', time: '2 min ago', read: false, avatarInitials: 'AL' },
+    controls: [
+      { name: 'title', label: 'Title', type: 'text', default: 'New message' },
+      { name: 'description', label: 'Description', type: 'text', default: 'You have a new message from Alice.' },
+      { name: 'time', label: 'Time', type: 'text', default: '2 min ago' },
+      { name: 'read', label: 'Read', type: 'boolean', default: false },
+    ],
+    propDefs: [
+      { name: 'title', type: 'string', default: 'undefined', description: 'Titre de la notification.' },
+      { name: 'description', type: 'string', default: 'undefined', description: 'Description / contenu.' },
+      { name: 'time', type: 'string', default: 'undefined', description: 'Timestamp affiché.' },
+      { name: 'read', type: 'boolean', default: 'false', description: 'Indique si la notification a été lue (pas de point bleu).' },
+      { name: 'avatarSrc', type: 'string', default: 'undefined', description: 'URL de l\'image avatar.' },
+      { name: 'avatarInitials', type: 'string', default: 'undefined', description: 'Initiales si pas d\'image.' },
+    ],
+    examples: [
+      { label: 'Unread', props: { title: 'New message', description: 'You have a new message from Alice.', time: '2 min ago', read: false, avatarInitials: 'AL' } },
+      { label: 'Read', props: { title: 'Pull request merged', description: 'feat/ui-components has been merged into main.', time: '1h ago', read: true, avatarInitials: 'GH' } },
+    ],
+    skeleton: { componentName: 'DsNotificationItemSkeleton', examples: [{ label: 'Default (3 items)', props: { count: 3 } }] },
+    accessibility: [
+      'role="listitem" sur chaque notification.',
+      'Le bouton dismiss a un aria-label.',
+    ],
+  },
+
+  // ─── Banner ──────────────────────────────────────────────────────────────
+  {
+    slug: 'banner',
+    componentName: 'DsBanner',
+    displayName: 'Banner',
+    description: 'Barre d\'annonce dismissible, idéale pour les messages globaux en haut de page.',
+    category: 'Overlay',
+    defaultProps: { variant: 'info', dismissible: true },
+    controls: [
+      { name: 'variant', label: 'Variant', type: 'select', options: ['default', 'info', 'success', 'warning', 'danger'], default: 'info' },
+      { name: 'dismissible', label: 'Dismissible', type: 'boolean', default: true },
+    ],
+    propDefs: [
+      { name: 'variant', type: '"default" | "info" | "success" | "warning" | "danger"', default: '"info"', description: 'Couleur et icône du banner.' },
+      { name: 'dismissible', type: 'boolean', default: 'true', description: 'Affiche le bouton de fermeture.' },
+    ],
+    examples: [
+      { label: 'Info', props: { variant: 'info', dismissible: true }, slot: 'New version 2.0 is available. Read the changelog.' },
+      { label: 'Warning', props: { variant: 'warning', dismissible: true }, slot: 'Your subscription expires in 3 days.' },
+      { label: 'Success', props: { variant: 'success', dismissible: false }, slot: 'Your account has been verified.' },
+      { label: 'Danger', props: { variant: 'danger', dismissible: true }, slot: 'Critical security update required.' },
+    ],
+    skeleton: { componentName: 'DsBannerSkeleton', examples: [{ label: 'Default', props: {} }] },
+    accessibility: [
+      'role="alert" pour annoncer le message aux lecteurs d\'écran.',
+      'Le bouton dismiss a aria-label="Dismiss".',
+    ],
+  },
+
+  // ─── ConfirmDialog ───────────────────────────────────────────────────────
+  {
+    slug: 'confirm-dialog',
+    componentName: 'DsConfirmDialog',
+    displayName: 'ConfirmDialog',
+    description: 'Boîte de dialogue de confirmation simplifiée avec variante danger ou primary.',
+    category: 'Overlay',
+    defaultProps: { title: 'Are you sure?', description: 'This action cannot be undone.', confirmLabel: 'Confirm', cancelLabel: 'Cancel', variant: 'danger' },
+    controls: [
+      { name: 'title', label: 'Title', type: 'text', default: 'Are you sure?' },
+      { name: 'description', label: 'Description', type: 'text', default: 'This action cannot be undone.' },
+      { name: 'variant', label: 'Variant', type: 'select', options: ['danger', 'primary'], default: 'danger' },
+      { name: 'confirmLabel', label: 'Confirm label', type: 'text', default: 'Confirm' },
+      { name: 'cancelLabel', label: 'Cancel label', type: 'text', default: 'Cancel' },
+    ],
+    propDefs: [
+      { name: 'modelValue', type: 'boolean', default: 'false', description: 'Contrôle l\'ouverture (v-model).' },
+      { name: 'title', type: 'string', default: '"Are you sure?"', description: 'Titre de la boîte de dialogue.' },
+      { name: 'description', type: 'string', default: '"This action cannot be undone."', description: 'Description.' },
+      { name: 'confirmLabel', type: 'string', default: '"Confirm"', description: 'Label du bouton de confirmation.' },
+      { name: 'cancelLabel', type: 'string', default: '"Cancel"', description: 'Label du bouton d\'annulation.' },
+      { name: 'variant', type: '"danger" | "primary"', default: '"danger"', description: 'Couleur du bouton de confirmation.' },
+      { name: 'loading', type: 'boolean', default: 'false', description: 'État de chargement pendant la confirmation.' },
+    ],
+    examples: [],
+    skeleton: { componentName: 'DsConfirmDialogSkeleton', examples: [{ label: 'Default', props: {} }] },
+    accessibility: [
+      'role="alertdialog" et aria-modal="true".',
+      'Escape ferme la boîte de dialogue.',
+      'Clic sur le backdrop annule.',
+    ],
+  },
+
+  // ─── LoadingOverlay ──────────────────────────────────────────────────────
+  {
+    slug: 'loading-overlay',
+    componentName: 'DsLoadingOverlay',
+    displayName: 'LoadingOverlay',
+    description: 'Overlay de chargement qui se pose sur son contenu parent.',
+    category: 'Overlay',
+    defaultProps: { visible: false, blur: true },
+    controls: [
+      { name: 'visible', label: 'Visible', type: 'boolean', default: false },
+      { name: 'label', label: 'Label', type: 'text', default: 'Loading…' },
+      { name: 'blur', label: 'Blur backdrop', type: 'boolean', default: true },
+    ],
+    propDefs: [
+      { name: 'visible', type: 'boolean', default: 'false', description: 'Affiche ou cache l\'overlay.' },
+      { name: 'label', type: 'string', default: 'undefined', description: 'Texte affiché sous le spinner.' },
+      { name: 'blur', type: 'boolean', default: 'true', description: 'Applique un blur au contenu en dessous.' },
+    ],
+    examples: [],
+    skeleton: { componentName: 'DsLoadingOverlaySkeleton', examples: [{ label: 'Default', props: {} }] },
+    accessibility: [
+      'aria-busy="true" et aria-live="polite" indiquent le chargement.',
+    ],
+  },
+
+  // ─── NavigationMenu ──────────────────────────────────────────────────────
+  {
+    slug: 'navigation-menu',
+    componentName: 'DsNavigationMenu',
+    displayName: 'NavigationMenu',
+    description: 'Menu de navigation horizontal avec sous-menus déroulants.',
+    category: 'Navigation',
+    defaultProps: { items: [] },
+    controls: [],
+    propDefs: [
+      { name: 'items', type: 'DsNavMenuItem[]', default: '[]', description: 'Items de navigation { label, href?, description?, children? }.' },
+    ],
+    examples: [],
+    skeleton: { componentName: 'DsNavigationMenuSkeleton', examples: [{ label: 'Default', props: {} }] },
+    accessibility: [
+      'Navigation keyboard supportée.',
+      'Les sous-menus s\'ouvrent au survol ou au clic.',
+    ],
+  },
+
+  // ─── Menubar ─────────────────────────────────────────────────────────────
+  {
+    slug: 'menubar',
+    componentName: 'DsMenubar',
+    displayName: 'Menubar',
+    description: 'Barre de menus style application desktop (Fichier / Édition / Affichage…).',
+    category: 'Navigation',
+    defaultProps: { menus: [] },
+    controls: [],
+    propDefs: [
+      { name: 'menus', type: 'DsMenubarMenu[]', default: '[]', description: 'Liste de menus { label, items[] }. Chaque item : { label, shortcut?, disabled?, separator?, action? }.' },
+    ],
+    examples: [],
+    skeleton: { componentName: 'DsMenubarSkeleton', examples: [{ label: 'Default', props: {} }] },
+    accessibility: [
+      'Escape ferme le menu ouvert.',
+      'Clic en dehors ferme le menu.',
+      'Les raccourcis clavier sont affichés à droite de chaque item.',
+    ],
+  },
+
+  // ─── CodeBlock ───────────────────────────────────────────────────────────
+  {
+    slug: 'code-block',
+    componentName: 'DsCodeBlock',
+    displayName: 'CodeBlock',
+    description: 'Bloc de code avec syntax highlighting, numéros de ligne et bouton Copy.',
+    category: 'Display',
+    defaultProps: { language: 'typescript', copyable: true, showLineNumbers: false },
+    controls: [
+      { name: 'language', label: 'Language', type: 'text', default: 'typescript' },
+      { name: 'filename', label: 'Filename', type: 'text', default: '' },
+      { name: 'showLineNumbers', label: 'Line numbers', type: 'boolean', default: false },
+      { name: 'copyable', label: 'Copyable', type: 'boolean', default: true },
+    ],
+    propDefs: [
+      { name: 'code', type: 'string', default: '""', description: 'Code à afficher.' },
+      { name: 'language', type: 'string', default: '"plaintext"', description: 'Langage pour l\'affichage (ex: typescript, vue, bash).' },
+      { name: 'filename', type: 'string', default: 'undefined', description: 'Nom du fichier affiché dans l\'en-tête.' },
+      { name: 'showLineNumbers', type: 'boolean', default: 'false', description: 'Affiche les numéros de ligne.' },
+      { name: 'copyable', type: 'boolean', default: 'true', description: 'Affiche le bouton Copy.' },
+    ],
+    examples: [],
+    skeleton: { componentName: 'DsCodeBlockSkeleton', examples: [{ label: 'Default (6 lines)', props: {} }, { label: 'Short (3 lines)', props: { lines: 3 } }] },
+    accessibility: [
+      'Le bouton Copy a un label visible "Copy" / "Copied".',
+    ],
+  },
+
+  // ─── TreeView ────────────────────────────────────────────────────────────
+  {
+    slug: 'tree-view',
+    componentName: 'DsTreeView',
+    displayName: 'TreeView',
+    description: 'Arborescence hiérarchique interactive avec expand/collapse et sélection.',
+    category: 'Display',
+    defaultProps: { nodes: [] },
+    controls: [],
+    propDefs: [
+      { name: 'nodes', type: 'DsTreeNode[]', default: '[]', description: 'Noeuds { id, label, children?, disabled? }. Récursif.' },
+      { name: 'selected', type: 'string', default: 'undefined', description: 'ID du noeud sélectionné.' },
+    ],
+    examples: [],
+    skeleton: { componentName: 'DsTreeViewSkeleton', examples: [{ label: 'Default', props: {} }] },
+    accessibility: [
+      'role="tree" sur le conteneur, role="treeitem" sur chaque noeud.',
+      'aria-expanded reflète l\'état expand/collapse des dossiers.',
+    ],
+  },
+
+  // ─── VisuallyHidden ──────────────────────────────────────────────────────
+  {
+    slug: 'visually-hidden',
+    componentName: 'DsVisuallyHidden',
+    displayName: 'VisuallyHidden',
+    description: 'Hides content visually while keeping it accessible to screen readers.',
+    category: 'Utilities',
+    defaultProps: {},
+    controls: [],
+    propDefs: [],
+    examples: [
+      { label: 'Screen reader label', props: {}, slot: 'Submit form' },
+    ],
+    accessibility: [
+      'Content is hidden with CSS but remains in the DOM for screen readers.',
+      'Use for supplemental labels that would be redundant visually.',
+    ],
+  },
+
+  // ─── AspectRatio ─────────────────────────────────────────────────────────
+  {
+    slug: 'aspect-ratio',
+    componentName: 'DsAspectRatio',
+    displayName: 'AspectRatio',
+    description: 'Wrapper qui maintient un ratio largeur/hauteur fixe pour son contenu.',
+    category: 'Display',
+    defaultProps: { ratio: 1.777 },
+    controls: [
+      { name: 'ratio', label: 'Ratio (width/height)', type: 'number', default: 1.777 },
+    ],
+    propDefs: [
+      { name: 'ratio', type: 'number', default: '16/9', description: 'Ratio largeur/hauteur (ex: 16/9 = 1.777, 1/1 = 1, 4/3 = 1.333).' },
+    ],
+    examples: [],
+    accessibility: ['Composant purement structurel, pas d\'impact sur l\'accessibilité.'],
+  },
+
+  // ─── RadarChart ──────────────────────────────────────────────────────────
+  {
+    slug: 'radar-chart',
+    componentName: 'DsRadarChart',
+    displayName: 'RadarChart',
+    description: 'Graphique radar / toile d\'araignée en SVG, zéro dépendance.',
+    category: 'Charts',
+    defaultProps: { data: [], color: '#7f00ff', size: 280, showLabels: true, showGrid: true },
+    controls: [
+      { name: 'color', label: 'Color', type: 'color', default: '#7f00ff' },
+      { name: 'size', label: 'Size (px)', type: 'number', default: 280 },
+      { name: 'showLabels', label: 'Show labels', type: 'boolean', default: true },
+      { name: 'showGrid', label: 'Show grid', type: 'boolean', default: true },
+    ],
+    propDefs: [
+      { name: 'data', type: 'DsRadarChartAxis[]', default: '[]', description: 'Axes { label, value (0-100) }.' },
+      { name: 'color', type: 'string', default: '"#7f00ff"', description: 'Couleur principale du graphique.' },
+      { name: 'size', type: 'number', default: '280', description: 'Taille du SVG en pixels.' },
+      { name: 'showLabels', type: 'boolean', default: 'true', description: 'Affiche les labels des axes.' },
+      { name: 'showGrid', type: 'boolean', default: 'true', description: 'Affiche la grille en arrière-plan.' },
+    ],
+    examples: [],
+    skeleton: { componentName: 'DsRadarChartSkeleton', examples: [{ label: 'Default', props: {} }] },
+    accessibility: [
+      'SVG avec aria-hidden="true" et role="img".',
+      'Fournir une description via aria-label ou aria-labelledby sur le conteneur parent.',
     ],
   },
 ]

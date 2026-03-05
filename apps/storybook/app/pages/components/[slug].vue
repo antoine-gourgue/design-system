@@ -44,7 +44,11 @@ const compoundSlugs = [
   'toggle', 'toggle-group', 'data-table',
   'hover-card', 'carousel', 'scroll-area',
   'file-upload', 'color-picker', 'phone-input',
-  'line-chart', 'bar-chart', 'donut-chart', 'sparkline',
+  'line-chart', 'bar-chart', 'donut-chart', 'sparkline', 'radar-chart',
+  'combobox', 'multi-select', 'tag-input', 'date-range-picker', 'time-picker',
+  'avatar-group', 'tree-view', 'notification-item',
+  'banner', 'confirm-dialog', 'loading-overlay', 'navigation-menu', 'menubar',
+  'code-block', 'aspect-ratio', 'visually-hidden',
 ]
 const isCompound = computed(() => compoundSlugs.includes(doc.value?.slug ?? ''))
 
@@ -613,6 +617,260 @@ const sparklineCode = `<!-- Line sparkline (for KPI cards) -->
   :show-value="true"
 />`
 
+// ── New component code strings ──
+const comboboxCode = `<script setup>
+const options = [
+  { value: 'nuxt', label: 'Nuxt' },
+  { value: 'vue', label: 'Vue' },
+  { value: 'react', label: 'React' },
+  { value: 'svelte', label: 'Svelte' },
+  { value: 'angular', label: 'Angular' },
+]
+const selected = ref('')
+<\/script>
+<template>
+  <DsCombobox
+    v-model="selected"
+    :options="options"
+    placeholder="Select a framework…"
+    :clearable="true"
+  />
+</template>`
+
+const multiSelectCode = `<script setup>
+const options = [
+  { value: 'ts', label: 'TypeScript' },
+  { value: 'vue', label: 'Vue' },
+  { value: 'nuxt', label: 'Nuxt' },
+  { value: 'tailwind', label: 'Tailwind' },
+  { value: 'vite', label: 'Vite' },
+]
+const selected = ref(['ts', 'vue'])
+<\/script>
+<template>
+  <DsMultiSelect v-model="selected" :options="options" :max="4" />
+</template>`
+
+const tagInputCode = `<script setup>
+const tags = ref(['Nuxt', 'Vue 3'])
+<\/script>
+<template>
+  <DsTagInput v-model="tags" placeholder="Add a tag and press Enter…" :max="5" />
+</template>`
+
+const avatarGroupCode = `<DsAvatarGroup
+  :items="[
+    { initials: 'AG', alt: 'Antoine Gourgue' },
+    { initials: 'MD', alt: 'Marie Dupont' },
+    { initials: 'LM', alt: 'Luc Martin' },
+    { initials: 'SB', alt: 'Sophie Bernard' },
+    { initials: 'PL', alt: 'Pierre Leroy' },
+    { initials: 'CK', alt: 'Camille Klein' },
+  ]"
+  :max="4"
+  size="md"
+/>`
+
+const dateRangeCode = `<script setup>
+const range = ref({ start: null, end: null })
+<\/script>
+<template>
+  <DsDateRangePicker v-model="range" placeholder="Pick a date range" />
+</template>`
+
+const timePickerCode = `<script setup>
+const time = ref('09:30')
+<\/script>
+<template>
+  <DsTimePicker v-model="time" format="24" />
+  <!-- 12h format with seconds -->
+  <DsTimePicker v-model="time" format="12" :show-seconds="true" />
+</template>`
+
+const bannerCode = `<DsBanner variant="info" :dismissible="true">
+  New version 2.0 is available.
+  <a href="#" class="font-semibold underline ml-1">Read the changelog.</a>
+</DsBanner>
+
+<DsBanner variant="warning" :dismissible="true">
+  Your subscription expires in 3 days.
+</DsBanner>
+
+<DsBanner variant="danger" :dismissible="false">
+  Critical security update required.
+</DsBanner>`
+
+const confirmDialogCode = `<script setup>
+const open = ref(false)
+function onConfirm() {
+  // handle delete
+  open.value = false
+}
+<\/script>
+<template>
+  <DsButton variant="destructive" @click="open = true">Delete account</DsButton>
+  <DsConfirmDialog
+    v-model="open"
+    title="Delete account?"
+    description="This action is irreversible. All your data will be permanently deleted."
+    confirm-label="Yes, delete"
+    cancel-label="Cancel"
+    variant="danger"
+    @confirm="onConfirm"
+  />
+</template>`
+
+const loadingOverlayCode = `<DsLoadingOverlay :visible="isLoading" label="Loading data…" :blur="true">
+  <div class="p-6 rounded-ds-xl border border-ds-border bg-ds-bg space-y-3">
+    <p class="text-sm text-ds-fg">Dashboard content</p>
+    <p class="text-sm text-ds-fg-muted">This content is covered while loading.</p>
+  </div>
+</DsLoadingOverlay>`
+
+const navigationMenuCode = `<DsNavigationMenu
+  :items="[
+    { label: 'Products', children: [
+      { label: 'Analytics', href: '#', description: 'Real-time data insights' },
+      { label: 'Automation', href: '#', description: 'Workflow automation tools' },
+    ]},
+    { label: 'Docs', href: '#' },
+    { label: 'Pricing', href: '#' },
+    { label: 'Blog', href: '#' },
+  ]"
+/>`
+
+const menubarCode = `<DsMenubar
+  :menus="[
+    {
+      label: 'File',
+      items: [
+        { label: 'New', shortcut: '⌘N', action: () => {} },
+        { label: 'Open…', shortcut: '⌘O', action: () => {} },
+        { separator: true },
+        { label: 'Save', shortcut: '⌘S', action: () => {} },
+        { label: 'Export', action: () => {} },
+      ],
+    },
+    {
+      label: 'Edit',
+      items: [
+        { label: 'Undo', shortcut: '⌘Z', action: () => {} },
+        { label: 'Redo', shortcut: '⌘⇧Z', action: () => {} },
+        { separator: true },
+        { label: 'Cut', shortcut: '⌘X', action: () => {} },
+        { label: 'Copy', shortcut: '⌘C', action: () => {} },
+        { label: 'Paste', shortcut: '⌘V', action: () => {} },
+      ],
+    },
+    {
+      label: 'View',
+      items: [
+        { label: 'Zoom In', shortcut: '⌘+', action: () => {} },
+        { label: 'Zoom Out', shortcut: '⌘-', action: () => {} },
+        { separator: true },
+        { label: 'Full Screen', shortcut: '⌘⌃F', action: () => {} },
+      ],
+    },
+  ]"
+/>`
+
+const codeBlockCode = `<DsCodeBlock
+  code="const greeting = 'Hello, World!'
+console.log(greeting)"
+  language="typescript"
+  filename="hello.ts"
+  :show-line-numbers="true"
+  :copyable="true"
+/>`
+
+const treeViewCode = `<script setup>
+const nodes = [
+  {
+    id: 'src',
+    label: 'src',
+    children: [
+      {
+        id: 'components',
+        label: 'components',
+        children: [
+          { id: 'button', label: 'DsButton.vue' },
+          { id: 'input', label: 'DsInput.vue' },
+        ],
+      },
+      { id: 'utils', label: 'utils', children: [
+        { id: 'cn', label: 'cn.ts' },
+      ]},
+    ],
+  },
+  { id: 'package', label: 'package.json' },
+]
+const selected = ref('button')
+<\/script>
+<template>
+  <DsTreeView :nodes="nodes" :selected="selected" @select="selected = $event" />
+</template>`
+
+const statusBadgeCode = `<!-- All statuses -->
+<DsStatusBadge status="online" />
+<DsStatusBadge status="offline" />
+<DsStatusBadge status="busy" />
+<DsStatusBadge status="away" />
+<DsStatusBadge status="pending" />
+
+<!-- Pulse animation for live indicator -->
+<DsStatusBadge status="online" :pulse="true" label="Live" />
+
+<!-- Dot only (no text) -->
+<DsStatusBadge status="online" :show-label="false" />`
+
+const notificationItemCode = `<div class="w-80 rounded-ds-xl border border-ds-border overflow-hidden">
+  <DsNotificationItem
+    title="Pull request merged"
+    description="feat/ui-components has been successfully merged into main."
+    time="5 min ago"
+    :read="false"
+    avatar-initials="GH"
+    @click="() => {}"
+    @dismiss="() => {}"
+  />
+  <DsNotificationItem
+    title="New comment"
+    description="Alice left a comment on your design review."
+    time="1h ago"
+    :read="true"
+    avatar-initials="AL"
+    @click="() => {}"
+    @dismiss="() => {}"
+  />
+</div>`
+
+const radarChartCode = `<DsRadarChart
+  :data="[
+    { label: 'Speed', value: 82 },
+    { label: 'Reliability', value: 95 },
+    { label: 'Security', value: 78 },
+    { label: 'Scalability', value: 88 },
+    { label: 'DX', value: 92 },
+    { label: 'Performance', value: 85 },
+  ]"
+  color="#7f00ff"
+  :size="260"
+  :show-labels="true"
+  :show-grid="true"
+/>`
+
+const aspectRatioCode = `<!-- 16/9 video placeholder -->
+<DsAspectRatio :ratio="16/9" class="rounded-ds-xl overflow-hidden">
+  <img src="https://picsum.photos/800/450" alt="Cover" class="w-full h-full object-cover" />
+</DsAspectRatio>
+
+<!-- 1/1 square -->
+<DsAspectRatio :ratio="1" class="w-48 rounded-ds-xl overflow-hidden">
+  <div class="w-full h-full bg-ds-primary-subtle flex items-center justify-center text-ds-primary font-bold">
+    1:1
+  </div>
+</DsAspectRatio>`
+
 // Chart data
 const lineChartLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug']
 const lineChartDatasets = [
@@ -662,6 +920,110 @@ const datePickerDate = ref<Date | null>(null)
 const carouselFiles = ref<File[]>([])
 const colorPickerValue = ref('#7f00ff')
 const phoneValue = ref('')
+
+// New component reactive state
+const comboboxValue = ref('')
+const comboboxOptions = [
+  { value: 'nuxt', label: 'Nuxt' },
+  { value: 'vue', label: 'Vue' },
+  { value: 'react', label: 'React' },
+  { value: 'svelte', label: 'Svelte' },
+  { value: 'angular', label: 'Angular' },
+  { value: 'solidjs', label: 'SolidJS' },
+]
+const multiSelectValue = ref(['ts', 'vue'])
+const multiSelectOptions = [
+  { value: 'ts', label: 'TypeScript' },
+  { value: 'vue', label: 'Vue' },
+  { value: 'nuxt', label: 'Nuxt' },
+  { value: 'tailwind', label: 'Tailwind' },
+  { value: 'vite', label: 'Vite' },
+  { value: 'vitest', label: 'Vitest' },
+]
+const tagInputValue = ref(['Nuxt', 'Vue 3'])
+const dateRangeValue = ref<{ start: Date | null, end: Date | null }>({ start: null, end: null })
+const timePickerValue = ref('09:30')
+const confirmDialogOpen = ref(false)
+const loadingOverlayActive = ref(false)
+const treeViewSelected = ref('button')
+const treeViewNodes = [
+  {
+    id: 'src',
+    label: 'src',
+    children: [
+      {
+        id: 'components',
+        label: 'components',
+        children: [
+          { id: 'button', label: 'DsButton.vue' },
+          { id: 'input', label: 'DsInput.vue' },
+        ],
+      },
+      { id: 'utils', label: 'utils', children: [{ id: 'cn', label: 'cn.ts' }] },
+    ],
+  },
+  { id: 'package', label: 'package.json' },
+]
+const radarChartData = [
+  { label: 'Speed', value: 82 },
+  { label: 'Reliability', value: 95 },
+  { label: 'Security', value: 78 },
+  { label: 'Scalability', value: 88 },
+  { label: 'DX', value: 92 },
+  { label: 'Performance', value: 85 },
+]
+const navigationMenuItems = [
+  { label: 'Products', children: [
+    { label: 'Analytics', href: '#', description: 'Real-time data insights' },
+    { label: 'Automation', href: '#', description: 'Workflow automation tools' },
+  ] },
+  { label: 'Docs', href: '#' },
+  { label: 'Pricing', href: '#' },
+  { label: 'Blog', href: '#' },
+]
+const menubarMenus = [
+  { label: 'File', items: [
+    { label: 'New', shortcut: '⌘N' },
+    { label: 'Open…', shortcut: '⌘O' },
+    { separator: true },
+    { label: 'Save', shortcut: '⌘S' },
+  ] },
+  { label: 'Edit', items: [
+    { label: 'Undo', shortcut: '⌘Z' },
+    { label: 'Redo', shortcut: '⌘⇧Z' },
+    { separator: true },
+    { label: 'Cut', shortcut: '⌘X' },
+    { label: 'Copy', shortcut: '⌘C' },
+    { label: 'Paste', shortcut: '⌘V' },
+  ] },
+  { label: 'View', items: [
+    { label: 'Zoom In', shortcut: '⌘+' },
+    { label: 'Zoom Out', shortcut: '⌘-' },
+    { separator: true },
+    { label: 'Full Screen', shortcut: '⌘⌃F' },
+  ] },
+]
+const codeBlockSample = `const greeting = 'Hello, World!'
+console.log(greeting)
+
+function add(a: number, b: number): number {
+  return a + b
+}
+
+export default { add }`
+
+const aspectRatio169Code = `<DsAspectRatio :ratio="16/9" class="w-full overflow-hidden rounded-ds-lg">
+  <img src="/image.jpg" alt="..." class="w-full h-full object-cover" />
+</DsAspectRatio>`
+
+const aspectRatio11Code = `<DsAspectRatio :ratio="1" class="w-40 overflow-hidden rounded-full">
+  <img src="/avatar.jpg" alt="Avatar" class="w-full h-full object-cover" />
+</DsAspectRatio>`
+
+const visuallyHiddenCode = `<button type="button" aria-label="Close">
+  <SomeIcon />
+  <DsVisuallyHidden>Close dialog</DsVisuallyHidden>
+</button>`
 </script>
 
 <template>
@@ -1640,6 +2002,280 @@ const phoneValue = ref('')
               />
             </div>
           </div>
+        </div>
+      </div>
+
+      <!-- Combobox examples -->
+      <div v-else-if="doc.slug === 'combobox'" class="space-y-6">
+        <div class="rounded-ds-xl border border-ds-border overflow-hidden">
+          <div class="px-4 py-2.5 border-b border-ds-border bg-ds-bg"><span class="text-xs font-medium text-ds-fg-muted font-ds">Searchable select</span></div>
+          <div class="p-8 bg-ds-bg flex items-center justify-center">
+            <DsCombobox v-model="comboboxValue" :options="comboboxOptions" placeholder="Select framework…" class="w-64" />
+          </div>
+          <div class="border-t border-ds-border"><DocsCodeBlock :code="comboboxCode" language="vue" /></div>
+        </div>
+      </div>
+
+      <!-- MultiSelect examples -->
+      <div v-else-if="doc.slug === 'multi-select'" class="space-y-6">
+        <div class="rounded-ds-xl border border-ds-border overflow-hidden">
+          <div class="px-4 py-2.5 border-b border-ds-border bg-ds-bg"><span class="text-xs font-medium text-ds-fg-muted font-ds">Multiple selection</span></div>
+          <div class="p-8 bg-ds-bg flex items-center justify-center">
+            <DsMultiSelect v-model="multiSelectValue" :options="multiSelectOptions" placeholder="Pick technologies…" class="w-72" />
+          </div>
+          <div class="border-t border-ds-border"><DocsCodeBlock :code="multiSelectCode" language="vue" /></div>
+        </div>
+      </div>
+
+      <!-- TagInput examples -->
+      <div v-else-if="doc.slug === 'tag-input'" class="space-y-6">
+        <div class="rounded-ds-xl border border-ds-border overflow-hidden">
+          <div class="px-4 py-2.5 border-b border-ds-border bg-ds-bg"><span class="text-xs font-medium text-ds-fg-muted font-ds">Type and press Enter to add tags</span></div>
+          <div class="p-8 bg-ds-bg flex items-center justify-center">
+            <DsTagInput v-model="tagInputValue" placeholder="Add a tag…" class="w-80" />
+          </div>
+          <div class="border-t border-ds-border"><DocsCodeBlock :code="tagInputCode" language="vue" /></div>
+        </div>
+      </div>
+
+      <!-- AvatarGroup examples -->
+      <div v-else-if="doc.slug === 'avatar-group'" class="space-y-6">
+        <div class="rounded-ds-xl border border-ds-border overflow-hidden">
+          <div class="px-4 py-2.5 border-b border-ds-border bg-ds-bg"><span class="text-xs font-medium text-ds-fg-muted font-ds">Stacked avatars</span></div>
+          <div class="p-8 bg-ds-bg flex items-center justify-center">
+            <DsAvatarGroup
+              :items="[
+                { initials: 'AG', alt: 'Antoine Gourgue' },
+                { initials: 'BM', alt: 'Bob Martin' },
+                { initials: 'CL', alt: 'Claire Leroy' },
+                { initials: 'DK', alt: 'David Kim' },
+                { initials: 'EV', alt: 'Elena Vasquez' },
+              ]"
+              :max="4"
+              size="md"
+            />
+          </div>
+          <div class="border-t border-ds-border"><DocsCodeBlock :code="avatarGroupCode" language="vue" /></div>
+        </div>
+      </div>
+
+      <!-- DateRangePicker examples -->
+      <div v-else-if="doc.slug === 'date-range-picker'" class="space-y-6">
+        <div class="rounded-ds-xl border border-ds-border overflow-hidden">
+          <div class="px-4 py-2.5 border-b border-ds-border bg-ds-bg"><span class="text-xs font-medium text-ds-fg-muted font-ds">Select a date range</span></div>
+          <div class="p-8 bg-ds-bg flex items-center justify-center">
+            <DsDateRangePicker v-model="dateRangeValue" class="w-80" />
+          </div>
+          <div class="border-t border-ds-border"><DocsCodeBlock :code="dateRangeCode" language="vue" /></div>
+        </div>
+      </div>
+
+      <!-- TimePicker examples -->
+      <div v-else-if="doc.slug === 'time-picker'" class="space-y-6">
+        <div class="rounded-ds-xl border border-ds-border overflow-hidden">
+          <div class="px-4 py-2.5 border-b border-ds-border bg-ds-bg"><span class="text-xs font-medium text-ds-fg-muted font-ds">Time selection</span></div>
+          <div class="p-8 bg-ds-bg flex items-center justify-center">
+            <DsTimePicker v-model="timePickerValue" class="w-48" />
+          </div>
+          <div class="border-t border-ds-border"><DocsCodeBlock :code="timePickerCode" language="vue" /></div>
+        </div>
+      </div>
+
+      <!-- Banner examples -->
+      <div v-else-if="doc.slug === 'banner'" class="space-y-6">
+        <div class="rounded-ds-xl border border-ds-border overflow-hidden">
+          <div class="px-4 py-2.5 border-b border-ds-border bg-ds-bg"><span class="text-xs font-medium text-ds-fg-muted font-ds">Variants</span></div>
+          <div class="p-6 bg-ds-bg space-y-3">
+            <DsBanner variant="info" :dismissible="true">System maintenance scheduled for Sunday, 2 AM UTC.</DsBanner>
+            <DsBanner variant="success" :dismissible="true">Your account has been successfully verified.</DsBanner>
+            <DsBanner variant="warning" :dismissible="true">Your subscription expires in 7 days. Renew now.</DsBanner>
+            <DsBanner variant="danger" :dismissible="true">Critical error detected. Please contact support.</DsBanner>
+          </div>
+          <div class="border-t border-ds-border"><DocsCodeBlock :code="bannerCode" language="vue" /></div>
+        </div>
+      </div>
+
+      <!-- ConfirmDialog examples -->
+      <div v-else-if="doc.slug === 'confirm-dialog'" class="space-y-6">
+        <div class="rounded-ds-xl border border-ds-border overflow-hidden">
+          <div class="px-4 py-2.5 border-b border-ds-border bg-ds-bg"><span class="text-xs font-medium text-ds-fg-muted font-ds">Confirmation dialog</span></div>
+          <div class="p-8 bg-ds-bg flex items-center justify-center">
+            <DsButton variant="destructive" @click="confirmDialogOpen = true">Delete account</DsButton>
+            <DsConfirmDialog
+              v-model="confirmDialogOpen"
+              title="Delete account"
+              description="This will permanently delete your account and all its data. This action cannot be undone."
+              confirm-label="Delete"
+              confirm-variant="destructive"
+              @confirm="confirmDialogOpen = false"
+              @cancel="confirmDialogOpen = false"
+            />
+          </div>
+          <div class="border-t border-ds-border"><DocsCodeBlock :code="confirmDialogCode" language="vue" /></div>
+        </div>
+      </div>
+
+      <!-- LoadingOverlay examples -->
+      <div v-else-if="doc.slug === 'loading-overlay'" class="space-y-6">
+        <div class="rounded-ds-xl border border-ds-border overflow-hidden">
+          <div class="px-4 py-2.5 border-b border-ds-border bg-ds-bg"><span class="text-xs font-medium text-ds-fg-muted font-ds">Loading overlay</span></div>
+          <div class="p-8 bg-ds-bg flex flex-col items-center gap-4">
+            <DsButton @click="loadingOverlayActive = !loadingOverlayActive">
+              {{ loadingOverlayActive ? 'Hide overlay' : 'Show overlay' }}
+            </DsButton>
+            <DsLoadingOverlay :visible="loadingOverlayActive" label="Loading data…" :blur="true">
+              <div class="w-80 h-40 rounded-ds-xl border border-ds-border bg-ds-bg p-4 flex items-center justify-center">
+                <p class="text-sm text-ds-fg-muted">Content area</p>
+              </div>
+            </DsLoadingOverlay>
+          </div>
+          <div class="border-t border-ds-border"><DocsCodeBlock :code="loadingOverlayCode" language="vue" /></div>
+        </div>
+      </div>
+
+      <!-- StatusBadge examples -->
+      <div v-else-if="doc.slug === 'status-badge'" class="space-y-6">
+        <div class="rounded-ds-xl border border-ds-border overflow-hidden">
+          <div class="px-4 py-2.5 border-b border-ds-border bg-ds-bg"><span class="text-xs font-medium text-ds-fg-muted font-ds">All statuses</span></div>
+          <div class="p-8 bg-ds-bg flex flex-wrap items-center gap-4 justify-center">
+            <DsStatusBadge status="online" />
+            <DsStatusBadge status="offline" />
+            <DsStatusBadge status="away" />
+            <DsStatusBadge status="busy" />
+            <DsStatusBadge status="pending" />
+          </div>
+          <div class="border-t border-ds-border"><DocsCodeBlock :code="statusBadgeCode" language="vue" /></div>
+        </div>
+      </div>
+
+      <!-- NavigationMenu examples -->
+      <div v-else-if="doc.slug === 'navigation-menu'" class="space-y-6">
+        <div class="rounded-ds-xl border border-ds-border overflow-hidden">
+          <div class="px-4 py-2.5 border-b border-ds-border bg-ds-bg"><span class="text-xs font-medium text-ds-fg-muted font-ds">Horizontal navigation</span></div>
+          <div class="p-8 bg-ds-bg flex items-center justify-center">
+            <DsNavigationMenu :items="navigationMenuItems" />
+          </div>
+          <div class="border-t border-ds-border"><DocsCodeBlock :code="navigationMenuCode" language="vue" /></div>
+        </div>
+      </div>
+
+      <!-- Menubar examples -->
+      <div v-else-if="doc.slug === 'menubar'" class="space-y-6">
+        <div class="rounded-ds-xl border border-ds-border overflow-hidden">
+          <div class="px-4 py-2.5 border-b border-ds-border bg-ds-bg"><span class="text-xs font-medium text-ds-fg-muted font-ds">App menubar</span></div>
+          <div class="p-8 bg-ds-bg flex items-center justify-start">
+            <DsMenubar :menus="menubarMenus" />
+          </div>
+          <div class="border-t border-ds-border"><DocsCodeBlock :code="menubarCode" language="vue" /></div>
+        </div>
+      </div>
+
+      <!-- TreeView examples -->
+      <div v-else-if="doc.slug === 'tree-view'" class="space-y-6">
+        <div class="rounded-ds-xl border border-ds-border overflow-hidden">
+          <div class="px-4 py-2.5 border-b border-ds-border bg-ds-bg"><span class="text-xs font-medium text-ds-fg-muted font-ds">File tree</span></div>
+          <div class="p-8 bg-ds-bg flex items-start justify-center">
+            <DsTreeView v-model="treeViewSelected" :nodes="treeViewNodes" class="w-72" />
+          </div>
+          <div class="border-t border-ds-border"><DocsCodeBlock :code="treeViewCode" language="vue" /></div>
+        </div>
+      </div>
+
+      <!-- NotificationItem examples -->
+      <div v-else-if="doc.slug === 'notification-item'" class="space-y-6">
+        <div class="rounded-ds-xl border border-ds-border overflow-hidden">
+          <div class="px-4 py-2.5 border-b border-ds-border bg-ds-bg"><span class="text-xs font-medium text-ds-fg-muted font-ds">Notification list</span></div>
+          <div class="p-6 bg-ds-bg flex flex-col items-center gap-0">
+            <DsNotificationItem
+              title="New comment on your post"
+              description="Alice Martin left a comment: 'This is a great component!'"
+              time="2 minutes ago"
+              :unread="true"
+            />
+            <DsNotificationItem
+              title="Deployment successful"
+              description="Production build #142 deployed without errors."
+              time="1 hour ago"
+              :unread="true"
+            />
+            <DsNotificationItem
+              title="Subscription renewed"
+              description="Your Pro plan has been renewed for another year."
+              time="Yesterday"
+              :unread="false"
+            />
+          </div>
+          <div class="border-t border-ds-border"><DocsCodeBlock :code="notificationItemCode" language="vue" /></div>
+        </div>
+      </div>
+
+      <!-- CodeBlock examples -->
+      <div v-else-if="doc.slug === 'code-block'" class="space-y-6">
+        <div class="rounded-ds-xl border border-ds-border overflow-hidden">
+          <div class="px-4 py-2.5 border-b border-ds-border bg-ds-bg"><span class="text-xs font-medium text-ds-fg-muted font-ds">TypeScript snippet</span></div>
+          <div class="p-0 bg-ds-bg">
+            <DsCodeBlock :code="codeBlockSample" language="typescript" filename="utils/add.ts" :show-copy="true" />
+          </div>
+          <div class="border-t border-ds-border"><DocsCodeBlock :code="codeBlockCode" language="vue" /></div>
+        </div>
+      </div>
+
+      <!-- AspectRatio examples -->
+      <div v-else-if="doc.slug === 'aspect-ratio'" class="space-y-6">
+        <div class="rounded-ds-xl border border-ds-border overflow-hidden">
+          <div class="px-4 py-2.5 border-b border-ds-border bg-ds-bg"><span class="text-xs font-medium text-ds-fg-muted font-ds">16:9 video container</span></div>
+          <div class="p-6 bg-ds-bg">
+            <DsAspectRatio :ratio="16/9" class="w-full max-w-lg mx-auto overflow-hidden rounded-ds-lg bg-ds-primary-subtle">
+              <div class="flex items-center justify-center w-full h-full">
+                <span class="text-ds-primary font-medium text-sm">16 / 9</span>
+              </div>
+            </DsAspectRatio>
+          </div>
+          <div class="border-t border-ds-border">
+            <DocsCodeBlock :code="aspectRatio169Code" language="vue" />
+          </div>
+        </div>
+        <div class="rounded-ds-xl border border-ds-border overflow-hidden">
+          <div class="px-4 py-2.5 border-b border-ds-border bg-ds-bg"><span class="text-xs font-medium text-ds-fg-muted font-ds">Square (1:1)</span></div>
+          <div class="p-6 bg-ds-bg">
+            <DsAspectRatio :ratio="1" class="w-40 mx-auto overflow-hidden rounded-ds-full bg-ds-warning-subtle">
+              <div class="flex items-center justify-center w-full h-full">
+                <span class="text-ds-warning font-medium text-sm">1 / 1</span>
+              </div>
+            </DsAspectRatio>
+          </div>
+          <div class="border-t border-ds-border">
+            <DocsCodeBlock :code="aspectRatio11Code" language="vue" />
+          </div>
+        </div>
+      </div>
+
+      <!-- VisuallyHidden examples -->
+      <div v-else-if="doc.slug === 'visually-hidden'" class="space-y-6">
+        <div class="rounded-ds-xl border border-ds-border overflow-hidden">
+          <div class="px-4 py-2.5 border-b border-ds-border bg-ds-bg"><span class="text-xs font-medium text-ds-fg-muted font-ds">Icon button with screen reader label</span></div>
+          <div class="p-8 bg-ds-bg flex items-center justify-center">
+            <button type="button" class="p-2 rounded-ds-md hover:bg-ds-bg-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ds-ring" aria-label="Close">
+              <svg xmlns="http://www.w3.org/2000/svg" class="size-5 text-ds-fg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+              <DsVisuallyHidden>Close dialog</DsVisuallyHidden>
+            </button>
+          </div>
+          <div class="border-t border-ds-border">
+            <DocsCodeBlock :code="visuallyHiddenCode" language="vue" />
+          </div>
+        </div>
+      </div>
+
+      <!-- RadarChart examples -->
+      <div v-else-if="doc.slug === 'radar-chart'" class="space-y-6">
+        <div class="rounded-ds-xl border border-ds-border overflow-hidden">
+          <div class="px-4 py-2.5 border-b border-ds-border bg-ds-bg"><span class="text-xs font-medium text-ds-fg-muted font-ds">Performance radar</span></div>
+          <div class="p-8 bg-ds-bg flex items-center justify-center">
+            <DsRadarChart :data="radarChartData" title="Platform Scores" :size="320" />
+          </div>
+          <div class="border-t border-ds-border"><DocsCodeBlock :code="radarChartCode" language="vue" /></div>
         </div>
       </div>
 

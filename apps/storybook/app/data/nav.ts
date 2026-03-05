@@ -1,7 +1,6 @@
 export interface NavItem {
   title: string
   href: string
-  badge?: string
 }
 
 export interface NavGroup {
@@ -39,11 +38,14 @@ export const nav: NavGroup[] = [
     items: [
       { title: 'Checkbox', href: '/components/checkbox' },
       { title: 'ColorPicker', href: '/components/color-picker' },
+      { title: 'Combobox', href: '/components/combobox' },
       { title: 'DatePicker', href: '/components/date-picker' },
+      { title: 'DateRangePicker', href: '/components/date-range-picker' },
       { title: 'FileUpload', href: '/components/file-upload' },
       { title: 'HelpText', href: '/components/help-text' },
       { title: 'Input', href: '/components/input' },
       { title: 'Label', href: '/components/label' },
+      { title: 'MultiSelect', href: '/components/multi-select' },
       { title: 'NumberInput', href: '/components/number-input' },
       { title: 'OTP Input', href: '/components/otp-input' },
       { title: 'PhoneInput', href: '/components/phone-input' },
@@ -51,7 +53,9 @@ export const nav: NavGroup[] = [
       { title: 'Select', href: '/components/select' },
       { title: 'Slider', href: '/components/slider' },
       { title: 'Switch', href: '/components/switch' },
+      { title: 'TagInput', href: '/components/tag-input' },
       { title: 'Textarea', href: '/components/textarea' },
+      { title: 'TimePicker', href: '/components/time-picker' },
     ],
   },
   {
@@ -70,26 +74,34 @@ export const nav: NavGroup[] = [
   {
     title: 'Display',
     items: [
+      { title: 'AspectRatio', href: '/components/aspect-ratio' },
       { title: 'Avatar', href: '/components/avatar' },
+      { title: 'AvatarGroup', href: '/components/avatar-group' },
       { title: 'Card', href: '/components/card' },
       { title: 'Carousel', href: '/components/carousel' },
+      { title: 'CodeBlock', href: '/components/code-block' },
       { title: 'EmptyState', href: '/components/empty-state' },
       { title: 'HoverCard', href: '/components/hover-card' },
       { title: 'Kbd', href: '/components/kbd' },
+      { title: 'NotificationItem', href: '/components/notification-item' },
       { title: 'ScrollArea', href: '/components/scroll-area' },
       { title: 'Separator', href: '/components/separator' },
       { title: 'Skeleton', href: '/components/skeleton' },
       { title: 'StatCard', href: '/components/stat-card' },
+      { title: 'StatusBadge', href: '/components/status-badge' },
       { title: 'Tag', href: '/components/tag' },
       { title: 'Timeline', href: '/components/timeline' },
+      { title: 'TreeView', href: '/components/tree-view' },
+      { title: 'VisuallyHidden', href: '/components/visually-hidden' },
     ],
   },
   {
     title: 'Charts',
     items: [
-      { title: 'LineChart', href: '/components/line-chart' },
       { title: 'BarChart', href: '/components/bar-chart' },
       { title: 'DonutChart', href: '/components/donut-chart' },
+      { title: 'LineChart', href: '/components/line-chart' },
+      { title: 'RadarChart', href: '/components/radar-chart' },
       { title: 'Sparkline', href: '/components/sparkline' },
     ],
   },
@@ -108,6 +120,8 @@ export const nav: NavGroup[] = [
       { title: 'Accordion', href: '/components/accordion' },
       { title: 'Breadcrumb', href: '/components/breadcrumb' },
       { title: 'Dropdown', href: '/components/dropdown' },
+      { title: 'Menubar', href: '/components/menubar' },
+      { title: 'NavigationMenu', href: '/components/navigation-menu' },
       { title: 'Pagination', href: '/components/pagination' },
       { title: 'Tabs', href: '/components/tabs' },
     ],
@@ -116,10 +130,13 @@ export const nav: NavGroup[] = [
     title: 'Overlay',
     items: [
       { title: 'AlertDialog', href: '/components/alert-dialog' },
+      { title: 'Banner', href: '/components/banner' },
       { title: 'Collapsible', href: '/components/collapsible' },
+      { title: 'ConfirmDialog', href: '/components/confirm-dialog' },
       { title: 'Drawer', href: '/components/drawer' },
       { title: 'Command Palette', href: '/components/command-palette' },
       { title: 'Context Menu', href: '/components/context-menu' },
+      { title: 'LoadingOverlay', href: '/components/loading-overlay' },
       { title: 'Modal', href: '/components/modal' },
       { title: 'Popover', href: '/components/popover' },
       { title: 'Sheet', href: '/components/sheet' },
