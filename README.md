@@ -1,4 +1,4 @@
-# @my-scope/nuxt-ds — Monorepo
+# design-system-antoinegourgue — Monorepo
 
 A premium Design System for Nuxt 4 and Vue 3.
 Built with TypeScript, Tailwind CSS, CVA and design tokens.
@@ -10,7 +10,7 @@ Built with TypeScript, Tailwind CSS, CVA and design tokens.
 ```
 design-system/
 ├── packages/
-│   └── ui/                    @my-scope/nuxt-ds (published library)
+│   └── ui/                    design-system-antoinegourgue (published library)
 │       ├── src/
 │       │   ├── module.ts      Nuxt module entry
 │       │   └── runtime/
@@ -71,7 +71,7 @@ npm run changeset
 ```
 
 This launches an interactive prompt:
-- Select the packages changed: `@my-scope/nuxt-ds`
+- Select the packages changed: `design-system-antoinegourgue`
 - Select the bump type:
   - `patch` — bug fixes, non-breaking improvements
   - `minor` — new features, backward compatible
@@ -104,8 +104,8 @@ npm run release
 ```
 
 This runs `npm run build` then `changeset publish`, which:
-- Publishes `@my-scope/nuxt-ds` to the npm registry
-- Creates a Git tag for the release (e.g. `@my-scope/nuxt-ds@0.2.0`)
+- Publishes `design-system-antoinegourgue` to the npm registry
+- Creates a Git tag for the release (e.g. `design-system-antoinegourgue@0.2.0`)
 
 Push the tags:
 
@@ -216,7 +216,7 @@ The `release.yml` workflow will automatically:
 ## Installation in a consumer project
 
 ```bash
-npm install @my-scope/nuxt-ds
+npm install design-system-antoinegourgue
 ```
 
 ```typescript
@@ -224,20 +224,20 @@ npm install @my-scope/nuxt-ds
 export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
-    '@my-scope/nuxt-ds',
+    'design-system-antoinegourgue',
   ],
 })
 ```
 
 ```typescript
 // tailwind.config.ts
-import { preset } from '@my-scope/nuxt-ds/tailwind/preset'
+import { preset } from 'design-system-antoinegourgue/tailwind/preset'
 
 export default {
   presets: [preset],
   content: [
     './app/**/*.{vue,ts}',
-    './node_modules/@my-scope/nuxt-ds/dist/runtime/**/*.{vue,js,mjs}',
+    './node_modules/design-system-antoinegourgue/dist/runtime/**/*.{vue,js,mjs}',
   ],
   darkMode: 'class',
 }

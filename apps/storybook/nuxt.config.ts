@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   },
   modules: [
     '@nuxtjs/tailwindcss',
-    '@my-scope/nuxt-ds/module',
+    'design-system-antoinegourgue/module',
   ],
   nuxtDs: {
     prefix: 'Ds',

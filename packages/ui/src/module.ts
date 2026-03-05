@@ -168,7 +168,7 @@ const componentList = [
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
-    name: '@my-scope/nuxt-ds',
+    name: 'design-system-antoinegourgue',
     configKey: 'nuxtDs',
     compatibility: {
       nuxt: '>=3.0.0',

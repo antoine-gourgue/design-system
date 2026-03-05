@@ -75,7 +75,7 @@ const accordionCode = `<DsAccordion type="single">
     DDS is a minimal design system for Nuxt 4.
   </DsAccordionItem>
   <DsAccordionItem value="item-2" title="How do I install it?">
-    Run npm install @my-scope/nuxt-ds.
+    Run npm install design-system-antoinegourgue.
   </DsAccordionItem>
 </DsAccordion>`
 
@@ -690,7 +690,7 @@ const phoneValue = ref('')
                 DDS is a minimal design system for Nuxt 4, built with TypeScript and Tailwind CSS.
               </DsAccordionItem>
               <DsAccordionItem value="item-2" title="How do I install it?">
-                Run npm install @my-scope/nuxt-ds and add it to your nuxt.config.ts modules array.
+                Run npm install design-system-antoinegourgue and add it to your nuxt.config.ts modules array.
               </DsAccordionItem>
               <DsAccordionItem value="item-3" title="Is it accessible?">
                 Yes, all components follow WAI-ARIA patterns with keyboard navigation support.

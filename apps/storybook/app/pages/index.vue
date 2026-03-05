@@ -5,10 +5,10 @@ import { nav } from '~/data/nav'
 const categories = nav.slice(2) // Skip Getting Started + Foundations
 const totalComponents = componentDocs.length
 
-const installCode = `npm install @my-scope/nuxt-ds`
+const installCode = `npm install design-system-antoinegourgue`
 
 const moduleCode = `export default defineNuxtConfig({
-  modules: ['@my-scope/nuxt-ds'],
+  modules: ['design-system-antoinegourgue'],
   nuxtDs: {
     prefix: 'Ds',
     injectCSS: true,

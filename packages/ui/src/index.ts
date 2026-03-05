@@ -1,5 +1,5 @@
 /**
- * @my-scope/nuxt-ds — Package entry point
+ * design-system-antoinegourgue — Package entry point
  *
  * Exports utilities, composables, and TypeScript types.
  * Vue components are available via the Nuxt module (auto-import)

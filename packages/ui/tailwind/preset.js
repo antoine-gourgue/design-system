@@ -1,8 +1,8 @@
 /**
- * @my-scope/nuxt-ds — Tailwind CSS v3 Preset
+ * design-system-antoinegourgue — Tailwind CSS v3 Preset
  *
  * Usage in tailwind.config.ts:
- *   import dsPreset from '@my-scope/nuxt-ds/tailwind/preset'
+ *   import dsPreset from 'design-system-antoinegourgue/tailwind/preset'
  *   export default { presets: [dsPreset], ... }
  */
 

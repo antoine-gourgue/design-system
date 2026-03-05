@@ -1,4 +1,4 @@
-# @my-scope/nuxt-ds
+# design-system-antoinegourgue
 
 A premium Design System for Nuxt 4 and Vue 3.
 Includes components, design tokens, Tailwind CSS preset, dark mode support and skeleton loaders.
@@ -8,7 +8,7 @@ Includes components, design tokens, Tailwind CSS preset, dark mode support and s
 ## Installation
 
 ```bash
-npm install @my-scope/nuxt-ds
+npm install design-system-antoinegourgue
 ```
 
 ### Peer dependencies
@@ -28,7 +28,7 @@ npm install nuxt tailwindcss @nuxtjs/tailwindcss
 export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
-    '@my-scope/nuxt-ds',
+    'design-system-antoinegourgue',
   ],
 })
 ```
@@ -38,14 +38,14 @@ export default defineNuxtConfig({
 ```typescript
 // tailwind.config.ts
 import type { Config } from 'tailwindcss'
-import { preset } from '@my-scope/nuxt-ds/tailwind/preset'
+import { preset } from 'design-system-antoinegourgue/tailwind/preset'
 
 export default {
   presets: [preset],
   content: [
     './app/**/*.{vue,ts}',
     // Include library components for purging
-    './node_modules/@my-scope/nuxt-ds/dist/runtime/**/*.{vue,js,mjs}',
+    './node_modules/design-system-antoinegourgue/dist/runtime/**/*.{vue,js,mjs}',
   ],
   darkMode: 'class',
 } satisfies Config

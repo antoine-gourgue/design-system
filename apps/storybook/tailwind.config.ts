@@ -1,5 +1,5 @@
 import type { Config } from 'tailwindcss'
-import dsPreset from '@my-scope/nuxt-ds/tailwind/preset'
+import dsPreset from 'design-system-antoinegourgue/tailwind/preset'
 
 export default {
   presets: [dsPreset],

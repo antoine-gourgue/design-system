@@ -1,13 +1,13 @@
 <script setup lang="ts">
 useHead({ title: 'Installation — DDS' })
 
-const installCode = `npm install @my-scope/nuxt-ds`
+const installCode = `npm install design-system-antoinegourgue`
 
 const moduleCode = `// nuxt.config.ts
 export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
-    '@my-scope/nuxt-ds',
+    'design-system-antoinegourgue',
   ],
   nuxtDs: {
     prefix: 'Ds',     // Component prefix: <DsButton />
@@ -19,7 +19,7 @@ export default defineNuxtConfig({
 
 const tailwindCode = `// tailwind.config.ts
 import type { Config } from 'tailwindcss'
-import dsPreset from '@my-scope/nuxt-ds/tailwind/preset'
+import dsPreset from 'design-system-antoinegourgue/tailwind/preset'
 
 export default {
   presets: [dsPreset],
