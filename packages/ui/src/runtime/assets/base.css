@@ -1,0 +1,232 @@
+/*
+ * @my-scope/nuxt-ds — Base CSS
+ * Design tokens as CSS custom properties
+ * Primary: #7f00ff (violet)
+ * Light mode: default | Dark mode: .dark class
+ */
+
+/* ─────────────────────────────────────────────
+   TOKENS — Light mode (default)
+───────────────────────────────────────────── */
+:root {
+  /* === Backgrounds (zinc-based neutrals) === */
+  --ds-bg: #ffffff;
+  --ds-bg-subtle: #fafafa;
+  --ds-bg-muted: #f4f4f5;
+  --ds-bg-elevated: #ffffff;
+
+  /* === Foregrounds === */
+  --ds-fg: #09090b;
+  --ds-fg-muted: #71717a;
+  --ds-fg-subtle: #a1a1aa;
+  --ds-fg-inverted: #ffffff;
+
+  /* === Borders === */
+  --ds-border: #e4e4e7;
+  --ds-border-muted: #f4f4f5;
+  --ds-border-strong: #a1a1aa;
+
+  /* === Primary (Violet #7f00ff) === */
+  --ds-primary: #7f00ff;
+  --ds-primary-hover: #7000e0;
+  --ds-primary-active: #6000c2;
+  --ds-primary-fg: #ffffff;
+  --ds-primary-subtle: #f5f0ff;
+  --ds-primary-muted: #ede0ff;
+
+  /* === Secondary (Zinc surface) === */
+  --ds-secondary: #f4f4f5;
+  --ds-secondary-hover: #e4e4e7;
+  --ds-secondary-active: #d4d4d8;
+  --ds-secondary-fg: #09090b;
+
+  /* === Ghost === */
+  --ds-ghost-hover: rgba(0, 0, 0, 0.05);
+  --ds-ghost-active: rgba(0, 0, 0, 0.09);
+
+  /* === Danger (Red) === */
+  --ds-danger: #ef4444;
+  --ds-danger-hover: #dc2626;
+  --ds-danger-active: #b91c1c;
+  --ds-danger-fg: #ffffff;
+  --ds-danger-subtle: #fef2f2;
+
+  /* === Success (Green) === */
+  --ds-success: #22c55e;
+  --ds-success-hover: #16a34a;
+  --ds-success-fg: #ffffff;
+  --ds-success-subtle: #f0fdf4;
+
+  /* === Warning (Amber) === */
+  --ds-warning: #f59e0b;
+  --ds-warning-hover: #d97706;
+  --ds-warning-fg: #ffffff;
+  --ds-warning-subtle: #fffbeb;
+
+  /* === Info (Blue) === */
+  --ds-info: #3b82f6;
+  --ds-info-hover: #2563eb;
+  --ds-info-fg: #ffffff;
+  --ds-info-subtle: #eff6ff;
+
+  /* === Focus ring === */
+  --ds-ring: #7f00ff;
+  --ds-ring-offset: #ffffff;
+
+  /* === Shadows === */
+  --ds-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --ds-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  --ds-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+  --ds-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.04);
+
+  /* === Border radius === */
+  --ds-radius-xs: 4px;
+  --ds-radius-sm: 6px;
+  --ds-radius-md: 8px;
+  --ds-radius-lg: 12px;
+  --ds-radius-xl: 16px;
+  --ds-radius-2xl: 20px;
+  --ds-radius-full: 9999px;
+
+  /* === Spacing scale === */
+  --ds-space-1: 0.25rem;
+  --ds-space-2: 0.5rem;
+  --ds-space-3: 0.75rem;
+  --ds-space-4: 1rem;
+  --ds-space-6: 1.5rem;
+  --ds-space-8: 2rem;
+  --ds-space-12: 3rem;
+  --ds-space-16: 4rem;
+
+  /* === Typography === */
+  --ds-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --ds-font-mono: "SF Mono", "Fira Code", ui-monospace, "Cascadia Code",
+    "Source Code Pro", Menlo, Consolas, monospace;
+
+  --ds-text-xs: 0.75rem;
+  --ds-text-sm: 0.875rem;
+  --ds-text-base: 1rem;
+  --ds-text-lg: 1.125rem;
+  --ds-text-xl: 1.25rem;
+  --ds-text-2xl: 1.5rem;
+  --ds-text-3xl: 1.875rem;
+
+  --ds-leading-tight: 1.25;
+  --ds-leading-normal: 1.5;
+  --ds-leading-relaxed: 1.625;
+
+  --ds-tracking-tight: -0.025em;
+  --ds-tracking-normal: 0em;
+  --ds-tracking-wide: 0.025em;
+
+  /* === Animation === */
+  --ds-duration-fast: 100ms;
+  --ds-duration-base: 150ms;
+  --ds-duration-slow: 200ms;
+  --ds-duration-slower: 300ms;
+  --ds-ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ds-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ds-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ds-ease-out: cubic-bezier(0, 0, 0.2, 1);
+
+  /* === Overlay === */
+  --ds-overlay: rgba(0, 0, 0, 0.4);
+  --ds-overlay-subtle: rgba(0, 0, 0, 0.16);
+}
+
+/* ─────────────────────────────────────────────
+   TOKENS — Dark mode (.dark)
+───────────────────────────────────────────── */
+.dark {
+  /* === Backgrounds === */
+  --ds-bg: #09090b;
+  --ds-bg-subtle: #18181b;
+  --ds-bg-muted: #27272a;
+  --ds-bg-elevated: #18181b;
+
+  /* === Foregrounds === */
+  --ds-fg: #fafafa;
+  --ds-fg-muted: #a1a1aa;
+  --ds-fg-subtle: #52525b;
+  --ds-fg-inverted: #09090b;
+
+  /* === Borders === */
+  --ds-border: #27272a;
+  --ds-border-muted: #18181b;
+  --ds-border-strong: #52525b;
+
+  /* === Primary (Violet, lighter for dark bg) === */
+  --ds-primary: #a855f7;
+  --ds-primary-hover: #c084fc;
+  --ds-primary-active: #d8b4fe;
+  --ds-primary-fg: #ffffff;
+  --ds-primary-subtle: #1a0040;
+  --ds-primary-muted: #2d0066;
+
+  /* === Secondary === */
+  --ds-secondary: #27272a;
+  --ds-secondary-hover: #3f3f46;
+  --ds-secondary-active: #52525b;
+  --ds-secondary-fg: #fafafa;
+
+  /* === Ghost === */
+  --ds-ghost-hover: rgba(255, 255, 255, 0.06);
+  --ds-ghost-active: rgba(255, 255, 255, 0.1);
+
+  /* === Danger === */
+  --ds-danger: #f87171;
+  --ds-danger-hover: #fca5a5;
+  --ds-danger-active: #fecaca;
+  --ds-danger-fg: #09090b;
+  --ds-danger-subtle: #450a0a;
+
+  /* === Success === */
+  --ds-success: #4ade80;
+  --ds-success-hover: #86efac;
+  --ds-success-fg: #09090b;
+  --ds-success-subtle: #052e16;
+
+  /* === Warning === */
+  --ds-warning: #fbbf24;
+  --ds-warning-hover: #fcd34d;
+  --ds-warning-fg: #09090b;
+  --ds-warning-subtle: #1c1400;
+
+  /* === Info === */
+  --ds-info: #60a5fa;
+  --ds-info-hover: #93c5fd;
+  --ds-info-fg: #09090b;
+  --ds-info-subtle: #0c1d3e;
+
+  /* === Focus ring === */
+  --ds-ring: #a855f7;
+  --ds-ring-offset: #09090b;
+
+  /* === Shadows === */
+  --ds-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.4);
+  --ds-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+  --ds-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.6), 0 4px 6px -4px rgb(0 0 0 / 0.4);
+  --ds-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.7), 0 8px 10px -6px rgb(0 0 0 / 0.3);
+
+  /* === Overlay === */
+  --ds-overlay: rgba(0, 0, 0, 0.7);
+  --ds-overlay-subtle: rgba(0, 0, 0, 0.4);
+}
+
+/* ─────────────────────────────────────────────
+   BASE RESET & GLOBAL STYLES
+───────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
