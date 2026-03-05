@@ -11,9 +11,18 @@
     "stub": "npm run stub --workspace=packages/ui",
     "dev:storybook": "npm run dev --workspace=apps/storybook",
     "typecheck": "npm run typecheck --workspace=packages/ui",
-    "lint": "npm run lint --workspace=packages/ui"
+    "lint": "npm run lint --workspace=packages/ui",
+    "lint:fix": "npm run lint:fix --workspace=packages/ui",
+    "format": "npm run format --workspace=packages/ui",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "release": "npm run build && changeset publish",
+    "pack:ui": "npm pack --workspace=packages/ui",
+    "publish:ui:dry": "npm publish --workspace=packages/ui --dry-run",
+    "publish:ui": "npm publish --workspace=packages/ui"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.27.12",
     "typescript": "^5.8.0"
   },
   "engines": {
