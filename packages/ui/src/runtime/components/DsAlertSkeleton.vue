@@ -1,11 +1,11 @@
 <script setup lang="ts">
-withDefaults(defineProps<{ showTitle?: boolean; class?: string }>(), { showTitle: true })
+const props = withDefaults(defineProps<{ showTitle?: boolean; class?: string }>(), { showTitle: true })
 </script>
 
 <template>
   <div
     class="flex items-start gap-3 rounded-ds-lg border border-ds-border bg-ds-bg-subtle p-4 animate-pulse w-full"
-    :class="props?.class"
+    :class="props.class"
     aria-hidden="true"
     role="presentation"
   >

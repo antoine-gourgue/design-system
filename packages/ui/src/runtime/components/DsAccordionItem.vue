@@ -18,7 +18,7 @@ const accordion = inject<{
   toggle: (v: string) => void
 }>('accordion')
 
-const isOpen = computed(() => accordion?.openItems.value.has(props.value) ?? false)
+const isOpen = computed(() => accordion?.openItems.value?.has(props.value) ?? false)
 
 function handleToggle() {
   if (!props.disabled && accordion) {

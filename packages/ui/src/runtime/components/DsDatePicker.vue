@@ -41,7 +41,7 @@ function formatDate(date: Date | null): string {
     .replace('DD', pad(date.getDate()))
 }
 
-function onSelect(date: Date) {
+function onSelect(date: Date | null) {
   emit('update:modelValue', date)
   isOpen.value = false
 }

@@ -95,7 +95,7 @@ onUnmounted(() => {
             <div class="flex items-center justify-end gap-3 pt-2">
               <DsButton variant="ghost" :disabled="loading" @click="cancel">{{ cancelLabel }}</DsButton>
               <DsButton
-                :variant="variant === 'destructive' ? 'danger' : 'default'"
+                :variant="variant === 'destructive' ? 'destructive' : 'primary'"
                 :loading="loading"
                 @click="confirm"
               >
