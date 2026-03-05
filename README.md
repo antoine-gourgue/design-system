@@ -1,8 +1,7 @@
-# @my-scope/nuxt-ds
+# @my-scope/nuxt-ds — Monorepo
 
-> A minimal, Apple-inspired Design System for Nuxt — components, tokens, Tailwind preset.
-
-Built with **Nuxt 4**, **Vue 3**, **TypeScript**, **Tailwind CSS v3** and **CVA**.
+A premium Design System for Nuxt 4 and Vue 3.
+Built with TypeScript, Tailwind CSS, CVA and design tokens.
 
 ---
 
@@ -11,475 +10,238 @@ Built with **Nuxt 4**, **Vue 3**, **TypeScript**, **Tailwind CSS v3** and **CVA*
 ```
 design-system/
 ├── packages/
-│   └── ui/                  ← @my-scope/nuxt-ds (the library)
+│   └── ui/                    @my-scope/nuxt-ds (published library)
 │       ├── src/
-│       │   ├── module.ts    ← Nuxt module entry
-│       │   ├── index.ts     ← Library entry (utils + types)
+│       │   ├── module.ts      Nuxt module entry
 │       │   └── runtime/
-│       │       ├── assets/base.css     ← CSS tokens (light + dark)
-│       │       ├── utils/cn.ts         ← cn() helper
-│       │       ├── composables/useToast.ts
-│       │       └── components/         ← Vue SFCs
+│       │       ├── assets/base.css     CSS design tokens (light + dark)
+│       │       ├── utils/cn.ts
+│       │       ├── composables/
+│       │       └── components/         Vue SFCs
 │       └── tailwind/
-│           └── preset.js    ← Tailwind preset (exported)
+│           └── preset.js      Tailwind preset (exported)
 │
-└── apps/
-    └── playground/          ← Nuxt 4 demo app
-        ├── app/
-        │   ├── app.vue
-        │   └── pages/index.vue
-        └── tailwind.config.ts
+├── apps/
+│   └── storybook/             Documentation app (Nuxt 4, port 3001)
+│
+└── .changeset/                Changesets config (versioning)
 ```
 
 ---
 
-## Development (local)
+## Getting started
 
 ```bash
-# Install all dependencies (npm workspaces)
 npm install
-
-# Build the UI library
 npm run build
-
-# Start the playground (http://localhost:3000)
-npm run dev
+npm run dev:storybook
 ```
 
-### Iterative development (stub mode)
+---
 
-During development, use stub mode to avoid rebuilding on every change:
+## Available scripts
+
+| Script | Description |
+|--------|-------------|
+| `npm run build` | Build the library |
+| `npm run typecheck` | Type-check the library |
+| `npm run lint` | Lint the library |
+| `npm run lint:fix` | Auto-fix lint errors |
+| `npm run format` | Format source files with Prettier |
+| `npm run dev:storybook` | Start the documentation app (port 3001) |
+| `npm run pack:ui` | Create a local tarball of the library |
+| `npm run publish:ui:dry` | Dry-run publish (no credentials needed) |
+| `npm run publish:ui` | Publish to npm |
+| `npm run changeset` | Create a new changeset |
+| `npm run version` | Apply pending changesets and bump versions |
+| `npm run release` | Build + publish all pending changesets |
+
+---
+
+## Versioning and release workflow
+
+This project uses [Changesets](https://github.com/changesets/changesets) for versioning and publishing.
+
+### 1. Create a changeset
+
+After making changes to `packages/ui`, describe them:
 
 ```bash
-# Creates stubs in dist/ that point directly to src/
-npm run stub
+npm run changeset
 ```
 
----
+This launches an interactive prompt:
+- Select the packages changed: `@my-scope/nuxt-ds`
+- Select the bump type:
+  - `patch` — bug fixes, non-breaking improvements
+  - `minor` — new features, backward compatible
+  - `major` — breaking changes
+- Write a short summary of the change
 
-## Installation in a Nuxt project
+A new file is created in `.changeset/`. Commit it with your changes.
 
-### 1. Install the package
+### 2. Apply changesets and bump version
+
+When ready to release:
 
 ```bash
-npm install @my-scope/nuxt-ds @nuxtjs/tailwindcss tailwindcss
+npm run version
 ```
 
-### 2. Register the Nuxt module
+This reads all pending `.changeset/*.md` files, bumps `packages/ui/package.json` version and updates `CHANGELOG.md`.
 
-```ts
-// nuxt.config.ts
-export default defineNuxtConfig({
-  modules: [
-    '@nuxtjs/tailwindcss',
-    '@my-scope/nuxt-ds',
-  ],
+Review the diff, then commit:
 
-  // Optional: configure the module
-  nuxtDs: {
-    prefix: 'Ds',      // Component prefix: <DsButton />, <DsCard />, etc.
-    global: true,      // Register components globally
-    injectCSS: true,   // Auto-inject design token CSS
-    toast: true,       // Enable useToast composable
-  },
-})
+```bash
+git add .
+git commit -m "chore(release): version packages"
 ```
 
-### 3. Configure Tailwind
+### 3. Build and publish
 
-```ts
-// tailwind.config.ts
-import dsPreset from '@my-scope/nuxt-ds/tailwind/preset'
-import type { Config } from 'tailwindcss'
-
-export default {
-  presets: [dsPreset],
-  content: [
-    './app/**/*.{vue,ts,js}',
-    // Include the library SFCs for JIT to work
-    './node_modules/@my-scope/nuxt-ds/dist/runtime/**/*.vue',
-  ],
-} satisfies Config
+```bash
+npm run release
 ```
+
+This runs `npm run build` then `changeset publish`, which:
+- Publishes `@my-scope/nuxt-ds` to the npm registry
+- Creates a Git tag for the release (e.g. `@my-scope/nuxt-ds@0.2.0`)
+
+Push the tags:
+
+```bash
+git push --follow-tags
+```
+
+### Full release command sequence
+
+```bash
+# 1. Create a changeset (after your changes)
+npm run changeset
+
+# 2. Commit your changes + the changeset file
+git add .
+git commit -m "feat(ui): add new component"
+
+# 3. Bump version + generate changelog
+npm run version
+git add .
+git commit -m "chore(release): version packages"
+
+# 4. Build + publish to npm
+npm run release
+
+# 5. Push everything including tags
+git push --follow-tags
+```
+
+### Dry-run (no publish)
+
+To check what would be published without actually publishing:
+
+```bash
+# Check tarball content
+npm run pack:ui
+
+# Dry-run publish (reads package.json, checks credentials, does not push)
+npm run publish:ui:dry
+```
+
+### Breaking changes
+
+When introducing a breaking change, select `major` in the changeset prompt
+and prefix the summary with `BREAKING CHANGE:`.
+
+Changesets will add a `## Major Changes` section to the CHANGELOG.
 
 ---
 
-## Usage
+## Adding a component
 
-### Button
-
-```vue
-<template>
-  <!-- Variants -->
-  <DsButton variant="primary">Save</DsButton>
-  <DsButton variant="secondary">Cancel</DsButton>
-  <DsButton variant="ghost">Learn more</DsButton>
-  <DsButton variant="destructive">Delete account</DsButton>
-  <DsButton variant="link" as="a" href="/home">Go home</DsButton>
-
-  <!-- Sizes -->
-  <DsButton size="sm">Small</DsButton>
-  <DsButton size="md">Medium</DsButton>
-  <DsButton size="lg">Large</DsButton>
-
-  <!-- States -->
-  <DsButton :loading="isSaving">Save</DsButton>
-  <DsButton :disabled="true">Disabled</DsButton>
-  <DsButton :rounded="true">Pill button</DsButton>
-  <DsButton :full-width="true">Block button</DsButton>
-
-  <!-- Icons -->
-  <DsButton>
-    <template #leftIcon>
-      <PlusIcon class="size-4" />
-    </template>
-    New item
-  </DsButton>
-</template>
-```
-
-### Badge
-
-```vue
-<DsBadge variant="success" :dot="true">Active</DsBadge>
-<DsBadge variant="danger" size="lg">Error</DsBadge>
-<DsBadge variant="primary" :rounded="true">New</DsBadge>
-```
-
-### Card
-
-```vue
-<DsCard shadow="md" :hoverable="true">
-  <DsCardHeader :divided="true">
-    <h2>Card title</h2>
-    <p>Subtitle here</p>
-  </DsCardHeader>
-
-  <DsCardContent>
-    Main content goes here.
-  </DsCardContent>
-
-  <DsCardFooter align="between">
-    <DsBadge variant="success">Active</DsBadge>
-    <DsButton size="sm">View</DsButton>
-  </DsCardFooter>
-</DsCard>
-```
-
-### Input / Label / HelpText
-
-```vue
-<div class="space-y-1.5">
-  <DsLabel for="email" :required="true">Email</DsLabel>
-
-  <DsInput
-    id="email"
-    v-model="email"
-    type="email"
-    placeholder="you@example.com"
-    :error="hasError"
-    described-by="email-help"
-  >
-    <template #leading>
-      <MailIcon class="size-4" />
-    </template>
-  </DsInput>
-
-  <DsHelpText id="email-help" :error="hasError">
-    {{ hasError ? 'Invalid email address.' : 'Enter your work email.' }}
-  </DsHelpText>
-</div>
-```
-
-### Modal
-
-```vue
-<script setup>
-const isOpen = ref(false)
-</script>
-
-<template>
-  <DsButton @click="isOpen = true">Open modal</DsButton>
-
-  <DsModal
-    v-model="isOpen"
-    title="Confirm action"
-    description="This action cannot be undone."
-    size="md"
-  >
-    <p>Modal body content.</p>
-
-    <template #footer>
-      <DsButton variant="ghost" @click="isOpen = false">Cancel</DsButton>
-      <DsButton @click="isOpen = false">Confirm</DsButton>
-    </template>
-  </DsModal>
-</template>
-```
-
-### Dropdown
-
-```vue
-<DsDropdown
-  :items="[
-    { label: 'Edit', value: 'edit' },
-    { label: 'Duplicate', value: 'duplicate' },
-    { divider: true, label: '' },
-    { label: 'Delete', value: 'delete', destructive: true },
-  ]"
-  @select="(item) => console.log(item.value)"
->
-  <template #trigger="{ open }">
-    <DsButton variant="secondary">
-      Actions
-      <template #rightIcon>
-        <ChevronDownIcon :class="open ? 'rotate-180' : ''" class="size-4 transition-transform" />
-      </template>
-    </DsButton>
-  </template>
-</DsDropdown>
-```
-
-### Tabs
-
-```vue
-<DsTabs v-model="activeTab" variant="line">
-  <DsTabList>
-    <DsTab value="overview">Overview</DsTab>
-    <DsTab value="analytics">Analytics</DsTab>
-    <DsTab value="settings">Settings</DsTab>
-  </DsTabList>
-
-  <DsTabPanels>
-    <DsTabPanel value="overview">Overview content</DsTabPanel>
-    <DsTabPanel value="analytics">Analytics content</DsTabPanel>
-    <DsTabPanel value="settings">Settings content</DsTabPanel>
-  </DsTabPanels>
-</DsTabs>
-```
-
-Tab variants: `line` (default) | `enclosed` | `pills`
-
-### Toast
-
-Add `<DsToastProvider />` once in `app.vue`:
-
-```vue
-<!-- app/app.vue -->
-<template>
-  <div>
-    <NuxtPage />
-    <DsToastProvider position="bottom-right" :max="5" />
-  </div>
-</template>
-```
-
-Then use `useToast()` anywhere:
-
-```vue
-<script setup>
-const { toast } = useToast()
-
-function save() {
-  toast({
-    title: 'Saved!',
-    description: 'Your changes have been saved.',
-    variant: 'success',
-    duration: 4000,
-  })
-}
-</script>
-```
-
-Toast variants: `default` | `success` | `error` | `warning` | `info`
-
-### Skeleton
-
-```vue
-<!-- Card skeleton -->
-<div class="flex items-center gap-4">
-  <DsSkeleton shape="circle" width="48" height="48" />
-  <div class="space-y-2">
-    <DsSkeleton shape="text" width="180" height="16" />
-    <DsSkeleton shape="text" width="120" height="14" />
-  </div>
-</div>
-```
-
-Shapes: `rectangle` | `rounded` | `circle` | `pill` | `text`
+1. Create `packages/ui/src/runtime/components/DsMyComponent.vue`
+2. Export it in `packages/ui/src/module.ts` (add to `componentList`)
+3. Create `packages/ui/src/runtime/components/DsMyComponentSkeleton.vue`
+4. Add docs in `apps/storybook/app/data/components.ts`
+5. Add navigation entry in `apps/storybook/app/data/nav.ts`
+6. Run `npm run build` to rebuild
 
 ---
 
-## Theming
+## Changing the primary color
 
-### Override CSS tokens
-
-CSS custom properties are the source of truth. Override them in your app's CSS:
+Override `--ds-primary` in your project CSS:
 
 ```css
-/* app/assets/main.css */
 :root {
-  /* Change primary to indigo */
-  --ds-primary: #6366f1;
-  --ds-primary-hover: #4f46e5;
+  --ds-primary: #0070f3;
+  --ds-primary-hover: #0060df;
+  --ds-primary-active: #0050bb;
+  --ds-primary-subtle: #e8f1ff;
   --ds-primary-fg: #ffffff;
-
-  /* Custom radius */
-  --ds-radius-md: 4px;
-  --ds-radius-lg: 6px;
+  --ds-ring: #0070f3;
 }
-
-.dark {
-  --ds-primary: #818cf8;
-  --ds-primary-hover: #a5b4fc;
-}
-```
-
-### Override Tailwind theme
-
-Extend the preset in your `tailwind.config.ts`:
-
-```ts
-import dsPreset from '@my-scope/nuxt-ds/tailwind/preset'
-
-export default {
-  presets: [dsPreset],
-  theme: {
-    extend: {
-      // Add your own tokens alongside the ds-* tokens
-      colors: {
-        brand: '#your-color',
-      },
-    },
-  },
-}
-```
-
-### Full theme reset
-
-To completely replace the color palette, override the CSS variables and adjust the Tailwind theme extension.
-
----
-
-## Design tokens reference
-
-### Colors (CSS variables)
-
-| Variable | Light | Dark | Usage |
-|---|---|---|---|
-| `--ds-bg` | `#ffffff` | `#000000` | Page background |
-| `--ds-bg-subtle` | `#f5f5f7` | `#1c1c1e` | Subtle backgrounds |
-| `--ds-fg` | `#1d1d1f` | `#f5f5f7` | Primary text |
-| `--ds-fg-muted` | `#6e6e73` | `#aeaeb2` | Secondary text |
-| `--ds-border` | `#d2d2d7` | `#3a3a3c` | Borders |
-| `--ds-primary` | `#007aff` | `#0a84ff` | Primary action (Apple blue) |
-| `--ds-danger` | `#ff3b30` | `#ff453a` | Destructive action (Apple red) |
-| `--ds-success` | `#34c759` | `#32d74b` | Positive feedback |
-| `--ds-warning` | `#ff9500` | `#ff9f0a` | Caution |
-
-### Tailwind classes
-
-All tokens are available as Tailwind utilities via the `ds-*` namespace:
-
-```html
-<div class="bg-ds-bg text-ds-fg border border-ds-border rounded-ds-md shadow-ds-md">
-  <p class="text-ds-fg-muted font-ds">Styled with tokens</p>
-</div>
-```
-
-### Dark mode
-
-The library uses the `class` dark mode strategy. Toggle dark mode by adding/removing `.dark` on `<html>`:
-
-```ts
-document.documentElement.classList.toggle('dark')
 ```
 
 ---
 
 ## Publishing to npm
 
-### 1. Build the library
+### Requirements
+
+- An npm account with access to the `@my-scope` scope (or change the scope in `packages/ui/package.json`)
+- An `NPM_TOKEN` secret in GitHub repository settings (for automated releases)
+
+### First publish
+
+If publishing for the first time under a new scope:
 
 ```bash
-npm run build
-```
-
-Output: `packages/ui/dist/`
-
-### 2. Update version
-
-```bash
-cd packages/ui
-npm version patch   # or minor / major
-```
-
-### 3. Publish
-
-```bash
-cd packages/ui
-
-# Dry run first to review what will be published
-npm publish --dry-run
-
-# Publish (requires npm login)
 npm login
-npm publish --access public
+npm run build
+npm run publish:ui
 ```
 
-For scoped packages with a custom scope, ensure your `package.json` has:
+### Automated releases (GitHub Actions)
 
-```json
-{
-  "name": "@your-scope/nuxt-ds",
-  "publishConfig": {
-    "access": "public"
-  }
+Add `NPM_TOKEN` to your GitHub repository secrets:
+
+`Settings > Secrets and variables > Actions > New repository secret`
+
+The `release.yml` workflow will automatically:
+- Create a "Version Packages" pull request when changesets are detected
+- Publish to npm when that PR is merged
+
+---
+
+## Installation in a consumer project
+
+```bash
+npm install @my-scope/nuxt-ds
+```
+
+```typescript
+// nuxt.config.ts
+export default defineNuxtConfig({
+  modules: [
+    '@nuxtjs/tailwindcss',
+    '@my-scope/nuxt-ds',
+  ],
+})
+```
+
+```typescript
+// tailwind.config.ts
+import { preset } from '@my-scope/nuxt-ds/tailwind/preset'
+
+export default {
+  presets: [preset],
+  content: [
+    './app/**/*.{vue,ts}',
+    './node_modules/@my-scope/nuxt-ds/dist/runtime/**/*.{vue,js,mjs}',
+  ],
+  darkMode: 'class',
 }
 ```
-
-### What gets published
-
-The `files` field in `package.json` limits publication to:
-- `dist/` — compiled module + runtime components
-- `tailwind/` — Tailwind preset
-
-Source files are NOT published.
-
----
-
-## Accessibility
-
-- All interactive elements have `focus-visible` ring styles
-- Buttons use semantic `<button type="button">`
-- Inputs connect to labels via `id`/`for`
-- Modal uses `role="dialog"`, `aria-modal`, `aria-labelledby`, `aria-describedby`, ESC key handling, and focus trap
-- Tabs use `role="tab"`, `role="tabpanel"`, `aria-selected`, keyboard navigation
-- Toasts use `role="alert"` and `aria-live`
-- All animations respect `prefers-reduced-motion`
-
----
-
-## Browser support
-
-Targets modern browsers (ES2020+). Requires:
-- Chrome/Edge 88+
-- Firefox 85+
-- Safari 14+
-
----
-
-## Tech stack
-
-| Tool | Purpose |
-|---|---|
-| Nuxt 3 (v4 compat) | Module framework |
-| Vue 3 | UI framework |
-| TypeScript | Type safety |
-| Tailwind CSS v3 | Utility-first styling |
-| CVA (class-variance-authority) | Component variants |
-| clsx + tailwind-merge | Class merging |
-| @nuxt/module-builder | Library build tooling |
 
 ---
 
