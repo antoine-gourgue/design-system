@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: 20
 
-      - name: Deploy storybook to Vercel
+      - name: Deploy to Vercel
         id: deploy
         run: |
           URL=$(npx vercel --prod --yes --token=${{ secrets.VERCEL_TOKEN }})
