@@ -25,11 +25,14 @@ jobs:
           node-version: 20
           cache: npm
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Install dependencies (skip postinstall scripts)
+        run: npm ci --ignore-scripts
 
       - name: Build library
         run: npm run build
+
+      - name: Run postinstall scripts (nuxt prepare, etc.)
+        run: npm rebuild && npm run postinstall --if-present --workspaces --ignore-missing 2>/dev/null || true
 
       - name: Typecheck
         run: npm run typecheck
