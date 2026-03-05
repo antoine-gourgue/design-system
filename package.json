@@ -1,0 +1,23 @@
+{
+  "name": "design-system-antoinegourgue",
+  "private": true,
+  "version": "0.0.0",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace=packages/ui",
+    "stub": "npm run stub --workspace=packages/ui",
+    "dev:storybook": "npm run dev --workspace=apps/storybook",
+    "typecheck": "npm run typecheck --workspace=packages/ui",
+    "lint": "npm run lint --workspace=packages/ui"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.0"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  }
+}
