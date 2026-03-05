@@ -2,6 +2,7 @@
 import { useTheme } from '~/composables/useTheme'
 
 const { dark, toggle } = useTheme()
+const { dsVersion } = useAppConfig()
 
 const emit = defineEmits<{
   toggleSidebar: []
@@ -32,13 +33,11 @@ const emit = defineEmits<{
           to="/"
           class="group flex items-center gap-2.5 rounded-ds-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ds-ring"
         >
-          <div class="flex items-center justify-center size-7 rounded-ds-md bg-ds-primary/10 ring-1 ring-ds-primary/20 group-hover:bg-ds-primary/15 transition-colors">
-            <img src="/logo.png" alt="Logo" class="size-4.5 object-contain dark:invert" />
-          </div>
+          <img src="/logo.png" alt="Logo" class="size-9 object-contain dark:invert" />
           <div class="flex items-baseline gap-1.5">
             <span class="text-sm font-bold text-ds-fg tracking-tight font-ds">DDS</span>
             <span class="hidden sm:inline-block text-[10px] font-medium text-ds-fg-muted/70 bg-ds-bg-muted border border-ds-border rounded-full px-1.5 py-0.5 leading-none font-mono">
-              v1.0
+              v{{ dsVersion }}
             </span>
           </div>
         </NuxtLink>
@@ -87,6 +86,19 @@ const emit = defineEmits<{
         >
           <svg xmlns="http://www.w3.org/2000/svg" class="size-[18px]" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+        </a>
+
+        <!-- npm -->
+        <a
+          href="https://www.npmjs.com/package/design-system-antoinegourgue"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center justify-center size-8 rounded-ds-md text-ds-fg-muted hover:text-ds-fg hover:bg-ds-bg-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ds-ring"
+          aria-label="npm package"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="size-[18px]" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M0 0v24h24V0H0zm19.2 19.2H12v-9.6H7.2v9.6H4.8V4.8h14.4v14.4z"/>
           </svg>
         </a>
 

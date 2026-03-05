@@ -37,10 +37,11 @@ if (import.meta.client) {
     <DocsSidebar :open="sidebarOpen" @close="sidebarOpen = false" />
 
     <!-- Main content -->
-    <div class="lg:pl-64 pt-14">
-      <main class="min-h-[calc(100vh-3.5rem)]">
+    <div class="lg:pl-64 pt-14 flex flex-col min-h-screen">
+      <main class="flex-1">
         <NuxtPage />
       </main>
+      <DocsFooter />
     </div>
 
     <!-- Search modal -->

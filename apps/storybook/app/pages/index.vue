@@ -4,6 +4,7 @@ import { nav } from '~/data/nav'
 
 const categories = nav.slice(2) // Skip Getting Started + Foundations
 const totalComponents = componentDocs.length
+const { dsVersion } = useAppConfig()
 
 const installCode = `npm install design-system-antoinegourgue`
 
@@ -26,7 +27,7 @@ const usageCode = `<!-- Auto-imported, no imports needed -->
     <!-- Hero -->
     <div class="mb-16">
       <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-ds-primary/20 bg-ds-primary-subtle text-ds-primary text-xs font-medium font-ds mb-6">
-        v0.2.0
+        v{{ dsVersion }}
       </div>
 
       <h1 class="text-5xl font-bold text-ds-fg tracking-tight leading-tight mb-4 font-ds">
