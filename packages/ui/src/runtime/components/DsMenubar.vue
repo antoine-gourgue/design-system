@@ -72,7 +72,7 @@ function handleAction(fn?: () => void) {
           class="absolute left-0 top-full mt-0.5 w-52 rounded-ds-lg border border-ds-border bg-ds-bg shadow-ds-md py-1 z-50"
         >
           <template v-for="(item, j) in menu.items" :key="j">
-            <div v-if="item.separator" class="my-1 border-t border-ds-border" />
+            <div v-if="item.separator" class="my-1 border-t border-ds-border"></div>
             <button
               v-else
               type="button"
@@ -95,6 +95,6 @@ function handleAction(fn?: () => void) {
       v-if="activeMenu !== null"
       class="fixed inset-0 z-40"
       @click="closeAll"
-    />
+    ></div>
   </div>
 </template>

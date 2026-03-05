@@ -29,7 +29,7 @@ const close = inject<() => void>('drawer:close')
           {{ description }}
         </p>
       </slot>
-      <slot />
+      <slot></slot>
     </div>
     <button
       v-if="showClose"

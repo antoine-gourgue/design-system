@@ -26,8 +26,10 @@ const inputRef = ref<HTMLInputElement>()
 
 function addTag() {
   const tag = input.value.trim()
-  if (!tag) return
-  if (props.max && (props.modelValue ?? []).length >= props.max) return
+  if (!tag)
+    return
+  if (props.max && (props.modelValue ?? []).length >= props.max)
+    return
   if (!props.allowDuplicates && (props.modelValue ?? []).includes(tag)) {
     input.value = ''
     return

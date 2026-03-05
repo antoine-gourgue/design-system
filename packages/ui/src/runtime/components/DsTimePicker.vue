@@ -24,7 +24,8 @@ const emit = defineEmits<{
 const open = ref(false)
 
 function parse(val?: string) {
-  if (!val) return { h: 0, m: 0, s: 0 }
+  if (!val)
+    return { h: 0, m: 0, s: 0 }
   const parts = val.split(':').map(Number)
   return { h: parts[0] ?? 0, m: parts[1] ?? 0, s: parts[2] ?? 0 }
 }
@@ -40,10 +41,12 @@ function pad(n: number) {
 }
 
 const displayValue = computed(() => {
-  if (!props.modelValue) return ''
+  if (!props.modelValue)
+    return ''
   if (props.format === '12') {
     let h = hours.value % 12
-    if (h === 0) h = 12
+    if (h === 0)
+      h = 12
     return `${pad(h)}:${pad(minutes.value)}${props.showSeconds ? `:${pad(seconds.value)}` : ''} ${ampm.value}`
   }
   return `${pad(hours.value)}:${pad(minutes.value)}${props.showSeconds ? `:${pad(seconds.value)}` : ''}`
@@ -52,8 +55,10 @@ const displayValue = computed(() => {
 function emitValue() {
   let h = hours.value
   if (props.format === '12') {
-    if (ampm.value === 'PM' && h < 12) h += 12
-    if (ampm.value === 'AM' && h === 12) h = 0
+    if (ampm.value === 'PM' && h < 12)
+      h += 12
+    if (ampm.value === 'AM' && h === 12)
+      h = 0
   }
   emit('update:modelValue', `${pad(h)}:${pad(minutes.value)}${props.showSeconds ? `:${pad(seconds.value)}` : ''}`)
 }
@@ -189,6 +194,6 @@ function toggleAmPm() {
       </div>
     </Transition>
 
-    <div v-if="open" class="fixed inset-0 z-40" @click="open = false" />
+    <div v-if="open" class="fixed inset-0 z-40" @click="open = false"></div>
   </div>
 </template>

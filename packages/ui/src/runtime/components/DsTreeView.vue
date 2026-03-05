@@ -1,7 +1,3 @@
-<script lang="ts">
-export default { name: 'DsTreeView' }
-</script>
-
 <script setup lang="ts">
 import { ref } from 'vue'
 import { cn } from '../utils/cn'
@@ -31,11 +27,14 @@ const emit = defineEmits<{
   (e: 'toggle', id: string): void
 }>()
 
+defineOptions({ name: 'DsTreeView' })
+
 const internalExpanded = ref<Set<string>>(new Set())
 const expanded = props.expandedIds ?? internalExpanded.value
 
 function toggle(id: string) {
-  if (expanded.has(id)) expanded.delete(id)
+  if (expanded.has(id))
+    expanded.delete(id)
   else expanded.add(id)
   emit('toggle', id)
 }
@@ -72,7 +71,7 @@ function toggle(id: string) {
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
           </svg>
         </button>
-        <span v-else class="size-4 shrink-0" />
+        <span v-else class="size-4 shrink-0"></span>
 
         <svg
           v-if="node.children?.length"

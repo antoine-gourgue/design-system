@@ -37,7 +37,8 @@ function onCancel() {
 }
 
 function onKeydown(e: KeyboardEvent) {
-  if (e.key === 'Escape') onCancel()
+  if (e.key === 'Escape')
+    onCancel()
 }
 </script>
 
@@ -56,7 +57,7 @@ function onKeydown(e: KeyboardEvent) {
         aria-modal="true"
         @keydown="onKeydown"
       >
-        <div class="absolute inset-0 bg-ds-overlay" @click="onCancel" />
+        <div class="absolute inset-0 bg-ds-overlay" @click="onCancel"></div>
         <Transition
           enter-active-class="transition duration-150 ease-out"
           enter-from-class="scale-95 opacity-0"
@@ -90,7 +91,7 @@ function onKeydown(e: KeyboardEvent) {
               <h2 class="text-base font-semibold text-ds-fg">{{ title }}</h2>
               <p class="text-sm text-ds-fg-muted">{{ description }}</p>
             </div>
-            <slot />
+            <slot></slot>
             <div class="flex gap-3 pt-1">
               <DsButton variant="outline" class="flex-1" :disabled="loading" @click="onCancel">
                 {{ cancelLabel }}

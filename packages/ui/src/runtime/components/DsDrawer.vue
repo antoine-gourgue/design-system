@@ -85,7 +85,7 @@ const borderClasses: Record<NonNullable<DsDrawerProps['side']>, string> = {
           class="absolute inset-0 bg-ds-overlay"
           aria-hidden="true"
           @click="close"
-        />
+        ></div>
 
         <!-- Panel -->
         <Transition :name="`drawer-slide-${side}`">
@@ -104,11 +104,11 @@ const borderClasses: Record<NonNullable<DsDrawerProps['side']>, string> = {
               v-if="side === 'bottom' || side === 'top'"
               class="flex justify-center pt-3 pb-1 shrink-0"
             >
-              <div class="w-10 h-1 rounded-full bg-ds-border-strong opacity-50" />
+              <div class="w-10 h-1 rounded-full bg-ds-border-strong opacity-50"></div>
             </div>
 
             <!-- Slot content (DsDrawerHeader + DsDrawerContent + DsDrawerFooter) -->
-            <slot />
+            <slot></slot>
           </div>
         </Transition>
       </div>

@@ -43,7 +43,8 @@ const filtered = computed(() => {
 })
 
 function select(opt: DsComboboxOption) {
-  if (opt.disabled) return
+  if (opt.disabled)
+    return
   emit('update:modelValue', opt.value)
   open.value = false
   search.value = ''
@@ -54,7 +55,8 @@ function clear() {
 }
 
 function toggle() {
-  if (props.disabled) return
+  if (props.disabled)
+    return
   open.value = !open.value
   if (open.value) {
     search.value = ''
@@ -63,11 +65,13 @@ function toggle() {
 }
 
 function onKeydown(e: KeyboardEvent) {
-  if (e.key === 'Escape') open.value = false
+  if (e.key === 'Escape')
+    open.value = false
 }
 
 watch(open, (val) => {
-  if (val) document.addEventListener('keydown', onKeydown)
+  if (val)
+    document.addEventListener('keydown', onKeydown)
   else document.removeEventListener('keydown', onKeydown)
 })
 
@@ -162,7 +166,7 @@ const sizeClasses = {
             >
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
             </svg>
-            <span v-else class="size-3.5 shrink-0" />
+            <span v-else class="size-3.5 shrink-0"></span>
             {{ opt.label }}
           </li>
           <li v-if="filtered.length === 0" class="px-3 py-4 text-sm text-center text-ds-fg-muted">
@@ -172,6 +176,6 @@ const sizeClasses = {
       </div>
     </Transition>
 
-    <div v-if="open" class="fixed inset-0 z-40" @click="open = false" />
+    <div v-if="open" class="fixed inset-0 z-40" @click="open = false"></div>
   </div>
 </template>

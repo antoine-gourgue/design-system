@@ -42,13 +42,15 @@ const filtered = computed(() => {
 })
 
 function toggle(opt: DsMultiSelectOption) {
-  if (opt.disabled) return
+  if (opt.disabled)
+    return
   const current = props.modelValue ?? []
   if (current.includes(opt.value)) {
     emit('update:modelValue', current.filter(v => v !== opt.value))
   }
   else {
-    if (props.max && current.length >= props.max) return
+    if (props.max && current.length >= props.max)
+      return
     emit('update:modelValue', [...current, opt.value])
   }
 }
@@ -58,11 +60,13 @@ function removeChip(value: string) {
 }
 
 function onKeydown(e: KeyboardEvent) {
-  if (e.key === 'Escape') open.value = false
+  if (e.key === 'Escape')
+    open.value = false
 }
 
 watch(open, (val) => {
-  if (val) document.addEventListener('keydown', onKeydown)
+  if (val)
+    document.addEventListener('keydown', onKeydown)
   else document.removeEventListener('keydown', onKeydown)
 })
 </script>
@@ -138,10 +142,11 @@ watch(open, (val) => {
             )"
             @click="toggle(opt)"
           >
-            <div :class="cn(
-              'size-4 rounded-ds-xs border flex items-center justify-center shrink-0 transition-colors',
-              (modelValue ?? []).includes(opt.value) ? 'bg-ds-primary border-ds-primary' : 'border-ds-border',
-            )">
+            <div
+              :class="cn(
+                'size-4 rounded-ds-xs border flex items-center justify-center shrink-0 transition-colors',
+                (modelValue ?? []).includes(opt.value) ? 'bg-ds-primary border-ds-primary' : 'border-ds-border',
+              )">
               <svg v-if="(modelValue ?? []).includes(opt.value)" xmlns="http://www.w3.org/2000/svg" class="size-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
               </svg>
@@ -158,6 +163,6 @@ watch(open, (val) => {
       </div>
     </Transition>
 
-    <div v-if="open" class="fixed inset-0 z-40" @click="open = false" />
+    <div v-if="open" class="fixed inset-0 z-40" @click="open = false"></div>
   </div>
 </template>

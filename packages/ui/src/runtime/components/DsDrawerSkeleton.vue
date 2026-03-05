@@ -15,10 +15,10 @@ withDefaults(defineProps<DsDrawerSkeletonProps>(), {
     <!-- Header skeleton -->
     <div class="flex items-center justify-between px-6 py-5 border-b border-ds-border">
       <div class="space-y-2 flex-1">
-        <div class="h-4 w-2/5 rounded-ds-md bg-ds-bg-muted animate-pulse" />
-        <div class="h-3 w-3/5 rounded-ds-md bg-ds-bg-muted animate-pulse" />
+        <div class="h-4 w-2/5 rounded-ds-md bg-ds-bg-muted animate-pulse"></div>
+        <div class="h-3 w-3/5 rounded-ds-md bg-ds-bg-muted animate-pulse"></div>
       </div>
-      <div class="size-7 rounded-ds-md bg-ds-bg-muted animate-pulse shrink-0" />
+      <div class="size-7 rounded-ds-md bg-ds-bg-muted animate-pulse shrink-0"></div>
     </div>
 
     <!-- Content skeleton -->
@@ -28,13 +28,13 @@ withDefaults(defineProps<DsDrawerSkeletonProps>(), {
         :key="i"
         :class="i % 3 === 0 ? 'w-3/5' : i % 2 === 0 ? 'w-4/5' : 'w-full'"
         class="h-3 rounded-ds-md bg-ds-bg-muted animate-pulse"
-      />
+      ></div>
     </div>
 
     <!-- Footer skeleton -->
     <div class="border-t border-ds-border px-6 py-4 flex gap-3">
-      <div class="flex-1 h-9 rounded-ds-md bg-ds-bg-muted animate-pulse" />
-      <div class="flex-1 h-9 rounded-ds-md bg-ds-primary/20 animate-pulse" />
+      <div class="flex-1 h-9 rounded-ds-md bg-ds-bg-muted animate-pulse"></div>
+      <div class="flex-1 h-9 rounded-ds-md bg-ds-primary/20 animate-pulse"></div>
     </div>
   </div>
 </template>

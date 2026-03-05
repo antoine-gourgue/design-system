@@ -52,7 +52,7 @@ const iconPaths: Record<string, string> = {
         <path stroke-linecap="round" stroke-linejoin="round" :d="iconPaths[variant]" />
       </svg>
       <div class="flex-1 text-sm">
-        <slot />
+        <slot></slot>
       </div>
       <button
         v-if="dismissible"

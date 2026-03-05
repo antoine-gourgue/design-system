@@ -55,8 +55,8 @@ const displayLabel = computed(() => props.label ?? statusLabels[props.status])
       <span
         v-if="pulse && status === 'online'"
         :class="cn('absolute inline-flex rounded-full opacity-75 animate-ping', dotSizeClasses[size], colorClasses[status])"
-      />
-      <span :class="cn('relative inline-flex rounded-full', dotSizeClasses[size], colorClasses[status])" />
+      ></span>
+      <span :class="cn('relative inline-flex rounded-full', dotSizeClasses[size], colorClasses[status])"></span>
     </span>
     <span v-if="showLabel" :class="cn('font-medium text-ds-fg-muted', textSizeClasses[size])">
       {{ displayLabel }}

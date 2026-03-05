@@ -17,7 +17,7 @@ const paddingBottom = computed(() => `${(1 / props.ratio) * 100}%`)
 <template>
   <div :class="cn('relative w-full overflow-hidden', props.class)" :style="{ paddingBottom }">
     <div class="absolute inset-0">
-      <slot />
+      <slot></slot>
     </div>
   </div>
 </template>

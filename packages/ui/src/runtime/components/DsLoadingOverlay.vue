@@ -16,7 +16,7 @@ const props = withDefaults(defineProps<DsLoadingOverlayProps>(), {
 
 <template>
   <div :class="cn('relative', props.class)">
-    <slot />
+    <slot></slot>
     <Transition
       enter-active-class="transition duration-150 ease-out"
       enter-from-class="opacity-0"
@@ -25,8 +25,8 @@ const props = withDefaults(defineProps<DsLoadingOverlayProps>(), {
     >
       <div
         v-if="visible"
-        class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 rounded-[inherit]"
-        :class="[blur ? 'backdrop-blur-[2px]' : '', 'bg-ds-bg/60']"
+        class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 rounded-[inherit] bg-ds-bg/60"
+        :class="[blur ? 'backdrop-blur-[2px]' : '']"
         aria-busy="true"
         aria-live="polite"
         :aria-label="label ?? 'Loading'"

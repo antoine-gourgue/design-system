@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { cn } from '../utils/cn'
+
 const props = defineProps<{ count?: number, class?: string }>()
 </script>
 
@@ -10,11 +11,11 @@ const props = defineProps<{ count?: number, class?: string }>()
       :key="i"
       class="flex items-start gap-3 px-4 py-3"
     >
-      <div class="shrink-0 size-9 rounded-full bg-ds-bg-muted" />
+      <div class="shrink-0 size-9 rounded-full bg-ds-bg-muted"></div>
       <div class="flex-1 space-y-2">
-        <div class="h-3.5 w-2/3 rounded bg-ds-bg-muted" />
-        <div class="h-3 w-full rounded bg-ds-bg-muted" />
-        <div class="h-2.5 w-16 rounded bg-ds-bg-muted" />
+        <div class="h-3.5 w-2/3 rounded bg-ds-bg-muted"></div>
+        <div class="h-3 w-full rounded bg-ds-bg-muted"></div>
+        <div class="h-2.5 w-16 rounded bg-ds-bg-muted"></div>
       </div>
     </div>
   </div>

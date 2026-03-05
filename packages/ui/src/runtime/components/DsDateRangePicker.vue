@@ -25,8 +25,7 @@ const today = new Date()
 const leftMonth = ref(new Date(today.getFullYear(), today.getMonth(), 1))
 const rightMonth = computed(() => new Date(leftMonth.value.getFullYear(), leftMonth.value.getMonth() + 1, 1))
 
-const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
-  'July', 'August', 'September', 'October', 'November', 'December']
+const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 const dayNames = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
 
 function prevMonth() {
@@ -62,7 +61,8 @@ function isEnd(d: Date) {
 function isInRange(d: Date) {
   const start = props.modelValue?.start
   const end = props.modelValue?.end ?? hoveredDate.value
-  if (!start || !end) return false
+  if (!start || !end)
+    return false
   const [from, to] = start <= end ? [start, end] : [end, start]
   return d > from && d < to
 }
@@ -77,7 +77,8 @@ function selectDate(d: Date) {
     emit('update:modelValue', { start: d, end: null })
   }
   else {
-    if (d < start) emit('update:modelValue', { start: d, end: start })
+    if (d < start)
+      emit('update:modelValue', { start: d, end: start })
     else emit('update:modelValue', { start, end: d })
     open.value = false
   }
@@ -85,10 +86,13 @@ function selectDate(d: Date) {
 
 const displayText = computed(() => {
   const { start, end } = props.modelValue ?? {}
-  if (!start && !end) return ''
+  if (!start && !end)
+    return ''
   const fmt = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
-  if (start && end) return `${fmt(start)} – ${fmt(end)}`
-  if (start) return `${fmt(start)} – …`
+  if (start && end)
+    return `${fmt(start)} – ${fmt(end)}`
+  if (start)
+    return `${fmt(start)} – …`
   return ''
 })
 </script>
@@ -141,7 +145,7 @@ const displayText = computed(() => {
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
               </svg>
             </button>
-            <span v-else class="w-6" />
+            <span v-else class="w-6"></span>
             <span class="text-sm font-semibold text-ds-fg">
               {{ monthNames[monthStart.getMonth()] }} {{ monthStart.getFullYear() }}
             </span>
@@ -155,7 +159,7 @@ const displayText = computed(() => {
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
               </svg>
             </button>
-            <span v-else class="w-6" />
+            <span v-else class="w-6"></span>
           </div>
 
           <div class="grid grid-cols-7 gap-0.5 mb-1">
@@ -189,13 +193,13 @@ const displayText = computed(() => {
               >
                 {{ day.getDate() }}
               </button>
-              <div v-else class="w-full h-7" />
+              <div v-else class="w-full h-7"></div>
             </div>
           </div>
         </div>
       </div>
     </Transition>
 
-    <div v-if="open" class="fixed inset-0 z-40" @click="open = false" />
+    <div v-if="open" class="fixed inset-0 z-40" @click="open = false"></div>
   </div>
 </template>

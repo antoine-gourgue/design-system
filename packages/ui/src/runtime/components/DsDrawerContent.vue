@@ -10,6 +10,6 @@ const props = defineProps<DsDrawerContentProps>()
 
 <template>
   <div :class="cn('flex-1 overflow-y-auto px-6 py-5', props.class)">
-    <slot />
+    <slot></slot>
   </div>
 </template>

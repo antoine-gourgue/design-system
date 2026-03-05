@@ -16,7 +16,7 @@ const props = withDefaults(defineProps<DsAccordionItemProps>(), {
 
 const accordion = inject<{
   openItems: ReturnType<typeof ref<Set<string>>>
-  toggle: (v: string) => void
+  toggle: (_v: string) => void
 }>('accordion')
 
 const isOpen = computed(() => accordion?.openItems.value?.has(props.value) ?? false)

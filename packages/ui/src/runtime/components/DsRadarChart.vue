@@ -117,21 +117,22 @@ const dataPolygon = computed(() =>
         stroke-width="1.5"
       />
 
-      <text
-        v-if="showLabels"
-        v-for="(axis, i) in axes"
-        :key="`label-${i}`"
-        :x="axis.label.x"
-        :y="axis.label.y"
-        text-anchor="middle"
-        dominant-baseline="middle"
-        fill="currentColor"
-        class="text-ds-fg-muted"
-        font-size="11"
-        font-family="inherit"
-      >
-        {{ axis.label }}
-      </text>
+      <template v-if="showLabels">
+        <text
+          v-for="(axis, i) in axes"
+          :key="`label-${i}`"
+          :x="axis.label.x"
+          :y="axis.label.y"
+          text-anchor="middle"
+          dominant-baseline="middle"
+          fill="currentColor"
+          class="text-ds-fg-muted"
+          font-size="11"
+          font-family="inherit"
+        >
+          {{ axis.label }}
+        </text>
+      </template>
     </svg>
   </div>
 </template>

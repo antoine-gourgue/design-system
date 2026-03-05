@@ -23,7 +23,9 @@ const copied = ref(false)
 async function copyCode() {
   await navigator.clipboard.writeText(props.code)
   copied.value = true
-  setTimeout(() => { copied.value = false }, 2000)
+  setTimeout(() => {
+    copied.value = false
+  }, 2000)
 }
 
 const lines = computed(() => props.code.split('\n'))
@@ -45,7 +47,7 @@ function highlight(code: string): string {
     <div v-if="filename || language !== 'plaintext' || copyable" class="flex items-center justify-between px-4 py-2.5 border-b border-white/10 bg-white/5">
       <span v-if="filename" class="text-xs text-white/50 font-sans">{{ filename }}</span>
       <span v-else-if="language !== 'plaintext'" class="text-xs text-white/30 font-sans uppercase tracking-wider">{{ language }}</span>
-      <div class="flex-1" />
+      <div class="flex-1"></div>
       <button
         v-if="copyable"
         type="button"
@@ -76,7 +78,7 @@ function highlight(code: string): string {
             </td>
             <td class="pl-4 pr-4 py-0 text-white/85 whitespace-pre align-top">
               <!-- eslint-disable-next-line vue/no-v-html -->
-              <span v-html="highlight(line) || '&nbsp;'" />
+              <span v-html="highlight(line) || '&nbsp;'"></span>
             </td>
           </tr>
         </tbody>

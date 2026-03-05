@@ -31,7 +31,7 @@ const emit = defineEmits<{
     role="listitem"
     @click="emit('click')"
   >
-    <div v-if="!read" class="absolute left-1.5 top-1/2 -translate-y-1/2 size-1.5 rounded-full bg-ds-primary shrink-0" />
+    <div v-if="!read" class="absolute left-1.5 top-1/2 -translate-y-1/2 size-1.5 rounded-full bg-ds-primary shrink-0"></div>
 
     <div class="shrink-0 size-9 rounded-full bg-ds-primary-subtle text-ds-primary flex items-center justify-center text-sm font-semibold overflow-hidden">
       <img v-if="avatarSrc" :src="avatarSrc" :alt="avatarInitials" class="size-full object-cover" />
