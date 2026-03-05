@@ -1,7 +1,14 @@
 <script setup lang="ts">
-import { computed } from 'vue'
 import { cva, type VariantProps } from 'class-variance-authority'
+import { computed } from 'vue'
 import { cn } from '../utils/cn'
+
+const props = withDefaults(defineProps<DsBadgeProps>(), {
+  variant: 'default',
+  size: 'md',
+  dot: false,
+  rounded: false,
+})
 
 const badgeVariants = cva(
   [
@@ -57,13 +64,6 @@ export interface DsBadgeProps {
   class?: string
 }
 
-const props = withDefaults(defineProps<DsBadgeProps>(), {
-  variant: 'default',
-  size: 'md',
-  dot: false,
-  rounded: false,
-})
-
 const classes = computed(() =>
   cn(
     badgeVariants({
@@ -95,16 +95,16 @@ const dotColorClass = computed(() => {
     <!-- Optional leading dot -->
     <span
       v-if="dot"
-      :class="[dotColorClass, 'inline-block rounded-full shrink-0']"
+      class="inline-block rounded-full shrink-0" :class="[dotColorClass]"
       :style="{ width: '6px', height: '6px' }"
       aria-hidden="true"
-    />
+    ></span>
 
     <!-- Leading icon slot -->
     <span v-if="$slots.icon" class="shrink-0" aria-hidden="true">
-      <slot name="icon" />
+      <slot name="icon"></slot>
     </span>
 
-    <slot />
+    <slot></slot>
   </span>
 </template>

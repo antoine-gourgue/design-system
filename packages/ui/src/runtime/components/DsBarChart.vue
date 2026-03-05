@@ -1,11 +1,8 @@
 <script lang="ts">
-const BAR_COLORS = ['#7f00ff', '#06b6d4', '#f97316', '#22c55e', '#f59e0b', '#ec4899', '#6366f1', '#14b8a6']
-const BAR_VW = 600
-const BAR_PAD = { top: 20, right: 20, bottom: 34, left: 50 }
 </script>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { computed, ref } from 'vue'
 import { cn } from '../utils/cn'
 
 export interface DsBarChartDataset {
@@ -34,6 +31,10 @@ const props = withDefaults(defineProps<DsBarChartProps>(), {
   height: 240,
   gap: 4,
 })
+
+const BAR_COLORS = ['#7f00ff', '#06b6d4', '#f97316', '#22c55e', '#f59e0b', '#ec4899', '#6366f1', '#14b8a6']
+const BAR_VW = 600
+const BAR_PAD = { top: 20, right: 20, bottom: 34, left: 50 }
 
 const allValues = computed(() => props.datasets.flatMap(d => d.data))
 const maxVal = computed(() => Math.max(...allValues.value) * 1.15 || 10)
@@ -77,7 +78,7 @@ const yTicks = computed(() =>
   Array.from({ length: 5 }, (_, i) => {
     const val = minVal.value + (range.value * i) / 4
     return { y: BAR_PAD.top + (1 - i / 4) * plotH.value, label: Math.round(val).toLocaleString() }
-  })
+  }),
 )
 
 // Tooltip
@@ -88,21 +89,28 @@ const wrapperRef = ref<HTMLDivElement | null>(null)
 
 function onMouseMove(e: MouseEvent) {
   const el = wrapperRef.value
-  if (!el) return
+  if (!el)
+    return
   const rect = el.getBoundingClientRect()
   const relX = e.clientX - rect.left
   const svgX = (relX / rect.width) * BAR_VW
-  let closest = 0, minD = Infinity
+  let closest = 0
+  let minD = Infinity
   for (let i = 0; i < props.labels.length; i++) {
     const d = Math.abs(groupCenter(i) - svgX)
-    if (d < minD) { minD = d; closest = i }
+    if (d < minD) {
+      minD = d
+      closest = i
+    }
   }
   tooltipIdx.value = closest
   tooltipLeft.value = (groupCenter(closest) / BAR_VW) * rect.width
   tooltipRight.value = closest < props.labels.length / 2
 }
 
-function onMouseLeave() { tooltipIdx.value = null }
+function onMouseLeave() {
+  tooltipIdx.value = null
+}
 </script>
 
 <template>
@@ -188,13 +196,15 @@ function onMouseLeave() { tooltipIdx.value = null }
         v-if="tooltipIdx !== null"
         class="absolute top-1 pointer-events-none z-10 min-w-32 rounded-ds-lg border border-ds-border bg-ds-bg-elevated shadow-ds-lg px-3 py-2 text-xs space-y-1"
         :style="{
-          left: tooltipLeft + 'px',
+          left: `${tooltipLeft}px`,
           transform: tooltipRight ? 'translateX(10px)' : 'translateX(calc(-100% - 10px))',
         }"
       >
-        <p class="font-semibold text-ds-fg pb-1">{{ labels[tooltipIdx] }}</p>
+        <p class="font-semibold text-ds-fg pb-1">
+          {{ labels[tooltipIdx] }}
+        </p>
         <div v-for="(ds, di) in datasets" :key="di" class="flex items-center gap-2">
-          <span class="size-2 rounded-sm shrink-0" :style="{ backgroundColor: getColor(ds, di) }" />
+          <span class="size-2 rounded-sm shrink-0" :style="{ backgroundColor: getColor(ds, di) }"></span>
           <span class="text-ds-fg-muted">{{ ds.label }}</span>
           <span class="font-medium text-ds-fg ml-auto pl-3">{{ ds.data[tooltipIdx].toLocaleString() }}</span>
         </div>
@@ -204,7 +214,7 @@ function onMouseLeave() { tooltipIdx.value = null }
     <!-- Legend -->
     <div v-if="showLegend && datasets.length > 1" class="flex flex-wrap gap-x-5 gap-y-1.5 justify-center">
       <div v-for="(ds, di) in datasets" :key="di" class="flex items-center gap-1.5 text-xs text-ds-fg-muted">
-        <span class="size-2.5 rounded-sm shrink-0" :style="{ backgroundColor: getColor(ds, di) }" />
+        <span class="size-2.5 rounded-sm shrink-0" :style="{ backgroundColor: getColor(ds, di) }"></span>
         {{ ds.label }}
       </div>
     </div>

@@ -23,7 +23,8 @@ const emit = defineEmits<{
 }>()
 
 function toggle() {
-  if (!props.disabled) emit('update:modelValue', !props.modelValue)
+  if (!props.disabled)
+    emit('update:modelValue', !props.modelValue)
 }
 
 const trackClasses = computed(() =>
@@ -61,7 +62,7 @@ const thumbClasses = computed(() =>
       @click="toggle"
       @keydown.space.prevent="toggle"
     >
-      <span :class="thumbClasses" />
+      <span :class="thumbClasses"></span>
     </button>
 
     <div v-if="label || $slots.default" class="flex flex-col gap-0.5">
@@ -73,7 +74,7 @@ const thumbClasses = computed(() =>
       >
         {{ label }}
       </label>
-      <slot />
+      <slot></slot>
       <p v-if="description" class="text-xs text-ds-fg-muted leading-relaxed">
         {{ description }}
       </p>

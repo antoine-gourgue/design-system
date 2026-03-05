@@ -14,13 +14,6 @@ export interface DsStatCardProps {
 }
 
 const props = defineProps<DsStatCardProps>()
-
-const trendClass = computed(() => {
-  if (props.trend == null) return ''
-  return props.trendUp
-    ? 'text-ds-success'
-    : 'text-ds-danger'
-})
 </script>
 
 <template>
@@ -31,11 +24,15 @@ const trendClass = computed(() => {
     )"
   >
     <!-- Label -->
-    <p class="text-xs font-medium text-ds-fg-muted uppercase tracking-wide">{{ label }}</p>
+    <p class="text-xs font-medium text-ds-fg-muted uppercase tracking-wide">
+      {{ label }}
+    </p>
 
     <!-- Value + trend row -->
     <div class="flex items-end justify-between gap-2">
-      <p class="text-3xl font-bold text-ds-fg leading-none tracking-tight">{{ value }}</p>
+      <p class="text-3xl font-bold text-ds-fg leading-none tracking-tight">
+        {{ value }}
+      </p>
 
       <span
         v-if="trend"
@@ -64,9 +61,11 @@ const trendClass = computed(() => {
     </div>
 
     <!-- Optional description -->
-    <p v-if="description" class="text-xs text-ds-fg-subtle leading-relaxed">{{ description }}</p>
+    <p v-if="description" class="text-xs text-ds-fg-subtle leading-relaxed">
+      {{ description }}
+    </p>
 
     <!-- Slot for custom content (e.g. sparkline) -->
-    <slot />
+    <slot></slot>
   </div>
 </template>

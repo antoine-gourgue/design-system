@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { computed, ref } from 'vue'
 import { cn } from '../utils/cn'
 
 export type SortDir = 'asc' | 'desc' | null
@@ -40,10 +40,18 @@ const page = ref(1)
 
 function setSort(key: string) {
   if (sortKey.value === key) {
-    if (sortDir.value === 'asc') sortDir.value = 'desc'
-    else if (sortDir.value === 'desc') { sortKey.value = null; sortDir.value = null }
-    else sortDir.value = 'asc'
-  } else {
+    if (sortDir.value === 'asc') {
+      sortDir.value = 'desc'
+    }
+    else if (sortDir.value === 'desc') {
+      sortKey.value = null
+      sortDir.value = null
+    }
+    else {
+      sortDir.value = 'asc'
+    }
+  }
+  else {
     sortKey.value = key
     sortDir.value = 'asc'
   }
@@ -51,17 +59,19 @@ function setSort(key: string) {
 }
 
 const filtered = computed(() => {
-  if (!search.value.trim()) return props.rows
+  if (!search.value.trim())
+    return props.rows
   const q = search.value.toLowerCase()
   return props.rows.filter(row =>
     Object.values(row as Record<string, unknown>).some(v =>
-      String(v ?? '').toLowerCase().includes(q)
-    )
+      String(v ?? '').toLowerCase().includes(q),
+    ),
   )
 })
 
 const sorted = computed(() => {
-  if (!sortKey.value || !sortDir.value) return filtered.value
+  if (!sortKey.value || !sortDir.value)
+    return filtered.value
   return [...filtered.value].sort((a, b) => {
     const aVal = (a as Record<string, unknown>)[sortKey.value!]
     const bVal = (b as Record<string, unknown>)[sortKey.value!]
@@ -79,7 +89,8 @@ const paginated = computed(() => {
 
 function getCellValue(row: Record<string, unknown>, col: DataTableColumn): string {
   const val = row[col.key]
-  if (col.format) return col.format(val, row)
+  if (col.format)
+    return col.format(val, row)
   return String(val ?? '-')
 }
 
@@ -104,7 +115,7 @@ const alignClass: Record<string, string> = {
           :placeholder="searchPlaceholder"
           class="w-full h-9 pl-9 pr-3 text-sm rounded-ds-md border border-ds-border bg-ds-bg text-ds-fg placeholder:text-ds-fg-muted focus:outline-none focus:ring-2 focus:ring-ds-ring"
           @input="page = 1"
-        />
+        >
       </div>
       <span v-if="search" class="text-xs text-ds-fg-muted">{{ filtered.length }} result{{ filtered.length !== 1 ? 's' : '' }}</span>
     </div>
@@ -120,7 +131,7 @@ const alignClass: Record<string, string> = {
               :class="cn(
                 'px-4 py-2.5 font-medium text-ds-fg-muted text-xs uppercase tracking-wide',
                 alignClass[col.align ?? 'left'],
-                col.sortable ? 'cursor-pointer select-none hover:text-ds-fg' : ''
+                col.sortable ? 'cursor-pointer select-none hover:text-ds-fg' : '',
               )"
               @click="col.sortable ? setSort(col.key) : null"
             >
@@ -129,17 +140,20 @@ const alignClass: Record<string, string> = {
                 <template v-if="col.sortable">
                   <svg
                     v-if="sortKey === col.key && sortDir === 'asc'"
-                    xmlns="http://www.w3.org/2000/svg" class="size-3.5 text-ds-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    xmlns="http://www.w3.org/2000/svg" class="size-3.5 text-ds-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"
+                  >
                     <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
                   </svg>
                   <svg
                     v-else-if="sortKey === col.key && sortDir === 'desc'"
-                    xmlns="http://www.w3.org/2000/svg" class="size-3.5 text-ds-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    xmlns="http://www.w3.org/2000/svg" class="size-3.5 text-ds-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"
+                  >
                     <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                   </svg>
                   <svg
                     v-else
-                    xmlns="http://www.w3.org/2000/svg" class="size-3.5 opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    xmlns="http://www.w3.org/2000/svg" class="size-3.5 opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+                  >
                     <path stroke-linecap="round" stroke-linejoin="round" d="M7 16V4m0 0L3 8m4-4l4 4M17 8v12m0 0l4-4m-4 4l-4-4" />
                   </svg>
                 </template>
@@ -153,7 +167,7 @@ const alignClass: Record<string, string> = {
             :key="i"
             :class="cn(
               'border-b border-ds-border last:border-0 transition-colors hover:bg-ds-bg-muted/50',
-              striped && i % 2 !== 0 ? 'bg-ds-bg-muted/30' : ''
+              striped && i % 2 !== 0 ? 'bg-ds-bg-muted/30' : '',
             )"
           >
             <td
@@ -162,7 +176,7 @@ const alignClass: Record<string, string> = {
               :class="cn(
                 'px-4 py-3 text-ds-fg',
                 compact ? 'py-2' : 'py-3',
-                alignClass[col.align ?? 'left']
+                alignClass[col.align ?? 'left'],
               )"
             >
               <slot :name="`cell-${col.key}`" :value="(row as Record<string, unknown>)[col.key]" :row="row">
@@ -202,7 +216,9 @@ const alignClass: Record<string, string> = {
               ? 'border-ds-primary bg-ds-primary-subtle text-ds-primary font-medium'
               : 'border-ds-border hover:bg-ds-bg-muted text-ds-fg-muted'"
             @click="page = p"
-          >{{ p }}</button>
+          >
+            {{ p }}
+          </button>
           <span v-else-if="(p === page - 3 || p === page + 3)" class="px-0.5">…</span>
         </template>
         <button

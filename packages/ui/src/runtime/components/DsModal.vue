@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, watch, onMounted, onBeforeUnmount, nextTick, ref } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { cn } from '../utils/cn'
 
 export interface DsModalProps {
@@ -30,8 +30,8 @@ const props = withDefaults(defineProps<DsModalProps>(), {
 
 const emit = defineEmits<{
   'update:modelValue': [value: boolean]
-  close: []
-  open: []
+  'close': []
+  'open': []
 }>()
 
 /* ── Size map ── */
@@ -48,18 +48,21 @@ const dialogRef = ref<HTMLElement | null>(null)
 const previousFocus = ref<HTMLElement | null>(null)
 
 function getFocusableElements(): HTMLElement[] {
-  if (!dialogRef.value) return []
+  if (!dialogRef.value)
+    return []
   return Array.from(
     dialogRef.value.querySelectorAll<HTMLElement>(
       'a[href], button:not([disabled]), textarea, input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])',
     ),
-  ).filter((el) => !el.hasAttribute('disabled'))
+  ).filter(el => !el.hasAttribute('disabled'))
 }
 
 function trapFocus(event: KeyboardEvent) {
-  if (!props.modelValue) return
+  if (!props.modelValue)
+    return
   const focusable = getFocusableElements()
-  if (!focusable.length) return
+  if (!focusable.length)
+    return
 
   const first = focusable[0]
   const last = focusable[focusable.length - 1]
@@ -70,7 +73,8 @@ function trapFocus(event: KeyboardEvent) {
         event.preventDefault()
         last.focus()
       }
-    } else {
+    }
+    else {
       if (document.activeElement === last) {
         event.preventDefault()
         first.focus()
@@ -106,8 +110,10 @@ watch(
       emit('open')
       await nextTick()
       const focusable = getFocusableElements()
-      if (focusable.length) focusable[0].focus()
-    } else {
+      if (focusable.length)
+        focusable[0].focus()
+    }
+    else {
       document.body.style.overflow = ''
       await nextTick()
       previousFocus.value?.focus()
@@ -170,7 +176,7 @@ const dialogClasses = computed(() =>
             class="flex items-start justify-between gap-4 px-6 py-5 border-b border-ds-border"
           >
             <div v-if="$slots.header">
-              <slot name="header" />
+              <slot name="header"></slot>
             </div>
             <div v-else class="flex-1 min-w-0">
               <h2
@@ -192,7 +198,7 @@ const dialogClasses = computed(() =>
               v-if="showClose"
               type="button"
               class="shrink-0 rounded-ds-sm p-1 text-ds-fg-muted hover:text-ds-fg hover:bg-ds-bg-subtle transition-colors duration-ds-fast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ds-ring"
-              :aria-label="'Close modal'"
+              aria-label="Close modal"
               @click="close"
             >
               <!-- X icon -->
@@ -212,7 +218,7 @@ const dialogClasses = computed(() =>
 
           <!-- Body -->
           <div class="px-6 py-5">
-            <slot />
+            <slot></slot>
           </div>
 
           <!-- Footer -->
@@ -220,7 +226,7 @@ const dialogClasses = computed(() =>
             v-if="$slots.footer"
             class="flex flex-wrap items-center justify-end gap-3 px-6 py-4 border-t border-ds-border"
           >
-            <slot name="footer" />
+            <slot name="footer"></slot>
           </div>
         </div>
       </div>

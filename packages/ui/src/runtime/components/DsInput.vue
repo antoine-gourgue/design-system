@@ -1,7 +1,23 @@
 <script setup lang="ts">
-import { computed, useId } from 'vue'
 import { cva, type VariantProps } from 'class-variance-authority'
+import { computed, useId } from 'vue'
 import { cn } from '../utils/cn'
+
+const props = withDefaults(defineProps<DsInputProps>(), {
+  type: 'text',
+  size: 'md',
+  disabled: false,
+  readonly: false,
+  error: false,
+  success: false,
+})
+
+const emit = defineEmits<{
+  'update:modelValue': [value: string]
+  'change': [value: string]
+  'blur': [event: FocusEvent]
+  'focus': [event: FocusEvent]
+}>()
 
 const inputWrapperVariants = cva(
   [
@@ -65,30 +81,17 @@ export interface DsInputProps {
   class?: string
 }
 
-const props = withDefaults(defineProps<DsInputProps>(), {
-  type: 'text',
-  size: 'md',
-  disabled: false,
-  readonly: false,
-  error: false,
-  success: false,
-})
-
-const emit = defineEmits<{
-  'update:modelValue': [value: string]
-  change: [value: string]
-  blur: [event: FocusEvent]
-  focus: [event: FocusEvent]
-}>()
-
 /* Auto-generate a unique id for a11y label association */
 const autoId = useId()
 const inputId = computed(() => props.id ?? autoId)
 
 const currentState = computed((): InputVariants['state'] => {
-  if (props.disabled) return 'disabled'
-  if (props.error) return 'error'
-  if (props.success) return 'success'
+  if (props.disabled)
+    return 'disabled'
+  if (props.error)
+    return 'error'
+  if (props.success)
+    return 'success'
   return 'default'
 })
 
@@ -127,7 +130,7 @@ function onChange(event: Event) {
       class="shrink-0 text-ds-fg-muted flex items-center"
       aria-hidden="true"
     >
-      <slot name="leading" />
+      <slot name="leading"></slot>
     </span>
 
     <input
@@ -148,7 +151,7 @@ function onChange(event: Event) {
       @change="onChange"
       @blur="emit('blur', $event)"
       @focus="emit('focus', $event)"
-    />
+    >
 
     <!-- Trailing slot (icon, suffix, clear button, etc.) -->
     <span
@@ -156,7 +159,7 @@ function onChange(event: Event) {
       class="shrink-0 text-ds-fg-muted flex items-center"
       aria-hidden="true"
     >
-      <slot name="trailing" />
+      <slot name="trailing"></slot>
     </span>
   </div>
 </template>

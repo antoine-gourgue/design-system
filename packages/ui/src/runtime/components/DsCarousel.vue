@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import { cn } from '../utils/cn'
 
 export interface DsCarouselProps {
@@ -30,13 +30,18 @@ const total = computed(() => props.count)
 function goTo(index: number) {
   if (props.loop) {
     current.value = (index + total.value) % total.value
-  } else {
+  }
+  else {
     current.value = Math.max(0, Math.min(index, total.value - 1))
   }
 }
 
-function prev() { goTo(current.value - 1) }
-function next() { goTo(current.value + 1) }
+function prev() {
+  goTo(current.value - 1)
+}
+function next() {
+  goTo(current.value + 1)
+}
 
 function startAutoplay() {
   if (props.autoplay) {
@@ -44,13 +49,16 @@ function startAutoplay() {
   }
 }
 
-function stopAutoplay() { clearInterval(timer) }
+function stopAutoplay() {
+  clearInterval(timer)
+}
 
 onMounted(startAutoplay)
 onUnmounted(stopAutoplay)
 
 watch(() => props.autoplay, (val) => {
-  if (val) startAutoplay()
+  if (val)
+    startAutoplay()
   else stopAutoplay()
 })
 </script>
@@ -66,7 +74,7 @@ watch(() => props.autoplay, (val) => {
       class="flex transition-transform duration-300 ease-out"
       :style="{ transform: `translateX(-${current * 100}%)` }"
     >
-      <slot />
+      <slot></slot>
     </div>
 
     <!-- Arrows -->
@@ -103,7 +111,7 @@ watch(() => props.autoplay, (val) => {
         :aria-label="`Go to slide ${i}`"
         :aria-current="i - 1 === current"
         @click="goTo(i - 1)"
-      />
+      ></button>
     </div>
   </div>
 </template>

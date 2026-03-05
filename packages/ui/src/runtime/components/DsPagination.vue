@@ -48,7 +48,8 @@ const pages = computed((): (number | 'ellipsis')[] => {
 
   if (showEdges) {
     items.push(1)
-    if (windowStart > 2) items.push('ellipsis')
+    if (windowStart > 2)
+      items.push('ellipsis')
   }
 
   for (let p = windowStart; p <= windowEnd; p++) {
@@ -56,8 +57,10 @@ const pages = computed((): (number | 'ellipsis')[] => {
   }
 
   if (showEdges) {
-    if (windowEnd < total - 1) items.push('ellipsis')
-    if (total > 1) items.push(total)
+    if (windowEnd < total - 1)
+      items.push('ellipsis')
+    if (total > 1)
+      items.push(total)
   }
 
   // Deduplicate (edge case: windowStart === 1)
@@ -65,7 +68,8 @@ const pages = computed((): (number | 'ellipsis')[] => {
 })
 
 function go(page: number) {
-  if (props.disabled) return
+  if (props.disabled)
+    return
   const clamped = Math.max(1, Math.min(totalPages.value, page))
   if (clamped !== props.modelValue) {
     emit('update:modelValue', clamped)
@@ -73,8 +77,8 @@ function go(page: number) {
 }
 
 // Base button classes
-const btn = (active: boolean, disabled: boolean) =>
-  cn(
+function btn(active: boolean, disabled: boolean) {
+  return cn(
     'inline-flex items-center justify-center h-9 min-w-9 px-2 rounded-ds-md text-sm font-medium transition-colors select-none',
     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ds-ring focus-visible:ring-offset-1',
     active
@@ -83,6 +87,7 @@ const btn = (active: boolean, disabled: boolean) =>
         ? 'text-ds-fg-subtle cursor-not-allowed'
         : 'text-ds-fg-muted hover:text-ds-fg hover:bg-ds-bg-muted cursor-pointer',
   )
+}
 </script>
 
 <template>
@@ -95,7 +100,7 @@ const btn = (active: boolean, disabled: boolean) =>
     <button
       type="button"
       :disabled="disabled || modelValue <= 1"
-      :aria-label="'Go to previous page'"
+      aria-label="Go to previous page"
       :class="btn(false, modelValue <= 1)"
       @click="go(modelValue - 1)"
     >
@@ -133,7 +138,7 @@ const btn = (active: boolean, disabled: boolean) =>
     <button
       type="button"
       :disabled="disabled || modelValue >= totalPages"
-      :aria-label="'Go to next page'"
+      aria-label="Go to next page"
       :class="btn(false, modelValue >= totalPages)"
       @click="go(modelValue + 1)"
     >

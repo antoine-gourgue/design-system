@@ -26,6 +26,6 @@ const classes = computed(() =>
 
 <template>
   <p :id="id" :class="classes" :role="error ? 'alert' : undefined">
-    <slot />
+    <slot></slot>
   </p>
 </template>

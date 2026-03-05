@@ -33,5 +33,5 @@ const classes = computed(() =>
 </script>
 
 <template>
-  <span :class="classes" aria-hidden="true" role="presentation" />
+  <span :class="classes" aria-hidden="true" role="presentation"></span>
 </template>

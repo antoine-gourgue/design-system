@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { cn } from '../utils/cn'
 import DsCalendar from './DsCalendar.vue'
 
@@ -29,11 +29,13 @@ const isOpen = ref(false)
 const calendarMonth = ref<Date>(props.modelValue ?? new Date())
 
 watch(() => props.modelValue, (val) => {
-  if (val) calendarMonth.value = new Date(val.getFullYear(), val.getMonth(), 1)
+  if (val)
+    calendarMonth.value = new Date(val.getFullYear(), val.getMonth(), 1)
 })
 
 function formatDate(date: Date | null): string {
-  if (!date) return ''
+  if (!date)
+    return ''
   const pad = (n: number) => String(n).padStart(2, '0')
   return props.format
     .replace('YYYY', String(date.getFullYear()))
@@ -47,16 +49,19 @@ function onSelect(date: Date | null) {
 }
 
 function toggle() {
-  if (!props.disabled) isOpen.value = !isOpen.value
+  if (!props.disabled)
+    isOpen.value = !isOpen.value
 }
 
 function onOutside(e: MouseEvent) {
   const target = e.target as HTMLElement
-  if (!target.closest('[data-datepicker]')) isOpen.value = false
+  if (!target.closest('[data-datepicker]'))
+    isOpen.value = false
 }
 
 watch(isOpen, (val) => {
-  if (val) setTimeout(() => document.addEventListener('mousedown', onOutside), 0)
+  if (val)
+    setTimeout(() => document.addEventListener('mousedown', onOutside), 0)
   else document.removeEventListener('mousedown', onOutside)
 })
 

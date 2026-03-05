@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onUnmounted } from 'vue'
+import { onUnmounted, ref } from 'vue'
 import { cn } from '../utils/cn'
 
 export interface DsContextMenuItem {
@@ -35,8 +35,10 @@ function openMenu(e: MouseEvent) {
     let y = e.clientY
     const menuW = 200
     const menuH = 250
-    if (x + menuW > vw) x = vw - menuW - 8
-    if (y + menuH > vh) y = vh - menuH - 8
+    if (x + menuW > vw)
+      x = vw - menuW - 8
+    if (y + menuH > vh)
+      y = vh - menuH - 8
 
     position.value = { x, y }
     isOpen.value = true
@@ -48,7 +50,8 @@ function closeMenu() {
 }
 
 function runAction(item: DsContextMenuItem) {
-  if (item.disabled || item.type === 'separator') return
+  if (item.disabled || item.type === 'separator')
+    return
   item.action?.()
   closeMenu()
 }
@@ -60,7 +63,8 @@ function onDocumentClick(e: MouseEvent) {
 }
 
 function onKeydown(e: KeyboardEvent) {
-  if (e.key === 'Escape') closeMenu()
+  if (e.key === 'Escape')
+    closeMenu()
 }
 
 // Add/remove global listeners
@@ -83,14 +87,14 @@ onUnmounted(removeListeners)
     class="relative"
     @contextmenu="(e) => { addListeners(); openMenu(e); }"
   >
-    <slot />
+    <slot></slot>
 
     <Teleport to="body">
       <Transition name="ctx-pop">
         <div
           v-if="isOpen"
           ref="menuRef"
-          :style="{ position: 'fixed', top: position.y + 'px', left: position.x + 'px', zIndex: 9999 }"
+          :style="{ position: 'fixed', top: `${position.y}px`, left: `${position.x}px`, zIndex: 9999 }"
           :class="cn(
             'min-w-48 rounded-ds-lg border border-ds-border bg-ds-bg-elevated shadow-ds-xl py-1 overflow-hidden',
             props.class,
@@ -102,7 +106,7 @@ onUnmounted(removeListeners)
               v-if="item.type === 'separator'"
               class="my-1 h-px bg-ds-border mx-2"
               role="separator"
-            />
+            ></div>
             <button
               v-else
               type="button"

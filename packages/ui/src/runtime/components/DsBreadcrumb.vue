@@ -36,7 +36,7 @@ const props = defineProps<DsBreadcrumbProps>()
         <span
           v-if="index === items.length - 1"
           class="font-medium text-ds-fg"
-          :aria-current="'page'"
+          aria-current="page"
         >
           {{ item.label }}
         </span>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onBeforeUnmount, nextTick } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import { cn } from '../utils/cn'
 
 export interface DsDropdownItem {
@@ -39,7 +39,8 @@ const menuRef = ref<HTMLElement | null>(null)
 const focusedIndex = ref(-1)
 
 function open() {
-  if (props.disabled) return
+  if (props.disabled)
+    return
   isOpen.value = true
   focusedIndex.value = -1
   emit('open')
@@ -61,13 +62,15 @@ function toggle() {
 }
 
 function selectItem(item: DsDropdownItem) {
-  if (item.disabled) return
+  if (item.disabled)
+    return
   emit('select', item)
   close()
 }
 
 function handleKeydown(event: KeyboardEvent) {
-  if (!isOpen.value) return
+  if (!isOpen.value)
+    return
 
   const items = Array.from(
     menuRef.value?.querySelectorAll<HTMLElement>('[role="menuitem"]:not([aria-disabled])') ?? [],
@@ -123,10 +126,10 @@ const menuPlacementClass = computed(() => {
   const map: Record<NonNullable<DsDropdownProps['placement']>, string> = {
     'bottom-start': 'top-full left-0 mt-1',
     'bottom-end': 'top-full right-0 mt-1',
-    bottom: 'top-full left-1/2 -translate-x-1/2 mt-1',
+    'bottom': 'top-full left-1/2 -translate-x-1/2 mt-1',
     'top-start': 'bottom-full left-0 mb-1',
     'top-end': 'bottom-full right-0 mb-1',
-    top: 'bottom-full left-1/2 -translate-x-1/2 mb-1',
+    'top': 'bottom-full left-1/2 -translate-x-1/2 mb-1',
   }
   return map[props.placement ?? 'bottom-start']
 })
@@ -139,7 +142,7 @@ const menuPlacementClass = computed(() => {
       ref="triggerRef"
       @click="toggle"
     >
-      <slot name="trigger" :open="isOpen" :toggle="toggle" />
+      <slot name="trigger" :open="isOpen" :toggle="toggle"></slot>
     </div>
 
     <!-- Menu -->
@@ -161,10 +164,10 @@ const menuPlacementClass = computed(() => {
           props.class,
         )"
         role="menu"
-        :aria-orientation="'vertical'"
+        aria-orientation="vertical"
       >
         <!-- Default slot (custom content) -->
-        <slot v-if="$slots.default" />
+        <slot v-if="$slots.default"></slot>
 
         <!-- Items list -->
         <template v-else>
@@ -174,7 +177,7 @@ const menuPlacementClass = computed(() => {
               v-if="item.divider"
               class="my-1 h-px bg-ds-border-muted"
               role="separator"
-            />
+            ></div>
 
             <!-- Menu item -->
             <button
@@ -194,7 +197,7 @@ const menuPlacementClass = computed(() => {
               :aria-disabled="item.disabled ? true : undefined"
               @click="selectItem(item)"
             >
-              <slot name="item-icon" :item="item" />
+              <slot name="item-icon" :item="item"></slot>
               {{ item.label }}
             </button>
           </template>

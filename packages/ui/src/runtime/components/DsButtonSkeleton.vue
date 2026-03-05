@@ -45,5 +45,5 @@ const classes = computed(() =>
 </script>
 
 <template>
-  <div :class="classes" aria-hidden="true" role="presentation" />
+  <div :class="classes" aria-hidden="true" role="presentation"></div>
 </template>

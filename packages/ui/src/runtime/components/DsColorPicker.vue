@@ -1,14 +1,8 @@
 <script lang="ts">
-const DEFAULT_SWATCHES = [
-  '#ef4444', '#f97316', '#f59e0b', '#84cc16',
-  '#22c55e', '#06b6d4', '#3b82f6', '#6366f1',
-  '#8b5cf6', '#a855f7', '#7f00ff', '#ec4899',
-  '#f43f5e', '#14b8a6', '#64748b', '#000000',
-]
 </script>
 
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { cn } from '../utils/cn'
 
 export interface DsColorPickerProps {
@@ -25,20 +19,41 @@ const props = withDefaults(defineProps<DsColorPickerProps>(), {
   disabled: false,
 })
 
-const effectiveSwatches = computed(() => props.swatches ?? DEFAULT_SWATCHES)
-
 const emit = defineEmits<{
   (e: 'update:modelValue', val: string): void
 }>()
 
+const DEFAULT_SWATCHES = [
+  '#ef4444',
+  '#f97316',
+  '#f59e0b',
+  '#84cc16',
+  '#22c55e',
+  '#06b6d4',
+  '#3b82f6',
+  '#6366f1',
+  '#8b5cf6',
+  '#a855f7',
+  '#7f00ff',
+  '#ec4899',
+  '#f43f5e',
+  '#14b8a6',
+  '#64748b',
+  '#000000',
+]
+
+const effectiveSwatches = computed(() => props.swatches ?? DEFAULT_SWATCHES)
+
 const inputValue = ref(props.modelValue ?? '#7f00ff')
 
 watch(() => props.modelValue, (val) => {
-  if (val) inputValue.value = val
+  if (val)
+    inputValue.value = val
 })
 
 function selectSwatch(color: string) {
-  if (props.disabled) return
+  if (props.disabled)
+    return
   inputValue.value = color
   emit('update:modelValue', color)
 }
@@ -46,7 +61,8 @@ function selectSwatch(color: string) {
 function onInput(e: Event) {
   const val = (e.target as HTMLInputElement).value
   inputValue.value = val
-  if (/^#[0-9A-Fa-f]{6}$/.test(val)) emit('update:modelValue', val)
+  if (/^#[0-9A-F]{6}$/i.test(val))
+    emit('update:modelValue', val)
 }
 
 function onNativeInput(e: Event) {
@@ -70,7 +86,7 @@ function onNativeInput(e: Event) {
         :class="modelValue === color ? 'border-ds-fg scale-110 shadow-sm' : 'border-transparent hover:scale-110'"
         :aria-pressed="modelValue === color"
         @click="selectSwatch(color)"
-      />
+      ></button>
     </div>
 
     <!-- Input row -->
@@ -83,11 +99,11 @@ function onNativeInput(e: Event) {
           :disabled="disabled"
           class="sr-only"
           @input="onNativeInput"
-        />
+        >
         <span
           class="flex size-9 items-center justify-center rounded-ds-md border border-ds-border overflow-hidden cursor-pointer"
           :style="{ backgroundColor: modelValue }"
-        />
+        ></span>
       </label>
 
       <!-- Hex input -->
@@ -99,7 +115,7 @@ function onNativeInput(e: Event) {
         class="h-9 flex-1 rounded-ds-md border border-ds-border bg-ds-bg px-3 text-sm font-mono text-ds-fg focus:outline-none focus:ring-2 focus:ring-ds-ring disabled:opacity-50 disabled:cursor-not-allowed"
         placeholder="#000000"
         @input="onInput"
-      />
+      >
     </div>
   </div>
 </template>

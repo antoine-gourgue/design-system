@@ -1,4 +1,4 @@
-import { ref, readonly } from 'vue'
+import { readonly, ref } from 'vue'
 
 export type ToastVariant = 'default' | 'success' | 'error' | 'warning' | 'info'
 
@@ -57,8 +57,9 @@ export function useToast() {
   }
 
   function dismiss(id: string): void {
-    const idx = toasts.value.findIndex((t) => t.id === id)
-    if (idx !== -1) toasts.value.splice(idx, 1)
+    const idx = toasts.value.findIndex(t => t.id === id)
+    if (idx !== -1)
+      toasts.value.splice(idx, 1)
   }
 
   function dismissAll(): void {

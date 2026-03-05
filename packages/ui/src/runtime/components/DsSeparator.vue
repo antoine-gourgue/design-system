@@ -23,7 +23,7 @@ const classes = computed(() =>
 <template>
   <div
     :class="classes"
-    :role="'separator'"
+    role="separator"
     :aria-orientation="orientation"
-  />
+  ></div>
 </template>

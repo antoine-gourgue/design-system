@@ -26,12 +26,15 @@ function toggle(value: string) {
   if (props.type === 'single') {
     if (openItems.value.has(value)) {
       openItems.value = new Set()
-    } else {
+    }
+    else {
       openItems.value = new Set([value])
     }
-  } else {
+  }
+  else {
     const next = new Set(openItems.value)
-    if (next.has(value)) next.delete(value)
+    if (next.has(value))
+      next.delete(value)
     else next.add(value)
     openItems.value = next
   }
@@ -42,6 +45,6 @@ provide('accordion', { openItems, toggle })
 
 <template>
   <div :class="cn('w-full font-ds', props.class)">
-    <slot />
+    <slot></slot>
   </div>
 </template>

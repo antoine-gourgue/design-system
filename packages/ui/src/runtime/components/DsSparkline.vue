@@ -44,7 +44,7 @@ function yAt(val: number): number {
 
 // For line chart
 const linePath = computed(() =>
-  props.data.map((v, i) => `${i === 0 ? 'M' : 'L'} ${xAt(i).toFixed(1)} ${yAt(v).toFixed(1)}`).join(' ')
+  props.data.map((v, i) => `${i === 0 ? 'M' : 'L'} ${xAt(i).toFixed(1)} ${yAt(v).toFixed(1)}`).join(' '),
 )
 
 const areaPath = computed(() => {
@@ -54,14 +54,18 @@ const areaPath = computed(() => {
 
 // Trend: is last value > first?
 const trend = computed(() => {
-  if (props.data.length < 2) return 0
+  if (props.data.length < 2)
+    return 0
   return props.data[props.data.length - 1] - props.data[0]
 })
 
 const effectiveColor = computed(() => {
-  if (!props.trendColor) return props.color
-  if (trend.value > 0) return '#22c55e'
-  if (trend.value < 0) return '#ef4444'
+  if (!props.trendColor)
+    return props.color
+  if (trend.value > 0)
+    return '#22c55e'
+  if (trend.value < 0)
+    return '#ef4444'
   return '#64748b'
 })
 

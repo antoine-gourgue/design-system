@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { inject, computed } from 'vue'
-import { DsTabsKey } from '../utils/tabs'
+import { computed, inject } from 'vue'
 import { cn } from '../utils/cn'
+import { DsTabsKey } from '../utils/tabs'
 
 export interface DsTabPanelProps {
   /** Must match the corresponding DsTab's `value` */
@@ -22,6 +22,6 @@ const isActive = computed(() => tabs?.activeTab.value === props.value)
     role="tabpanel"
     :tabindex="0"
   >
-    <slot />
+    <slot></slot>
   </div>
 </template>

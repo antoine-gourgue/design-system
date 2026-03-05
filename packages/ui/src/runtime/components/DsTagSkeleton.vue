@@ -1,5 +1,5 @@
 <script setup lang="ts">
-withDefaults(defineProps<{ count?: number; size?: 'sm' | 'md' | 'lg' }>(), { count: 3, size: 'md' })
+withDefaults(defineProps<{ count?: number, size?: 'sm' | 'md' | 'lg' }>(), { count: 3, size: 'md' })
 const heights: Record<string, string> = { sm: 'h-5', md: 'h-6', lg: 'h-7' }
 const widths = ['w-14', 'w-20', 'w-16', 'w-24', 'w-12', 'w-18']
 </script>
@@ -9,7 +9,7 @@ const widths = ['w-14', 'w-20', 'w-16', 'w-24', 'w-12', 'w-18']
     <div
       v-for="i in count"
       :key="i"
-      :class="['rounded-full bg-ds-bg-muted', heights[size], widths[(i - 1) % widths.length]]"
-    />
+      class="rounded-full bg-ds-bg-muted" :class="[heights[size], widths[(i - 1) % widths.length]]"
+    ></div>
   </div>
 </template>

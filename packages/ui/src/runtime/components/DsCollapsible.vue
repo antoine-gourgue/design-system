@@ -19,7 +19,8 @@ const emit = defineEmits<{
 }>()
 
 function toggle() {
-  if (props.disabled) return
+  if (props.disabled)
+    return
   emit('update:modelValue', !props.modelValue)
 }
 </script>
@@ -67,7 +68,7 @@ function toggle() {
       leave-to-class="opacity-0 max-h-0"
     >
       <div v-if="modelValue" class="pt-1">
-        <slot />
+        <slot></slot>
       </div>
     </Transition>
   </div>

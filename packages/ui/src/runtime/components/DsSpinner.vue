@@ -15,9 +15,9 @@ const sizeClass = computed(() => {
   switch (props.size) {
     case 'xs': return 'size-3'
     case 'sm': return 'size-4'
-    case 'md': return 'size-5'
     case 'lg': return 'size-6'
     case 'xl': return 'size-8'
+    default: return 'size-5'
   }
 })
 </script>

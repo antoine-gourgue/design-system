@@ -18,11 +18,14 @@ const visible = ref(false)
 let timer: ReturnType<typeof setTimeout> | null = null
 
 function show() {
-  timer = setTimeout(() => { visible.value = true }, props.delay)
+  timer = setTimeout(() => {
+    visible.value = true
+  }, props.delay)
 }
 
 function hide() {
-  if (timer) clearTimeout(timer)
+  if (timer)
+    clearTimeout(timer)
   visible.value = false
 }
 
@@ -52,7 +55,7 @@ const tooltipClasses = computed(() =>
     @focusin="show"
     @focusout="hide"
   >
-    <slot />
+    <slot></slot>
     <div
       :class="tooltipClasses"
       role="tooltip"

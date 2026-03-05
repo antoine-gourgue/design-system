@@ -23,12 +23,16 @@ let closeTimer: ReturnType<typeof setTimeout>
 
 function open() {
   clearTimeout(closeTimer)
-  openTimer = setTimeout(() => { isOpen.value = true }, props.openDelay)
+  openTimer = setTimeout(() => {
+    isOpen.value = true
+  }, props.openDelay)
 }
 
 function close() {
   clearTimeout(openTimer)
-  closeTimer = setTimeout(() => { isOpen.value = false }, props.closeDelay)
+  closeTimer = setTimeout(() => {
+    isOpen.value = false
+  }, props.closeDelay)
 }
 
 const positionClasses: Record<string, string> = {
@@ -47,7 +51,7 @@ const posClass = positionClasses[`${props.side}-${props.align}`] ?? 'top-full mt
 
 <template>
   <div class="relative inline-flex" @mouseenter="open" @mouseleave="close">
-    <slot name="trigger" />
+    <slot name="trigger"></slot>
 
     <Transition name="hovercard">
       <div
@@ -57,7 +61,7 @@ const posClass = positionClasses[`${props.side}-${props.align}`] ?? 'top-full mt
         @mouseenter="open"
         @mouseleave="close"
       >
-        <slot />
+        <slot></slot>
       </div>
     </Transition>
   </div>

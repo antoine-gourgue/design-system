@@ -36,7 +36,7 @@ const dotClasses: Record<TimelineStatus, string> = {
         v-if="i < items.length - 1"
         class="absolute left-[13px] top-7 bottom-0 w-px bg-ds-border"
         aria-hidden="true"
-      />
+      ></div>
 
       <!-- Dot -->
       <div
@@ -51,9 +51,9 @@ const dotClasses: Record<TimelineStatus, string> = {
           <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
         </svg>
         <!-- Current dot -->
-        <span v-else-if="item.status === 'current'" class="size-2 rounded-full bg-ds-primary-fg" />
+        <span v-else-if="item.status === 'current'" class="size-2 rounded-full bg-ds-primary-fg"></span>
         <!-- Pending circle -->
-        <span v-else class="size-2 rounded-full bg-ds-border" />
+        <span v-else class="size-2 rounded-full bg-ds-border"></span>
       </div>
 
       <!-- Content -->

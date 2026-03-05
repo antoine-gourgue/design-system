@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { cn } from '../utils/cn'
 
 export interface PhoneCountry {
@@ -15,6 +15,16 @@ export interface DsPhoneInputProps {
   disabled?: boolean
   class?: string
 }
+
+const props = withDefaults(defineProps<DsPhoneInputProps>(), {
+  modelValue: '',
+  placeholder: '6 00 00 00 00',
+  disabled: false,
+})
+
+const emit = defineEmits<{
+  (e: 'update:modelValue', val: string): void
+}>()
 
 const COUNTRIES: PhoneCountry[] = [
   { code: 'FR', dial: '+33', flag: '🇫🇷', name: 'France' },
@@ -35,16 +45,6 @@ const COUNTRIES: PhoneCountry[] = [
   { code: 'MX', dial: '+52', flag: '🇲🇽', name: 'Mexico' },
 ]
 
-const props = withDefaults(defineProps<DsPhoneInputProps>(), {
-  modelValue: '',
-  placeholder: '6 00 00 00 00',
-  disabled: false,
-})
-
-const emit = defineEmits<{
-  (e: 'update:modelValue', val: string): void
-}>()
-
 const selectedCountry = ref<PhoneCountry>(COUNTRIES[0])
 const phoneNumber = ref('')
 const dropdownOpen = ref(false)
@@ -53,10 +53,10 @@ const searchQuery = ref('')
 const filteredCountries = computed(() =>
   searchQuery.value
     ? COUNTRIES.filter(c =>
-        c.name.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
-        c.dial.includes(searchQuery.value)
+        c.name.toLowerCase().includes(searchQuery.value.toLowerCase())
+        || c.dial.includes(searchQuery.value),
       )
-    : COUNTRIES
+    : COUNTRIES,
 )
 
 function selectCountry(country: PhoneCountry) {
@@ -83,7 +83,8 @@ function onOutside(e: MouseEvent) {
 }
 
 watch(dropdownOpen, (val) => {
-  if (val) setTimeout(() => document.addEventListener('mousedown', onOutside), 0)
+  if (val)
+    setTimeout(() => document.addEventListener('mousedown', onOutside), 0)
   else document.removeEventListener('mousedown', onOutside)
 })
 </script>
@@ -113,7 +114,7 @@ watch(dropdownOpen, (val) => {
       :disabled="disabled"
       class="flex-1 bg-transparent px-3 py-2 text-sm text-ds-fg placeholder:text-ds-fg-muted focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
       @input="onInput"
-    />
+    >
 
     <!-- Country dropdown -->
     <Transition name="phone-drop">
@@ -128,7 +129,7 @@ watch(dropdownOpen, (val) => {
             type="search"
             placeholder="Search country..."
             class="w-full h-8 px-3 text-sm rounded-ds-md border border-ds-border bg-ds-bg text-ds-fg placeholder:text-ds-fg-muted focus:outline-none focus:ring-1 focus:ring-ds-ring"
-          />
+          >
         </div>
         <!-- Country list -->
         <ul class="max-h-48 overflow-y-auto py-1">

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, watch, nextTick, onUnmounted } from 'vue'
+import { computed, nextTick, onUnmounted, ref, watch } from 'vue'
 import { cn } from '../utils/cn'
 
 export interface DsCommandItem {
@@ -49,7 +49,8 @@ const grouped = computed(() => {
   const groups: Record<string, DsCommandItem[]> = {}
   for (const item of filtered) {
     const g = item.group ?? 'Actions'
-    if (!groups[g]) groups[g] = []
+    if (!groups[g])
+      groups[g] = []
     groups[g].push(item)
   }
   return groups
@@ -63,8 +64,12 @@ function select(item: DsCommandItem) {
 }
 
 function onKeydown(e: KeyboardEvent) {
-  if (!props.modelValue) return
-  if (e.key === 'Escape') { close(); return }
+  if (!props.modelValue)
+    return
+  if (e.key === 'Escape') {
+    close()
+    return
+  }
   if (e.key === 'ArrowDown') {
     e.preventDefault()
     activeIndex.value = Math.min(activeIndex.value + 1, flatFiltered.value.length - 1)
@@ -76,7 +81,8 @@ function onKeydown(e: KeyboardEvent) {
   if (e.key === 'Enter') {
     e.preventDefault()
     const item = flatFiltered.value[activeIndex.value]
-    if (item) select(item)
+    if (item)
+      select(item)
   }
 }
 
@@ -88,13 +94,16 @@ watch(() => props.modelValue, async (val) => {
     document.body.style.overflow = 'hidden'
     await nextTick()
     inputRef.value?.focus()
-  } else {
+  }
+  else {
     document.removeEventListener('keydown', onKeydown)
     document.body.style.overflow = ''
   }
 })
 
-watch(query, () => { activeIndex.value = 0 })
+watch(query, () => {
+  activeIndex.value = 0
+})
 
 onUnmounted(() => {
   document.removeEventListener('keydown', onKeydown)
@@ -113,7 +122,7 @@ onUnmounted(() => {
         aria-label="Command palette"
       >
         <!-- Backdrop -->
-        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" aria-hidden="true" @click="close" />
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" aria-hidden="true" @click="close"></div>
 
         <!-- Panel -->
         <div
@@ -134,7 +143,9 @@ onUnmounted(() => {
               :placeholder="placeholder"
               class="flex-1 bg-transparent text-sm text-ds-fg placeholder:text-ds-fg-subtle outline-none"
             >
-            <DsKbd size="sm">Esc</DsKbd>
+            <DsKbd size="sm">
+              Esc
+            </DsKbd>
           </div>
 
           <!-- Results -->
@@ -145,7 +156,7 @@ onUnmounted(() => {
                   {{ groupName }}
                 </div>
                 <button
-                  v-for="(item, idx) in groupItems"
+                  v-for="item in groupItems"
                   :key="item.id"
                   type="button"
                   :class="cn(

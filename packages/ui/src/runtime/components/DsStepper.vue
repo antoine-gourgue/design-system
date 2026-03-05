@@ -26,8 +26,10 @@ const emit = defineEmits<{
 
 function stepStatus(index: number): 'done' | 'current' | 'pending' {
   const current = props.modelValue ?? 0
-  if (index < current) return 'done'
-  if (index === current) return 'current'
+  if (index < current)
+    return 'done'
+  if (index === current)
+    return 'current'
   return 'pending'
 }
 
@@ -57,7 +59,7 @@ const isHorizontal = computed(() => props.orientation === 'horizontal')
         class="absolute left-0 right-0 top-3.5 -translate-y-px h-px bg-ds-border pointer-events-none"
         style="width: calc(100% - 3rem); left: calc(-50% + 1.5rem)"
         aria-hidden="true"
-      />
+      ></div>
 
       <!-- Step indicator -->
       <div class="relative z-10 flex items-center justify-center" :class="isHorizontal ? 'mb-2' : ''">
@@ -85,7 +87,7 @@ const isHorizontal = computed(() => props.orientation === 'horizontal')
           v-if="!isHorizontal && i < steps.length - 1"
           class="absolute top-full left-1/2 -translate-x-px w-px h-8 bg-ds-border"
           aria-hidden="true"
-        />
+        ></div>
       </div>
 
       <!-- Label + description -->

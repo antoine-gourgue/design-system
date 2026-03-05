@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { computed, ref } from 'vue'
 import { cn } from '../utils/cn'
 
 export interface DsFileUploadProps {
@@ -28,9 +28,11 @@ const inputRef = ref<HTMLInputElement | null>(null)
 const errors = ref<string[]>([])
 
 function formatBytes(bytes: number): string {
-  if (bytes < 1024) return bytes + ' B'
-  if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB'
-  return (bytes / (1024 * 1024)).toFixed(1) + ' MB'
+  if (bytes < 1024)
+    return `${bytes} B`
+  if (bytes < 1024 * 1024)
+    return `${(bytes / 1024).toFixed(1)} KB`
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`
 }
 
 function validateAndAdd(newFiles: File[]) {
@@ -44,9 +46,11 @@ function validateAndAdd(newFiles: File[]) {
     }
     if (props.accept) {
       const acceptedTypes = props.accept.split(',').map(s => s.trim())
-      const isAccepted = acceptedTypes.some(type => {
-        if (type.startsWith('.')) return file.name.endsWith(type)
-        if (type.endsWith('/*')) return file.type.startsWith(type.replace('/*', ''))
+      const isAccepted = acceptedTypes.some((type) => {
+        if (type.startsWith('.'))
+          return file.name.endsWith(type)
+        if (type.endsWith('/*'))
+          return file.type.startsWith(type.replace('/*', ''))
         return file.type === type
       })
       if (!isAccepted) {
@@ -66,12 +70,14 @@ function validateAndAdd(newFiles: File[]) {
 function onInputChange(e: Event) {
   const files = Array.from((e.target as HTMLInputElement).files ?? [])
   validateAndAdd(files)
-  if (inputRef.value) inputRef.value.value = ''
+  if (inputRef.value)
+    inputRef.value.value = ''
 }
 
 function onDrop(e: DragEvent) {
   isDragging.value = false
-  if (props.disabled) return
+  if (props.disabled)
+    return
   const files = Array.from(e.dataTransfer?.files ?? [])
   validateAndAdd(files)
 }
@@ -83,7 +89,8 @@ function removeFile(index: number) {
 }
 
 function openPicker() {
-  if (!props.disabled) inputRef.value?.click()
+  if (!props.disabled)
+    inputRef.value?.click()
 }
 </script>
 
@@ -96,7 +103,7 @@ function openPicker() {
       :class="cn(
         'relative flex flex-col items-center justify-center gap-3 rounded-ds-xl border-2 border-dashed px-6 py-10 transition-colors text-center cursor-pointer',
         isDragging ? 'border-ds-primary bg-ds-primary-subtle' : 'border-ds-border hover:border-ds-primary/60 hover:bg-ds-bg-muted',
-        disabled ? 'opacity-50 cursor-not-allowed pointer-events-none' : ''
+        disabled ? 'opacity-50 cursor-not-allowed pointer-events-none' : '',
       )"
       @click="openPicker"
       @keydown.enter="openPicker"
@@ -113,7 +120,7 @@ function openPicker() {
         :multiple="multiple"
         :disabled="disabled"
         @change="onInputChange"
-      />
+      >
 
       <div class="flex size-12 items-center justify-center rounded-full bg-ds-bg-muted border border-ds-border">
         <svg xmlns="http://www.w3.org/2000/svg" class="size-6 text-ds-fg-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
@@ -126,14 +133,20 @@ function openPicker() {
           <span class="text-ds-primary underline underline-offset-2">Click to upload</span>
           or drag and drop
         </p>
-        <p v-if="accept" class="mt-1 text-xs text-ds-fg-muted">{{ accept }}</p>
-        <p v-if="maxSize" class="mt-0.5 text-xs text-ds-fg-muted">Max {{ formatBytes(maxSize) }}</p>
+        <p v-if="accept" class="mt-1 text-xs text-ds-fg-muted">
+          {{ accept }}
+        </p>
+        <p v-if="maxSize" class="mt-0.5 text-xs text-ds-fg-muted">
+          Max {{ formatBytes(maxSize) }}
+        </p>
       </div>
     </div>
 
     <!-- Errors -->
     <div v-if="errors.length" class="space-y-1">
-      <p v-for="err in errors" :key="err" class="text-xs text-ds-danger">{{ err }}</p>
+      <p v-for="err in errors" :key="err" class="text-xs text-ds-danger">
+        {{ err }}
+      </p>
     </div>
 
     <!-- File list -->
@@ -147,8 +160,12 @@ function openPicker() {
           <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
         </svg>
         <div class="flex-1 min-w-0">
-          <p class="text-sm font-medium text-ds-fg truncate">{{ file.name }}</p>
-          <p class="text-xs text-ds-fg-muted">{{ formatBytes(file.size) }}</p>
+          <p class="text-sm font-medium text-ds-fg truncate">
+            {{ file.name }}
+          </p>
+          <p class="text-xs text-ds-fg-muted">
+            {{ formatBytes(file.size) }}
+          </p>
         </div>
         <button
           type="button"

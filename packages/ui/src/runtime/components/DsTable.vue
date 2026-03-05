@@ -81,13 +81,13 @@ const thPadding = computed(() => props.dense ? 'px-4 py-2.5' : 'px-5 py-3.5')
               {{ col.label }}
               <span v-if="col.sortable" class="inline-flex flex-col gap-0.5 opacity-40">
                 <svg
-                  :class="['size-2.5 transition-opacity', sortBy === col.key && sortDir === 'asc' ? 'opacity-100 text-ds-primary' : '']"
+                  class="size-2.5 transition-opacity" :class="[sortBy === col.key && sortDir === 'asc' ? 'opacity-100 text-ds-primary' : '']"
                   xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
                 >
                   <path d="M8 3l4 6H4l4-6z" />
                 </svg>
                 <svg
-                  :class="['size-2.5 transition-opacity', sortBy === col.key && sortDir === 'desc' ? 'opacity-100 text-ds-primary' : '']"
+                  class="size-2.5 transition-opacity" :class="[sortBy === col.key && sortDir === 'desc' ? 'opacity-100 text-ds-primary' : '']"
                   xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
                 >
                   <path d="M8 13l-4-6h8l-4 6z" />

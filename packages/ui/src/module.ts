@@ -1,8 +1,8 @@
 import {
-  defineNuxtModule,
   addComponent,
   addImports,
   createResolver,
+  defineNuxtModule,
 } from '@nuxt/kit'
 
 export interface ModuleOptions {

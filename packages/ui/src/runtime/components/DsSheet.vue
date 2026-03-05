@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { watch, onUnmounted } from 'vue'
+import { onUnmounted, watch } from 'vue'
 import { cn } from '../utils/cn'
 
 export interface DsSheetProps {
@@ -27,13 +27,15 @@ function close() {
 
 // ESC to close
 function onKeydown(e: KeyboardEvent) {
-  if (e.key === 'Escape' && props.modelValue) close()
+  if (e.key === 'Escape' && props.modelValue)
+    close()
 }
 watch(() => props.modelValue, (val) => {
   if (val) {
     document.addEventListener('keydown', onKeydown)
     document.body.style.overflow = 'hidden'
-  } else {
+  }
+  else {
     document.removeEventListener('keydown', onKeydown)
     document.body.style.overflow = ''
   }
@@ -76,13 +78,6 @@ const panelBase: Record<string, string> = {
   top: 'top-0 left-0 w-full flex-col',
   bottom: 'bottom-0 left-0 w-full flex-col',
 }
-
-const enterFrom: Record<string, string> = {
-  left: '-translate-x-full',
-  right: 'translate-x-full',
-  top: '-translate-y-full',
-  bottom: 'translate-y-full',
-}
 </script>
 
 <template>
@@ -100,7 +95,7 @@ const enterFrom: Record<string, string> = {
           class="absolute inset-0 bg-black/50 backdrop-blur-sm"
           aria-hidden="true"
           @click="close"
-        />
+        ></div>
 
         <!-- Panel -->
         <Transition :name="`sheet-slide-${side}`">
@@ -119,9 +114,13 @@ const enterFrom: Record<string, string> = {
             <!-- Header -->
             <div class="flex items-start justify-between gap-4 px-6 py-5 border-b border-ds-border">
               <div>
-                <h2 v-if="title" class="text-base font-semibold text-ds-fg">{{ title }}</h2>
-                <p v-if="description" class="mt-0.5 text-sm text-ds-fg-muted">{{ description }}</p>
-                <slot v-if="!title && !description" name="header" />
+                <h2 v-if="title" class="text-base font-semibold text-ds-fg">
+                  {{ title }}
+                </h2>
+                <p v-if="description" class="mt-0.5 text-sm text-ds-fg-muted">
+                  {{ description }}
+                </p>
+                <slot v-if="!title && !description" name="header"></slot>
               </div>
               <button
                 type="button"
@@ -137,12 +136,12 @@ const enterFrom: Record<string, string> = {
 
             <!-- Body -->
             <div class="flex-1 overflow-y-auto px-6 py-5">
-              <slot />
+              <slot></slot>
             </div>
 
             <!-- Footer -->
             <div v-if="$slots.footer" class="border-t border-ds-border px-6 py-4 flex items-center gap-3">
-              <slot name="footer" />
+              <slot name="footer"></slot>
             </div>
           </div>
         </Transition>

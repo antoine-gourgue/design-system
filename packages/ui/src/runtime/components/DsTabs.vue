@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, provide, computed } from 'vue'
+import { computed, provide, ref } from 'vue'
 import { DsTabsKey } from '../utils/tabs'
 
 export interface DsTabsProps {
@@ -18,7 +18,7 @@ const props = withDefaults(defineProps<DsTabsProps>(), {
 
 const emit = defineEmits<{
   'update:modelValue': [value: string]
-  change: [value: string]
+  'change': [value: string]
 }>()
 
 const internalActive = ref(props.defaultValue ?? props.modelValue ?? '')
@@ -47,6 +47,6 @@ provide(DsTabsKey, {
 
 <template>
   <div :class="props.class" class="w-full">
-    <slot />
+    <slot></slot>
   </div>
 </template>

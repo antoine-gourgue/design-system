@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { computed, inject, ref } from 'vue'
+import type { ref } from 'vue'
+import { computed, inject } from 'vue'
 import { cn } from '../utils/cn'
 
 export interface DsAccordionItemProps {
@@ -68,7 +69,7 @@ function handleToggle() {
       )"
     >
       <div class="pb-4 text-sm text-ds-fg-muted leading-relaxed">
-        <slot />
+        <slot></slot>
       </div>
     </div>
   </div>

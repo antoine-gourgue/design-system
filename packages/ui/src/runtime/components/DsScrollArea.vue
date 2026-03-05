@@ -24,14 +24,14 @@ const overflowClass: Record<string, string> = {
     :class="cn(
       'relative rounded-ds-md ds-scroll-area',
       overflowClass[orientation],
-      props.class
+      props.class,
     )"
     :style="{
-      maxHeight: maxHeight,
-      maxWidth: maxWidth,
+      maxHeight,
+      maxWidth,
     }"
   >
-    <slot />
+    <slot></slot>
   </div>
 </template>
 

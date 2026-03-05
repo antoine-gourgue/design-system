@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { watch, onUnmounted } from 'vue'
+import { onUnmounted, watch } from 'vue'
 import { cn } from '../utils/cn'
 import DsButton from './DsButton.vue'
 
@@ -30,19 +30,28 @@ const emit = defineEmits<{
   (e: 'cancel'): void
 }>()
 
-function close() { emit('update:modelValue', false) }
-function confirm() { emit('confirm') }
-function cancel() { emit('cancel'); close() }
+function close() {
+  emit('update:modelValue', false)
+}
+function confirm() {
+  emit('confirm')
+}
+function cancel() {
+  emit('cancel')
+  close()
+}
 
 function onKeydown(e: KeyboardEvent) {
-  if (e.key === 'Escape' && props.modelValue) cancel()
+  if (e.key === 'Escape' && props.modelValue)
+    cancel()
 }
 
 watch(() => props.modelValue, (val) => {
   if (val) {
     document.addEventListener('keydown', onKeydown)
     document.body.style.overflow = 'hidden'
-  } else {
+  }
+  else {
     document.removeEventListener('keydown', onKeydown)
     document.body.style.overflow = ''
   }
@@ -65,7 +74,7 @@ onUnmounted(() => {
         :aria-describedby="description"
       >
         <!-- Backdrop -->
-        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" aria-hidden="true" @click="cancel" />
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" aria-hidden="true" @click="cancel"></div>
 
         <!-- Panel -->
         <Transition name="alert-dialog-scale">
@@ -85,7 +94,9 @@ onUnmounted(() => {
 
             <!-- Text -->
             <div>
-              <h2 class="text-base font-semibold text-ds-fg leading-snug">{{ title }}</h2>
+              <h2 class="text-base font-semibold text-ds-fg leading-snug">
+                {{ title }}
+              </h2>
               <p class="mt-1 text-sm text-ds-fg-muted leading-relaxed">
                 <slot>{{ description }}</slot>
               </p>
@@ -93,7 +104,9 @@ onUnmounted(() => {
 
             <!-- Actions -->
             <div class="flex items-center justify-end gap-3 pt-2">
-              <DsButton variant="ghost" :disabled="loading" @click="cancel">{{ cancelLabel }}</DsButton>
+              <DsButton variant="ghost" :disabled="loading" @click="cancel">
+                {{ cancelLabel }}
+              </DsButton>
               <DsButton
                 :variant="variant === 'destructive' ? 'destructive' : 'primary'"
                 :loading="loading"

@@ -1,7 +1,11 @@
 <script setup lang="ts">
-import { computed } from 'vue'
 import { cva, type VariantProps } from 'class-variance-authority'
+import { computed } from 'vue'
 import { cn } from '../utils/cn'
+
+const props = withDefaults(defineProps<DsSkeletonProps>(), {
+  shape: 'rectangle',
+})
 
 const skeletonVariants = cva(
   [
@@ -40,10 +44,6 @@ export interface DsSkeletonProps {
   class?: string
 }
 
-const props = withDefaults(defineProps<DsSkeletonProps>(), {
-  shape: 'rectangle',
-})
-
 const classes = computed(() =>
   cn(
     skeletonVariants({ shape: props.shape }),
@@ -69,5 +69,5 @@ const styles = computed(() => {
     :style="styles"
     aria-hidden="true"
     role="presentation"
-  />
+  ></div>
 </template>

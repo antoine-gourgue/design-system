@@ -24,9 +24,9 @@ const props = withDefaults(defineProps<DsTextareaProps>(), {
 
 const emit = defineEmits<{
   'update:modelValue': [value: string]
-  change: [event: Event]
-  blur: [event: FocusEvent]
-  focus: [event: FocusEvent]
+  'change': [event: Event]
+  'blur': [event: FocusEvent]
+  'focus': [event: FocusEvent]
 }>()
 
 const wrapperClasses = computed(() =>
@@ -66,6 +66,6 @@ const resizeClass = computed(() => ({
       @change="emit('change', $event)"
       @blur="emit('blur', $event)"
       @focus="emit('focus', $event)"
-    />
+    ></textarea>
   </div>
 </template>

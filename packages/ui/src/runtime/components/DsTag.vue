@@ -1,7 +1,18 @@
 <script setup lang="ts">
-import { computed } from 'vue'
 import { cva, type VariantProps } from 'class-variance-authority'
+import { computed } from 'vue'
 import { cn } from '../utils/cn'
+
+const props = withDefaults(defineProps<DsTagProps>(), {
+  variant: 'default',
+  size: 'md',
+  removable: false,
+  disabled: false,
+})
+
+const emit = defineEmits<{
+  (e: 'remove'): void
+}>()
 
 const tagVariants = cva(
   'inline-flex items-center gap-1.5 rounded-full font-medium transition-colors select-none',
@@ -35,23 +46,12 @@ export interface DsTagProps {
   class?: string
 }
 
-const props = withDefaults(defineProps<DsTagProps>(), {
-  variant: 'default',
-  size: 'md',
-  removable: false,
-  disabled: false,
-})
-
-const emit = defineEmits<{
-  (e: 'remove'): void
-}>()
-
 const classes = computed(() => cn(tagVariants({ variant: props.variant, size: props.size }), props.class))
 </script>
 
 <template>
   <span :class="classes">
-    <slot />
+    <slot></slot>
     <button
       v-if="removable && !disabled"
       type="button"

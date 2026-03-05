@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const props = withDefaults(defineProps<{ showTitle?: boolean; class?: string }>(), { showTitle: true })
+const props = withDefaults(defineProps<{ showTitle?: boolean, class?: string }>(), { showTitle: true })
 </script>
 
 <template>
@@ -10,12 +10,12 @@ const props = withDefaults(defineProps<{ showTitle?: boolean; class?: string }>(
     role="presentation"
   >
     <!-- Icon -->
-    <div class="size-5 rounded-full bg-ds-bg-muted shrink-0 mt-0.5" />
+    <div class="size-5 rounded-full bg-ds-bg-muted shrink-0 mt-0.5"></div>
     <!-- Text -->
     <div class="flex-1 space-y-2">
-      <div v-if="showTitle" class="h-3.5 w-32 rounded-full bg-ds-bg-muted" />
-      <div class="h-3 w-full rounded-full bg-ds-bg-muted" />
-      <div class="h-3 w-4/5 rounded-full bg-ds-bg-muted" />
+      <div v-if="showTitle" class="h-3.5 w-32 rounded-full bg-ds-bg-muted"></div>
+      <div class="h-3 w-full rounded-full bg-ds-bg-muted"></div>
+      <div class="h-3 w-4/5 rounded-full bg-ds-bg-muted"></div>
     </div>
   </div>
 </template>

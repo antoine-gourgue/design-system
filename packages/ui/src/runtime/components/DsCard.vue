@@ -1,7 +1,14 @@
 <script setup lang="ts">
-import { computed } from 'vue'
 import { cva, type VariantProps } from 'class-variance-authority'
+import { computed } from 'vue'
 import { cn } from '../utils/cn'
+
+const props = withDefaults(defineProps<DsCardProps>(), {
+  shadow: 'sm',
+  radius: 'lg',
+  hoverable: false,
+  padding: 'none',
+})
 
 const cardVariants = cva(
   [
@@ -56,13 +63,6 @@ export interface DsCardProps {
   class?: string
 }
 
-const props = withDefaults(defineProps<DsCardProps>(), {
-  shadow: 'sm',
-  radius: 'lg',
-  hoverable: false,
-  padding: 'none',
-})
-
 const classes = computed(() =>
   cn(
     cardVariants({
@@ -78,6 +78,6 @@ const classes = computed(() =>
 
 <template>
   <div :class="classes">
-    <slot />
+    <slot></slot>
   </div>
 </template>

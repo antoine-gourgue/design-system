@@ -19,7 +19,7 @@ const height = computed(() => `${props.rows * 1.5 + 1.5}rem`)
 
 <template>
   <div :class="classes" aria-hidden="true" role="presentation">
-    <div v-if="hasLabel" class="h-4 w-24 rounded bg-ds-bg-muted" />
-    <div class="w-full rounded-ds-md bg-ds-bg-muted" :style="{ height: height }" />
+    <div v-if="hasLabel" class="h-4 w-24 rounded bg-ds-bg-muted"></div>
+    <div class="w-full rounded-ds-md bg-ds-bg-muted" :style="{ height }"></div>
   </div>
 </template>

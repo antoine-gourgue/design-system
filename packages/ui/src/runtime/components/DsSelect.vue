@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed } from 'vue'
 import { cva, type VariantProps } from 'class-variance-authority'
+import { computed } from 'vue'
 import { cn } from '../utils/cn'
 
 export interface DsSelectOption {
@@ -13,6 +13,17 @@ export interface DsSelectGroup {
   label: string
   options: DsSelectOption[]
 }
+
+const props = withDefaults(defineProps<DsSelectProps>(), {
+  options: () => [],
+  size: 'md',
+  error: false,
+  disabled: false,
+})
+
+const emit = defineEmits<{
+  (e: 'update:modelValue', value: string | number): void
+}>()
 
 const selectVariants = cva(
   [
@@ -48,17 +59,6 @@ export interface DsSelectProps {
   error?: boolean
   class?: string
 }
-
-const props = withDefaults(defineProps<DsSelectProps>(), {
-  options: () => [],
-  size: 'md',
-  error: false,
-  disabled: false,
-})
-
-const emit = defineEmits<{
-  (e: 'update:modelValue', value: string | number): void
-}>()
 
 const classes = computed(() =>
   cn(selectVariants({ size: props.size, error: props.error }), props.class),

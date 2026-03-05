@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { inject, computed } from 'vue'
-import { DsTabsKey } from '../utils/tabs'
+import { computed, inject } from 'vue'
 import { cn } from '../utils/cn'
+import { DsTabsKey } from '../utils/tabs'
 
 export interface DsTabProps {
   /** Unique id that matches DsTabPanel's `value` */
@@ -19,7 +19,8 @@ const isActive = computed(() => tabs?.activeTab.value === props.value)
 const variant = computed(() => tabs?.variant.value ?? 'line')
 
 function activate() {
-  if (props.disabled) return
+  if (props.disabled)
+    return
   tabs?.setActive(props.value)
 }
 
@@ -86,6 +87,6 @@ const tabClasses = computed(() => {
     @click="activate"
     @keydown="handleKeydown"
   >
-    <slot />
+    <slot></slot>
   </button>
 </template>

@@ -6,21 +6,21 @@
  * or by importing from the dist/runtime path directly.
  */
 
-// ── Utilities ───────────────────────────────────
-export { cn } from './runtime/utils/cn'
+// ── Module (Nuxt) ────────────────────────────────
+export { default } from './module'
 
+export type { ModuleOptions } from './module'
+export type { DsBadgeSkeletonProps } from './runtime/components/DsBadgeSkeleton.vue'
 // ── Component prop types (for consumers) ────────
 export type { DsButtonProps } from './runtime/components/DsButton.vue'
 export type { DsButtonSkeletonProps } from './runtime/components/DsButtonSkeleton.vue'
-export type { DsBadgeSkeletonProps } from './runtime/components/DsBadgeSkeleton.vue'
 export type { DsCardSkeletonProps } from './runtime/components/DsCardSkeleton.vue'
 export type { DsInputSkeletonProps } from './runtime/components/DsInputSkeleton.vue'
-export type { DsTabsSkeletonProps } from './runtime/components/DsTabsSkeleton.vue'
 
+export type { DsTabsSkeletonProps } from './runtime/components/DsTabsSkeleton.vue'
 // ── Composables ─────────────────────────────────
 export { useToast } from './runtime/composables/useToast'
-export type { ToastItem, ToastOptions, ToastVariant } from './runtime/composables/useToast'
 
-// ── Module (Nuxt) ────────────────────────────────
-export { default } from './module'
-export type { ModuleOptions } from './module'
+export type { ToastItem, ToastOptions, ToastVariant } from './runtime/composables/useToast'
+// ── Utilities ───────────────────────────────────
+export { cn } from './runtime/utils/cn'

@@ -9,7 +9,7 @@ export interface DsToastProviderProps {
   max?: number
 }
 
-const props = withDefaults(defineProps<DsToastProviderProps>(), {
+const { position, max } = withDefaults(defineProps<DsToastProviderProps>(), {
   position: 'bottom-right',
   max: 5,
 })
@@ -29,8 +29,7 @@ const positionClasses: Record<NonNullable<DsToastProviderProps['position']>, str
 <template>
   <Teleport to="body">
     <div
-      :class="[
-        'fixed z-[9999] flex flex-col gap-2 pointer-events-none',
+      class="fixed z-[9999] flex flex-col gap-2 pointer-events-none" :class="[
         positionClasses[position],
       ]"
       aria-label="Notifications"

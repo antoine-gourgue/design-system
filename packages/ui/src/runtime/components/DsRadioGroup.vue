@@ -74,7 +74,7 @@ const groupName = computed(() => props.name ?? `radio-${Math.random().toString(3
         <span
           v-if="modelValue === opt.value"
           class="size-1.5 rounded-full bg-ds-primary-fg"
-        />
+        ></span>
       </span>
 
       <div class="flex flex-col gap-0.5 min-w-0">

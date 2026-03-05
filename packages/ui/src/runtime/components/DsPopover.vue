@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch, onUnmounted, nextTick } from 'vue'
+import { nextTick, onUnmounted, ref, watch } from 'vue'
 import { cn } from '../utils/cn'
 
 export interface DsPopoverProps {
@@ -17,8 +17,12 @@ const isOpen = ref(false)
 const triggerRef = ref<HTMLElement | null>(null)
 const contentRef = ref<HTMLElement | null>(null)
 
-function toggle() { isOpen.value = !isOpen.value }
-function close() { isOpen.value = false }
+function toggle() {
+  isOpen.value = !isOpen.value
+}
+function close() {
+  isOpen.value = false
+}
 
 function onOutside(e: MouseEvent) {
   const target = e.target as Node
@@ -30,7 +34,8 @@ function onOutside(e: MouseEvent) {
 watch(isOpen, (val) => {
   if (val) {
     nextTick(() => document.addEventListener('mousedown', onOutside))
-  } else {
+  }
+  else {
     document.removeEventListener('mousedown', onOutside)
   }
 })
@@ -59,7 +64,7 @@ const posClass = positionClasses[posKey] ?? 'top-full mt-2 left-0'
   <div class="relative inline-flex">
     <!-- Trigger -->
     <div ref="triggerRef" class="inline-flex" @click="toggle">
-      <slot name="trigger" />
+      <slot name="trigger"></slot>
     </div>
 
     <!-- Content -->
@@ -70,7 +75,7 @@ const posClass = positionClasses[posKey] ?? 'top-full mt-2 left-0'
         :class="cn('absolute z-40 min-w-48 rounded-ds-lg border border-ds-border bg-ds-bg-elevated shadow-ds-lg p-3', posClass, props.class)"
         role="dialog"
       >
-        <slot />
+        <slot></slot>
       </div>
     </Transition>
   </div>

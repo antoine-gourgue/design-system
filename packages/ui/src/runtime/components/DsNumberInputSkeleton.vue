@@ -10,8 +10,8 @@ const heights: Record<string, string> = { sm: 'h-8', md: 'h-10', lg: 'h-11' }
     aria-hidden="true"
     role="presentation"
   >
-    <div class="border-r border-ds-border/50 h-full w-10" />
-    <div class="flex-1" />
-    <div class="border-l border-ds-border/50 h-full w-10" />
+    <div class="border-r border-ds-border/50 h-full w-10"></div>
+    <div class="flex-1"></div>
+    <div class="border-l border-ds-border/50 h-full w-10"></div>
   </div>
 </template>

@@ -37,17 +37,20 @@ const sizeClasses: Record<string, string> = {
 }
 
 function isActive(value: string): boolean {
-  if (Array.isArray(props.modelValue)) return props.modelValue.includes(value)
+  if (Array.isArray(props.modelValue))
+    return props.modelValue.includes(value)
   return props.modelValue === value
 }
 
 function toggle(value: string) {
   if (props.type === 'single') {
     emit('update:modelValue', isActive(value) ? '' : value)
-  } else {
+  }
+  else {
     const current = Array.isArray(props.modelValue) ? [...props.modelValue] : []
     const idx = current.indexOf(value)
-    if (idx >= 0) current.splice(idx, 1)
+    if (idx >= 0)
+      current.splice(idx, 1)
     else current.push(value)
     emit('update:modelValue', current)
   }
@@ -72,7 +75,7 @@ function toggle(value: string) {
         sizeClasses[size],
         isActive(item.value)
           ? 'bg-ds-primary text-white shadow-sm'
-          : 'bg-transparent text-ds-fg-muted hover:bg-ds-bg-muted hover:text-ds-fg'
+          : 'bg-transparent text-ds-fg-muted hover:bg-ds-bg-muted hover:text-ds-fg',
       )"
       @click="toggle(item.value)"
     >

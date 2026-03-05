@@ -1,11 +1,8 @@
 <script lang="ts">
-const DONUT_COLORS = ['#7f00ff', '#06b6d4', '#f97316', '#22c55e', '#f59e0b', '#ec4899', '#6366f1', '#14b8a6']
-const CX = 100
-const CY = 100
 </script>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { computed, ref } from 'vue'
 import { cn } from '../utils/cn'
 
 export interface DsDonutChartItem {
@@ -35,39 +32,11 @@ const props = withDefaults(defineProps<DsDonutChartProps>(), {
   size: 200,
 })
 
+const DONUT_COLORS = ['#7f00ff', '#06b6d4', '#f97316', '#22c55e', '#f59e0b', '#ec4899', '#6366f1', '#14b8a6']
+const CX = 100
+const CY = 100
+
 const total = computed(() => props.data.reduce((s, d) => s + d.value, 0))
-
-// Circumference of the circle
-const circumference = computed(() => 2 * Math.PI * props.radius)
-
-// Compute each segment: dasharray + dashoffset (offset is cumulative)
-interface Segment {
-  item: DsDonutChartItem
-  color: string
-  dashArray: string
-  dashOffset: number
-  pct: number
-}
-
-const segments = computed<Segment[]>(() => {
-  const segs: Segment[] = []
-  let cumulative = 0
-  for (let i = 0; i < props.data.length; i++) {
-    const item = props.data[i]
-    const pct = total.value > 0 ? item.value / total.value : 0
-    const dash = pct * circumference.value
-    const gap = circumference.value - dash
-    segs.push({
-      item,
-      color: item.color ?? DONUT_COLORS[i % DONUT_COLORS.length],
-      dashArray: `${dash.toFixed(2)} ${gap.toFixed(2)}`,
-      dashOffset: -(cumulative * circumference.value),
-      pct,
-    })
-    cumulative += pct
-  }
-  return segs
-})
 
 const hovered = ref<number | null>(null)
 
@@ -198,7 +167,7 @@ const vboxSize = 200
           @mouseenter="hovered = i"
           @mouseleave="hovered = null"
         >
-          <span class="size-3 rounded-sm shrink-0" :style="{ backgroundColor: seg.color }" />
+          <span class="size-3 rounded-sm shrink-0" :style="{ backgroundColor: seg.color }"></span>
           <span class="text-ds-fg-muted text-xs truncate">{{ seg.label }}</span>
           <span class="ml-auto pl-4 font-semibold text-xs text-ds-fg">{{ seg.value.toLocaleString() }}</span>
           <span class="text-xs text-ds-fg-muted w-10 text-right">{{ (seg.pct * 100).toFixed(1) }}%</span>

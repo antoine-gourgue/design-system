@@ -12,5 +12,5 @@ const classes = computed(() => cn('w-full rounded-ds-md bg-ds-bg-muted animate-p
 </script>
 
 <template>
-  <div :class="classes" aria-hidden="true" role="presentation" />
+  <div :class="classes" aria-hidden="true" role="presentation"></div>
 </template>

@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import { cva, type VariantProps } from 'class-variance-authority'
-import { cn } from '../utils/cn'
 import type { ToastItem } from '../composables/useToast'
+import { cva, type VariantProps } from 'class-variance-authority'
+import { computed } from 'vue'
+import { cn } from '../utils/cn'
+
+const props = defineProps<DsToastSingleProps>()
 
 const toastVariants = cva(
   [
@@ -31,7 +33,7 @@ const toastVariants = cva(
 type ToastVariants = VariantProps<typeof toastVariants>
 
 /* ── Icons per variant ── */
-const variantIcon: Record<string, { path: string; color: string }> = {
+const variantIcon: Record<string, { path: string, color: string }> = {
   default: {
     path: 'M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
     color: 'text-ds-fg-muted',
@@ -58,8 +60,6 @@ export interface DsToastSingleProps {
   toast: ToastItem
   onDismiss?: (id: string) => void
 }
-
-const props = defineProps<DsToastSingleProps>()
 
 const classes = computed(() =>
   cn(toastVariants({ variant: props.toast.variant as ToastVariants['variant'] })),
@@ -101,7 +101,7 @@ const icon = computed(() => variantIcon[props.toast.variant ?? 'default'] ?? var
       class="shrink-0 rounded-ds-xs p-0.5 text-ds-fg-muted hover:text-ds-fg
              transition-colors duration-ds-fast
              focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ds-ring"
-      :aria-label="'Dismiss notification'"
+      aria-label="Dismiss notification"
       @click="onDismiss?.(toast.id)"
     >
       <svg

@@ -1,7 +1,11 @@
 <script setup lang="ts">
-import { computed } from 'vue'
 import { cva, type VariantProps } from 'class-variance-authority'
+import { computed } from 'vue'
 import { cn } from '../utils/cn'
+
+const props = withDefaults(defineProps<DsAlertProps>(), {
+  variant: 'default',
+})
 
 const alertVariants = cva(
   'relative w-full rounded-ds-lg border px-4 py-3.5 text-sm font-ds',
@@ -28,10 +32,6 @@ export interface DsAlertProps {
   title?: string
   class?: string
 }
-
-const props = withDefaults(defineProps<DsAlertProps>(), {
-  variant: 'default',
-})
 
 const classes = computed(() => cn(alertVariants({ variant: props.variant }), props.class))
 
@@ -64,9 +64,11 @@ const iconPath = computed(() => iconPaths[props.variant ?? 'default'])
 
       <!-- Content -->
       <div class="flex-1 min-w-0">
-        <p v-if="title" class="font-semibold leading-snug mb-1">{{ title }}</p>
+        <p v-if="title" class="font-semibold leading-snug mb-1">
+          {{ title }}
+        </p>
         <div class="text-ds-fg-muted leading-relaxed [&>p]:m-0">
-          <slot />
+          <slot></slot>
         </div>
       </div>
     </div>

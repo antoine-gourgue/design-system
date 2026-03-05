@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { inject, computed } from 'vue'
-import { DsTabsKey } from '../utils/tabs'
+import { computed, inject } from 'vue'
 import { cn } from '../utils/cn'
+import { DsTabsKey } from '../utils/tabs'
 
 export interface DsTabListProps {
   class?: string
@@ -26,6 +26,6 @@ const listClasses = computed(() => {
 
 <template>
   <div :class="listClasses" role="tablist">
-    <slot />
+    <slot></slot>
   </div>
 </template>

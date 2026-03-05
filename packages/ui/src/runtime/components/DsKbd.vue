@@ -1,7 +1,14 @@
 <script setup lang="ts">
-import { computed } from 'vue'
 import { cva, type VariantProps } from 'class-variance-authority'
+import { computed } from 'vue'
 import { cn } from '../utils/cn'
+
+const props = withDefaults(defineProps<{
+  size?: KbdVariants['size']
+  class?: string
+}>(), {
+  size: 'md',
+})
 
 const kbdVariants = cva(
   'inline-flex items-center justify-center font-mono font-medium border rounded leading-none select-none',
@@ -19,13 +26,6 @@ const kbdVariants = cva(
 
 type KbdVariants = VariantProps<typeof kbdVariants>
 
-const props = withDefaults(defineProps<{
-  size?: KbdVariants['size']
-  class?: string
-}>(), {
-  size: 'md',
-})
-
 const classes = computed(() =>
   cn(
     kbdVariants({ size: props.size }),
@@ -36,5 +36,5 @@ const classes = computed(() =>
 </script>
 
 <template>
-  <kbd :class="classes"><slot /></kbd>
+  <kbd :class="classes"><slot></slot></kbd>
 </template>

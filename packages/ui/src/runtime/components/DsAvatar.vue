@@ -1,7 +1,12 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
 import { cva, type VariantProps } from 'class-variance-authority'
+import { computed, ref } from 'vue'
 import { cn } from '../utils/cn'
+
+const props = withDefaults(defineProps<DsAvatarProps>(), {
+  size: 'md',
+  shape: 'circle',
+})
 
 const avatarVariants = cva(
   'relative inline-flex items-center justify-center shrink-0 overflow-hidden font-medium font-ds select-none',
@@ -38,11 +43,6 @@ export interface DsAvatarProps {
   class?: string
 }
 
-const props = withDefaults(defineProps<DsAvatarProps>(), {
-  size: 'md',
-  shape: 'circle',
-})
-
 const imageError = ref(false)
 
 function handleError() {
@@ -50,9 +50,11 @@ function handleError() {
 }
 
 const initials = computed(() => {
-  if (!props.fallback) return '?'
+  if (!props.fallback)
+    return '?'
   const parts = props.fallback.trim().split(/\s+/)
-  if (parts.length >= 2) return (parts[0][0] + parts[1][0]).toUpperCase()
+  if (parts.length >= 2)
+    return (parts[0][0] + parts[1][0]).toUpperCase()
   return props.fallback.slice(0, 2).toUpperCase()
 })
 
@@ -68,7 +70,7 @@ const classes = computed(() => cn(avatarVariants({ size: props.size, shape: prop
       :alt="alt ?? fallback ?? ''"
       class="h-full w-full object-cover"
       @error="handleError"
-    />
+    >
     <!-- Fallback initials -->
     <span
       v-else

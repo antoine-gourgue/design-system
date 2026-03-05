@@ -66,7 +66,7 @@ const barClasses = computed(() =>
       :aria-valuemax="max"
       :aria-label="label"
     >
-      <div :class="barClasses" :style="{ width: `${percentage}%` }" />
+      <div :class="barClasses" :style="{ width: `${percentage}%` }"></div>
     </div>
   </div>
 </template>

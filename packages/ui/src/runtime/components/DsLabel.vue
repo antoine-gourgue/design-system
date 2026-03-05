@@ -29,7 +29,7 @@ const classes = computed(() =>
 
 <template>
   <label :for="props.for" :class="classes">
-    <slot />
+    <slot></slot>
     <span v-if="required" class="ml-1 text-ds-danger" aria-hidden="true">*</span>
   </label>
 </template>

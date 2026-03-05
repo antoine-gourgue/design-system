@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { computed, ref } from 'vue'
 import { cn } from '../utils/cn'
 
 export interface DsRatingProps {
@@ -37,7 +37,8 @@ function isFilled(star: number): boolean {
 }
 
 function handleClick(star: number) {
-  if (props.readonly || props.disabled) return
+  if (props.readonly || props.disabled)
+    return
   // Toggle off if clicking same value
   emit('update:modelValue', star === props.modelValue ? 0 : star)
 }

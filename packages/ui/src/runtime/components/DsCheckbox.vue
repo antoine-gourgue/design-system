@@ -18,7 +18,7 @@ const props = withDefaults(defineProps<DsCheckboxProps>(), {
 
 const emit = defineEmits<{
   'update:modelValue': [value: boolean]
-  change: [event: Event]
+  'change': [event: Event]
 }>()
 
 const isChecked = computed(() => props.modelValue === true)
@@ -53,7 +53,7 @@ const boxClasses = computed(() =>
         :disabled="disabled"
         class="sr-only"
         @change="handleChange"
-      />
+      >
       <label :for="id" :class="boxClasses" :aria-checked="isIndeterminate ? 'mixed' : isChecked">
         <!-- Checkmark -->
         <svg
@@ -72,7 +72,7 @@ const boxClasses = computed(() =>
           />
         </svg>
         <!-- Indeterminate -->
-        <span v-else-if="isIndeterminate" class="block w-2 h-0.5 bg-white rounded-full" />
+        <span v-else-if="isIndeterminate" class="block w-2 h-0.5 bg-white rounded-full"></span>
       </label>
     </div>
 
@@ -84,7 +84,7 @@ const boxClasses = computed(() =>
       >
         {{ label }}
       </label>
-      <slot />
+      <slot></slot>
       <p v-if="description" class="text-xs text-ds-fg-muted leading-relaxed">
         {{ description }}
       </p>

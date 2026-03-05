@@ -10,6 +10,6 @@ const props = defineProps<DsTabPanelsProps>()
 
 <template>
   <div :class="cn('mt-4', props.class)">
-    <slot />
+    <slot></slot>
   </div>
 </template>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { cn } from '../utils/cn'
 import { cva } from 'class-variance-authority'
+import { cn } from '../utils/cn'
 
 export interface DsToggleProps {
   modelValue?: boolean
@@ -36,7 +36,7 @@ const toggle = cva(
       },
     },
     defaultVariants: { variant: 'outline', size: 'md' },
-  }
+  },
 )
 </script>
 
@@ -50,6 +50,6 @@ const toggle = cva(
     :class="cn(toggle({ variant, size }), props.class)"
     @click="emit('update:modelValue', !modelValue)"
   >
-    <slot />
+    <slot></slot>
   </button>
 </template>

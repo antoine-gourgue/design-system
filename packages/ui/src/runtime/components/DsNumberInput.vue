@@ -27,19 +27,23 @@ const emit = defineEmits<{
 }>()
 
 const canDecrement = computed(() => {
-  if (props.disabled) return false
+  if (props.disabled)
+    return false
   return props.min === undefined || (props.modelValue ?? 0) > props.min
 })
 
 const canIncrement = computed(() => {
-  if (props.disabled) return false
+  if (props.disabled)
+    return false
   return props.max === undefined || (props.modelValue ?? 0) < props.max
 })
 
 function clamp(v: number) {
   let r = v
-  if (props.min !== undefined) r = Math.max(props.min, r)
-  if (props.max !== undefined) r = Math.min(props.max, r)
+  if (props.min !== undefined)
+    r = Math.max(props.min, r)
+  if (props.max !== undefined)
+    r = Math.min(props.max, r)
   return r
 }
 

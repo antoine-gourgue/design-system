@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { cn } from '../utils/cn'
 
 export interface DsOtpInputProps {
@@ -54,8 +54,10 @@ function onKeydown(index: number, e: KeyboardEvent) {
     inputs.value[index - 1]?.focus()
     emit('update:modelValue', chars.value.join(''))
   }
-  if (e.key === 'ArrowLeft' && index > 0) inputs.value[index - 1]?.focus()
-  if (e.key === 'ArrowRight' && index < props.length - 1) inputs.value[index + 1]?.focus()
+  if (e.key === 'ArrowLeft' && index > 0)
+    inputs.value[index - 1]?.focus()
+  if (e.key === 'ArrowRight' && index < props.length - 1)
+    inputs.value[index + 1]?.focus()
 }
 
 function onPaste(e: ClipboardEvent) {

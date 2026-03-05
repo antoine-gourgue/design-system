@@ -23,13 +23,17 @@ const props = defineProps<DsEmptyStateProps>()
 
     <!-- Text -->
     <div class="flex flex-col gap-1 max-w-xs">
-      <p class="text-base font-semibold text-ds-fg">{{ title }}</p>
-      <p v-if="description" class="text-sm text-ds-fg-muted leading-relaxed">{{ description }}</p>
+      <p class="text-base font-semibold text-ds-fg">
+        {{ title }}
+      </p>
+      <p v-if="description" class="text-sm text-ds-fg-muted leading-relaxed">
+        {{ description }}
+      </p>
     </div>
 
     <!-- CTA slot -->
     <div v-if="$slots.default" class="flex items-center gap-3 flex-wrap justify-center">
-      <slot />
+      <slot></slot>
     </div>
   </div>
 </template>

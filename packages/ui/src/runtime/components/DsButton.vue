@@ -1,7 +1,18 @@
 <script setup lang="ts">
-import { computed } from 'vue'
 import { cva, type VariantProps } from 'class-variance-authority'
+import { computed } from 'vue'
 import { cn } from '../utils/cn'
+
+const props = withDefaults(defineProps<DsButtonProps>(), {
+  variant: 'primary',
+  size: 'md',
+  loading: false,
+  disabled: false,
+  fullWidth: false,
+  rounded: false,
+  as: 'button',
+  type: 'button',
+})
 
 /* ── CVA variant definition ── */
 const buttonVariants = cva(
@@ -54,10 +65,10 @@ const buttonVariants = cva(
         ].join(' '),
       },
       size: {
-        sm: 'h-8 px-3 text-xs rounded-ds-sm gap-1.5',
-        md: 'h-10 px-4 text-sm rounded-ds-md',
-        lg: 'h-12 px-6 text-base rounded-ds-lg gap-2.5',
-        icon: 'h-10 w-10 rounded-ds-md',
+        'sm': 'h-8 px-3 text-xs rounded-ds-sm gap-1.5',
+        'md': 'h-10 px-4 text-sm rounded-ds-md',
+        'lg': 'h-12 px-6 text-base rounded-ds-lg gap-2.5',
+        'icon': 'h-10 w-10 rounded-ds-md',
         'icon-sm': 'h-8 w-8 rounded-ds-sm',
         'icon-lg': 'h-12 w-12 rounded-ds-lg',
       },
@@ -105,17 +116,6 @@ export interface DsButtonProps {
   class?: string
 }
 
-const props = withDefaults(defineProps<DsButtonProps>(), {
-  variant: 'primary',
-  size: 'md',
-  loading: false,
-  disabled: false,
-  fullWidth: false,
-  rounded: false,
-  as: 'button',
-  type: 'button',
-})
-
 /* ── Computed classes ── */
 const classes = computed(() =>
   cn(
@@ -131,8 +131,10 @@ const classes = computed(() =>
 
 /* ── Spinner size ── */
 const spinnerSize = computed(() => {
-  if (props.size === 'sm' || props.size === 'icon-sm') return 'size-3.5'
-  if (props.size === 'lg' || props.size === 'icon-lg') return 'size-5'
+  if (props.size === 'sm' || props.size === 'icon-sm')
+    return 'size-3.5'
+  if (props.size === 'lg' || props.size === 'icon-lg')
+    return 'size-5'
   return 'size-4'
 })
 </script>
@@ -149,13 +151,13 @@ const spinnerSize = computed(() => {
   >
     <!-- Left icon slot -->
     <span v-if="$slots.leftIcon && !loading" class="shrink-0" aria-hidden="true">
-      <slot name="leftIcon" />
+      <slot name="leftIcon"></slot>
     </span>
 
     <!-- Loading spinner -->
     <svg
       v-if="loading"
-      :class="[spinnerSize, 'shrink-0 animate-ds-spin']"
+      class="shrink-0 animate-ds-spin" :class="[spinnerSize]"
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -177,11 +179,11 @@ const spinnerSize = computed(() => {
     </svg>
 
     <!-- Default slot (label) -->
-    <slot />
+    <slot></slot>
 
     <!-- Right icon slot -->
     <span v-if="$slots.rightIcon && !loading" class="shrink-0" aria-hidden="true">
-      <slot name="rightIcon" />
+      <slot name="rightIcon"></slot>
     </span>
   </component>
 </template>

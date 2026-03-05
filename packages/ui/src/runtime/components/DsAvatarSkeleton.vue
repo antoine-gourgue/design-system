@@ -33,5 +33,5 @@ const shapeClass = computed(() => ({
     :class="cn('animate-pulse bg-ds-bg-muted shrink-0', sizeClass, shapeClass, props.class)"
     aria-hidden="true"
     role="presentation"
-  />
+  ></div>
 </template>

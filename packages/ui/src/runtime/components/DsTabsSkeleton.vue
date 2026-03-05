@@ -51,7 +51,7 @@ const tabItemClass = {
         v-for="i in Math.min(tabs, 6)"
         :key="i"
         :class="shimmer(cn('h-5', tabWidths[(i - 1) % tabWidths.length], tabItemClass))"
-      />
+      ></div>
     </div>
 
     <!-- Panel content -->
@@ -60,7 +60,7 @@ const tabItemClass = {
         v-for="i in Math.min(lines, 6)"
         :key="i"
         :class="shimmer(cn('h-3 rounded-ds-xs', lineWidths[(i - 1) % lineWidths.length]))"
-      />
+      ></div>
     </div>
   </div>
 </template>

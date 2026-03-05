@@ -45,15 +45,15 @@ const lineWidths = ['w-full', 'w-full', 'w-3/4', 'w-5/6', 'w-2/3', 'w-4/5']
             'shrink-0 size-10 rounded-full bg-ds-bg-muted relative overflow-hidden',
             'before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:animate-ds-skeleton motion-reduce:before:animate-none',
           )"
-        />
+        ></div>
         <div class="flex-1 space-y-2">
-          <div :class="skeletonLine('w-1/3')" />
-          <div :class="skeletonLine('w-1/4')" />
+          <div :class="skeletonLine('w-1/3')"></div>
+          <div :class="skeletonLine('w-1/4')"></div>
         </div>
       </div>
       <div v-else class="space-y-2">
-        <div :class="skeletonLine('w-2/5')" />
-        <div :class="skeletonLine('w-1/3 h-2.5')" />
+        <div :class="skeletonLine('w-2/5')"></div>
+        <div :class="skeletonLine('w-1/3 h-2.5')"></div>
       </div>
     </div>
 
@@ -63,7 +63,7 @@ const lineWidths = ['w-full', 'w-full', 'w-3/4', 'w-5/6', 'w-2/3', 'w-4/5']
         v-for="i in Math.min(lines, 6)"
         :key="i"
         :class="skeletonLine(lineWidths[(i - 1) % lineWidths.length] ?? 'w-full')"
-      />
+      ></div>
     </div>
 
     <!-- Footer -->
@@ -73,13 +73,13 @@ const lineWidths = ['w-full', 'w-full', 'w-3/4', 'w-5/6', 'w-2/3', 'w-4/5']
           'h-8 w-20 rounded-ds-md bg-ds-bg-muted relative overflow-hidden',
           'before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:animate-ds-skeleton motion-reduce:before:animate-none',
         )"
-      />
+      ></div>
       <div
         :class="cn(
           'h-8 w-16 rounded-ds-md bg-ds-bg-muted relative overflow-hidden',
           'before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:animate-ds-skeleton motion-reduce:before:animate-none',
         )"
-      />
+      ></div>
     </div>
   </div>
 </template>

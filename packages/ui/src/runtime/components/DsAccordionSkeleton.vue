@@ -1,5 +1,5 @@
 <script setup lang="ts">
-withDefaults(defineProps<{ items?: number; showContent?: boolean }>(), {
+withDefaults(defineProps<{ items?: number, showContent?: boolean }>(), {
   items: 3,
   showContent: false,
 })
@@ -14,14 +14,14 @@ withDefaults(defineProps<{ items?: number; showContent?: boolean }>(), {
     >
       <!-- Header row -->
       <div class="flex items-center justify-between py-4 gap-4">
-        <div class="h-3.5 rounded-full bg-ds-bg-muted" :style="{ width: `${100 + i * 30}px` }" />
-        <div class="size-4 rounded-sm bg-ds-bg-muted shrink-0" />
+        <div class="h-3.5 rounded-full bg-ds-bg-muted" :style="{ width: `${100 + i * 30}px` }"></div>
+        <div class="size-4 rounded-sm bg-ds-bg-muted shrink-0"></div>
       </div>
       <!-- Expanded content (only first item) -->
       <div v-if="showContent && i === 1" class="pb-4 space-y-2">
-        <div class="h-3 w-full rounded-full bg-ds-bg-muted" />
-        <div class="h-3 w-5/6 rounded-full bg-ds-bg-muted" />
-        <div class="h-3 w-3/4 rounded-full bg-ds-bg-muted" />
+        <div class="h-3 w-full rounded-full bg-ds-bg-muted"></div>
+        <div class="h-3 w-5/6 rounded-full bg-ds-bg-muted"></div>
+        <div class="h-3 w-3/4 rounded-full bg-ds-bg-muted"></div>
       </div>
     </div>
   </div>

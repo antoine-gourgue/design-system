@@ -6,9 +6,9 @@
   <div class="flex flex-col w-full bg-ds-bg-elevated border border-ds-border rounded-ds-xl shadow-ds-md animate-pulse select-none">
     <!-- Header: prev / month label / next -->
     <div class="flex items-center justify-between px-4 pt-4 pb-2">
-      <div class="size-8 rounded-ds-md bg-ds-bg-muted" />
-      <div class="h-4 w-32 rounded-full bg-ds-bg-muted" />
-      <div class="size-8 rounded-ds-md bg-ds-bg-muted" />
+      <div class="size-8 rounded-ds-md bg-ds-bg-muted"></div>
+      <div class="h-4 w-32 rounded-full bg-ds-bg-muted"></div>
+      <div class="size-8 rounded-ds-md bg-ds-bg-muted"></div>
     </div>
 
     <!-- Day labels row (Mo Tu We Th Fr Sa Su) -->
@@ -18,7 +18,7 @@
         :key="i"
         class="flex items-center justify-center h-8"
       >
-        <div class="h-2.5 w-5 rounded-full bg-ds-bg-muted" />
+        <div class="h-2.5 w-5 rounded-full bg-ds-bg-muted"></div>
       </div>
     </div>
 
@@ -31,18 +31,17 @@
       >
         <!-- Every 10th cell slightly wider to simulate variation -->
         <div
-          :class="[
-            'rounded-ds-md bg-ds-bg-muted',
+          class="rounded-ds-md bg-ds-bg-muted" :class="[
             i % 7 === 0 || i % 11 === 0 ? 'size-7 opacity-30' : 'size-6',
             i === 15 ? 'bg-ds-primary/20 ring-1 ring-ds-primary/30' : '',
           ]"
-        />
+        ></div>
       </div>
     </div>
 
     <!-- Today button -->
     <div class="px-3 pb-3">
-      <div class="w-full h-8 rounded-ds-md bg-ds-bg-muted border border-ds-border" />
+      <div class="w-full h-8 rounded-ds-md bg-ds-bg-muted border border-ds-border"></div>
     </div>
   </div>
 </template>

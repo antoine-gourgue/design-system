@@ -37,12 +37,12 @@ function shimmer(extra = '') {
 <template>
   <div :class="cn('space-y-1.5', props.class)" aria-hidden="true" role="presentation">
     <!-- Label -->
-    <div v-if="showLabel" :class="shimmer('h-4 w-1/4 rounded-ds-xs')" />
+    <div v-if="showLabel" :class="shimmer('h-4 w-1/4 rounded-ds-xs')"></div>
 
     <!-- Input field -->
-    <div :class="shimmer(cn('w-full', sizeClasses[size ?? 'md']))" />
+    <div :class="shimmer(cn('w-full', sizeClasses[size ?? 'md']))"></div>
 
     <!-- Help text -->
-    <div v-if="showHelp" :class="shimmer('h-3 w-2/5 rounded-ds-xs')" />
+    <div v-if="showHelp" :class="shimmer('h-3 w-2/5 rounded-ds-xs')"></div>
   </div>
 </template>

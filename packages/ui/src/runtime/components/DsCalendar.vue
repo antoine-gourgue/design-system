@@ -108,7 +108,8 @@ function prevMonth() {
   if (viewMonth.value === 0) {
     viewMonth.value = 11
     viewYear.value--
-  } else {
+  }
+  else {
     viewMonth.value--
   }
 }
@@ -117,7 +118,8 @@ function nextMonth() {
   if (viewMonth.value === 11) {
     viewMonth.value = 0
     viewYear.value++
-  } else {
+  }
+  else {
     viewMonth.value++
   }
 }
@@ -129,7 +131,8 @@ function goToday() {
 }
 
 function selectDay(day: CalendarDay) {
-  if (day.isDisabled) return
+  if (day.isDisabled)
+    return
   emit('update:modelValue', new Date(day.date))
 }
 </script>
