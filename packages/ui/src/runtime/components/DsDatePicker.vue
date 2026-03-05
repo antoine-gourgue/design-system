@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
-import { cn } from '../utils/cn'
 import DsCalendar from './DsCalendar.vue'
 
 export interface DsDatePickerProps {

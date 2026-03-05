@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { onUnmounted, watch } from 'vue'
-import { cn } from '../utils/cn'
 import DsButton from './DsButton.vue'
 
 export interface DsAlertDialogProps {

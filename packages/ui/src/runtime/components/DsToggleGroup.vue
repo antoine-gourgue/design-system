@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed } from 'vue'
 import { cn } from '../utils/cn'
 
 export interface DsToggleGroupItem {
