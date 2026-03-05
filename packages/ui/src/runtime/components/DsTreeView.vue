@@ -17,6 +17,8 @@ export interface DsTreeViewProps {
   class?: string
 }
 
+defineOptions({ name: 'DsTreeView' })
+
 const props = withDefaults(defineProps<DsTreeViewProps>(), {
   nodes: () => [],
   depth: 0,
@@ -26,8 +28,6 @@ const emit = defineEmits<{
   (e: 'select', id: string): void
   (e: 'toggle', id: string): void
 }>()
-
-defineOptions({ name: 'DsTreeView' })
 
 const internalExpanded = ref<Set<string>>(new Set())
 const expanded = props.expandedIds ?? internalExpanded.value
