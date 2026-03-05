@@ -28,6 +28,10 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-01-01',
   nitro: {
     preset: 'static',
+    prerender: {
+      crawlLinks: true,
+      routes: ['/'],
+    },
   },
   app: {
     head: {

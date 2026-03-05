@@ -1,7 +1,8 @@
 {
   "version": 2,
-  "installCommand": "npm install",
-  "buildCommand": "npm run build -w packages/ui && npm run generate -w apps/storybook",
+  "installCommand": "npm install --ignore-scripts && npm run build -w packages/ui && npm run postinstall -w apps/storybook",
+  "buildCommand": "npm run generate -w apps/storybook",
   "outputDirectory": "apps/storybook/.output/public",
-  "framework": null
+  "cleanUrls": true,
+  "trailingSlash": false
 }
