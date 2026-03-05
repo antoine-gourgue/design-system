@@ -1,10 +1,30 @@
 {
   "name": "@my-scope/nuxt-ds",
   "version": "0.1.0",
-  "description": "A minimal, Apple-inspired Design System for Nuxt 4 — components, tokens, Tailwind preset.",
+  "description": "A premium Design System for Nuxt 4 and Vue 3 — components, design tokens, Tailwind CSS preset.",
+  "keywords": [
+    "nuxt",
+    "vue",
+    "design-system",
+    "components",
+    "tailwindcss",
+    "typescript",
+    "ui"
+  ],
   "license": "MIT",
+  "homepage": "https://github.com/antoine-gourgue/design-system#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antoine-gourgue/design-system.git",
+    "directory": "packages/ui"
+  },
+  "bugs": {
+    "url": "https://github.com/antoine-gourgue/design-system/issues"
+  },
   "type": "module",
-  "sideEffects": false,
+  "sideEffects": [
+    "dist/runtime/assets/base.css"
+  ],
   "exports": {
     ".": {
       "import": "./dist/module.mjs",
@@ -34,16 +54,24 @@
   "files": [
     "dist",
     "tailwind",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ],
   "publishConfig": {
     "access": "public"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
   },
   "scripts": {
     "build": "nuxt-module-build build",
     "stub": "nuxt-module-build build --stub",
     "typecheck": "vue-tsc --noEmit",
-    "lint": "eslint src"
+    "lint": "eslint src --max-warnings 0",
+    "lint:fix": "eslint src --fix",
+    "format": "prettier --write \"src/**/*.{ts,vue,css}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,vue,css}\""
   },
   "dependencies": {
     "@nuxt/kit": "^3.15.0",
@@ -52,9 +80,12 @@
     "tailwind-merge": "^2.6.0"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^3.14.0",
     "@nuxt/module-builder": "^0.8.4",
     "@nuxt/schema": "^3.15.0",
+    "eslint": "^9.21.0",
     "nuxt": "^3.15.0",
+    "prettier": "^3.5.0",
     "typescript": "^5.8.0",
     "vue": "^3.5.0",
     "vue-tsc": "^2.2.0"
