@@ -21,6 +21,7 @@ export const nav: NavGroup[] = [
     title: 'Foundations',
     items: [
       { title: 'Colors', href: '/foundations/colors' },
+      { title: 'Icons', href: '/foundations/icons' },
       { title: 'Typography', href: '/foundations/typography' },
       { title: 'Tokens', href: '/foundations/tokens' },
     ],

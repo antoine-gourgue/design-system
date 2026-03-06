@@ -3,6 +3,7 @@ import {
   addImports,
   createResolver,
   defineNuxtModule,
+  installModule,
 } from '@nuxt/kit'
 
 export interface ModuleOptions {
@@ -34,6 +35,7 @@ export interface ModuleOptions {
 
 const componentList = [
   // Primitives
+  'DsIcon',
   'DsSeparator',
   'DsSpinner',
   // Button
@@ -248,7 +250,7 @@ export default defineNuxtModule<ModuleOptions>({
     toast: true,
   },
 
-  setup(options, nuxt) {
+  async setup(options, nuxt) {
     const { resolve } = createResolver(import.meta.url)
 
     /* ── 1. Inject base CSS with design tokens ── */
@@ -256,7 +258,10 @@ export default defineNuxtModule<ModuleOptions>({
       nuxt.options.css.push(resolve('./runtime/assets/base.css'))
     }
 
-    /* ── 2. Register components ── */
+    /* ── 2. Install icon module dependency ── */
+    await installModule('@nuxt/icon')
+
+    /* ── 3. Register components ── */
     const prefix = options.prefix ?? 'Ds'
 
     for (const componentName of componentList) {
@@ -270,7 +275,7 @@ export default defineNuxtModule<ModuleOptions>({
       })
     }
 
-    /* ── 3. Auto-import utility functions ── */
+    /* ── 4. Auto-import utility functions ── */
     addImports([
       {
         name: 'cn',
@@ -279,7 +284,7 @@ export default defineNuxtModule<ModuleOptions>({
       },
     ])
 
-    /* ── 4. Auto-import composables ── */
+    /* ── 5. Auto-import composables ── */
     if (options.toast) {
       addImports([
         {
@@ -290,9 +295,9 @@ export default defineNuxtModule<ModuleOptions>({
       ])
     }
 
-    /* ── 5. Expose version via runtimeConfig ── */
+    /* ── 6. Expose version via runtimeConfig ── */
     nuxt.options.runtimeConfig.public.nuxtDs = {
-      version: '0.2.0',
+      version: '0.5.0',
     }
   },
 })

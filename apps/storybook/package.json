@@ -11,6 +11,10 @@
     "typecheck": "nuxt typecheck"
   },
   "dependencies": {
+    "@iconify-json/flagpack": "^1.0.8",
+    "@iconify-json/lucide": "^1.2.40",
+    "@iconify-json/simple-icons": "^1.2.36",
+    "@iconify-json/devicon": "^1.2.18",
     "design-system-antoinegourgue": "*",
     "@nuxtjs/tailwindcss": "^6.13.2",
     "nuxt": "^3.15.0",

@@ -15,6 +15,7 @@ export type { DsBadgeSkeletonProps } from './runtime/components/DsBadgeSkeleton.
 export type { DsButtonProps } from './runtime/components/DsButton.vue'
 export type { DsButtonSkeletonProps } from './runtime/components/DsButtonSkeleton.vue'
 export type { DsCardSkeletonProps } from './runtime/components/DsCardSkeleton.vue'
+export type { DsIconProps } from './runtime/components/DsIcon.vue'
 export type { DsInputSkeletonProps } from './runtime/components/DsInputSkeleton.vue'
 
 export type { DsTabsSkeletonProps } from './runtime/components/DsTabsSkeleton.vue'
