@@ -2040,7 +2040,7 @@ export const componentDocs: ComponentDoc[] = [
     slug: 'combobox',
     componentName: 'DsCombobox',
     displayName: 'Combobox',
-    description: 'Select searchable avec filtre intégré. Idéal pour les longues listes d\'options.',
+    description: 'A searchable select with built-in filter. Ideal for long option lists.',
     category: 'Form',
     defaultProps: { options: [], placeholder: 'Select an option…', size: 'md' },
     controls: [
@@ -2050,20 +2050,20 @@ export const componentDocs: ComponentDoc[] = [
       { name: 'clearable', label: 'Clearable', type: 'boolean', default: false },
     ],
     propDefs: [
-      { name: 'modelValue', type: 'string', default: 'undefined', description: 'Valeur sélectionnée (v-model).' },
-      { name: 'options', type: 'DsComboboxOption[]', default: '[]', description: 'Liste des options { label, value, disabled? }.' },
-      { name: 'placeholder', type: 'string', default: '"Select an option…"', description: 'Texte affiché quand rien n\'est sélectionné.' },
-      { name: 'searchPlaceholder', type: 'string', default: '"Search…"', description: 'Placeholder du champ de recherche.' },
-      { name: 'disabled', type: 'boolean', default: 'false', description: 'Désactive le composant.' },
-      { name: 'clearable', type: 'boolean', default: 'false', description: 'Affiche un bouton pour effacer la sélection.' },
-      { name: 'size', type: '"sm" | "md" | "lg"', default: '"md"', description: 'Taille du composant.' },
+      { name: 'modelValue', type: 'string', default: 'undefined', description: 'Selected value (v-model).' },
+      { name: 'options', type: 'DsComboboxOption[]', default: '[]', description: 'Options list { label, value, disabled? }.' },
+      { name: 'placeholder', type: 'string', default: '"Select an option…"', description: 'Placeholder text when nothing is selected.' },
+      { name: 'searchPlaceholder', type: 'string', default: '"Search…"', description: 'Placeholder for the search field.' },
+      { name: 'disabled', type: 'boolean', default: 'false', description: 'Disable the component.' },
+      { name: 'clearable', type: 'boolean', default: 'false', description: 'Show a button to clear the selection.' },
+      { name: 'size', type: '"sm" | "md" | "lg"', default: '"md"', description: 'Size of the component.' },
     ],
     examples: [],
     skeleton: { componentName: 'DsComboboxSkeleton', examples: [{ label: 'Default', props: {} }] },
     accessibility: [
-      'aria-haspopup="listbox" et aria-expanded sont gérés sur le trigger.',
-      'Les options ont role="option" avec aria-selected.',
-      'Navigation clavier supportée (Escape ferme la liste).',
+      'aria-haspopup="listbox" and aria-expanded are managed on the trigger.',
+      'Options have role="option" with aria-selected.',
+      'Keyboard navigation supported (Escape closes the list).',
     ],
   },
 
@@ -2072,7 +2072,7 @@ export const componentDocs: ComponentDoc[] = [
     slug: 'multi-select',
     componentName: 'DsMultiSelect',
     displayName: 'MultiSelect',
-    description: 'Sélection multiple avec chips pour chaque option choisie.',
+    description: 'Multiple selection with chips for each chosen option.',
     category: 'Form',
     defaultProps: { options: [], placeholder: 'Select options…' },
     controls: [
@@ -2080,17 +2080,17 @@ export const componentDocs: ComponentDoc[] = [
       { name: 'disabled', label: 'Disabled', type: 'boolean', default: false },
     ],
     propDefs: [
-      { name: 'modelValue', type: 'string[]', default: '[]', description: 'Valeurs sélectionnées (v-model).' },
-      { name: 'options', type: 'DsMultiSelectOption[]', default: '[]', description: 'Liste des options.' },
+      { name: 'modelValue', type: 'string[]', default: '[]', description: 'Selected values (v-model).' },
+      { name: 'options', type: 'DsMultiSelectOption[]', default: '[]', description: 'Options list.' },
       { name: 'placeholder', type: 'string', default: '"Select options…"', description: 'Placeholder.' },
-      { name: 'max', type: 'number', default: 'undefined', description: 'Nombre maximum de sélections.' },
-      { name: 'disabled', type: 'boolean', default: 'false', description: 'Désactive le composant.' },
+      { name: 'max', type: 'number', default: 'undefined', description: 'Maximum number of selections.' },
+      { name: 'disabled', type: 'boolean', default: 'false', description: 'Disable the component.' },
     ],
     examples: [],
     skeleton: { componentName: 'DsMultiSelectSkeleton', examples: [{ label: 'Default', props: {} }] },
     accessibility: [
-      'Chaque chip de sélection a un bouton de suppression avec aria-label.',
-      'Navigation clavier : Escape ferme la liste.',
+      'Each selection chip has a remove button with aria-label.',
+      'Keyboard navigation: Escape closes the list.',
     ],
   },
 
@@ -2099,7 +2099,7 @@ export const componentDocs: ComponentDoc[] = [
     slug: 'tag-input',
     componentName: 'DsTagInput',
     displayName: 'TagInput',
-    description: 'Input qui crée des tags/étiquettes au fur et à mesure de la saisie.',
+    description: 'Input that creates tags/labels as you type.',
     category: 'Form',
     defaultProps: { placeholder: 'Add tag…' },
     controls: [
@@ -2108,18 +2108,18 @@ export const componentDocs: ComponentDoc[] = [
       { name: 'allowDuplicates', label: 'Allow duplicates', type: 'boolean', default: false },
     ],
     propDefs: [
-      { name: 'modelValue', type: 'string[]', default: '[]', description: 'Tags actuels (v-model).' },
-      { name: 'placeholder', type: 'string', default: '"Add tag…"', description: 'Placeholder du champ.' },
-      { name: 'disabled', type: 'boolean', default: 'false', description: 'Désactive le composant.' },
-      { name: 'max', type: 'number', default: 'undefined', description: 'Nombre maximum de tags.' },
-      { name: 'allowDuplicates', type: 'boolean', default: 'false', description: 'Autorise les tags en double.' },
+      { name: 'modelValue', type: 'string[]', default: '[]', description: 'Current tags (v-model).' },
+      { name: 'placeholder', type: 'string', default: '"Add tag…"', description: 'Input placeholder.' },
+      { name: 'disabled', type: 'boolean', default: 'false', description: 'Disable the component.' },
+      { name: 'max', type: 'number', default: 'undefined', description: 'Maximum number of tags.' },
+      { name: 'allowDuplicates', type: 'boolean', default: 'false', description: 'Allow duplicate tags.' },
     ],
     examples: [],
     skeleton: { componentName: 'DsTagInputSkeleton', examples: [{ label: 'Default', props: {} }] },
     accessibility: [
-      'Appuyer sur Entrée ajoute le tag.',
-      'Backspace sur un champ vide supprime le dernier tag.',
-      'Chaque tag a un bouton de suppression avec aria-label.',
+      'Press Enter to add a tag.',
+      'Backspace on empty input removes the last tag.',
+      'Each tag has a remove button with aria-label.',
     ],
   },
 
@@ -2128,7 +2128,7 @@ export const componentDocs: ComponentDoc[] = [
     slug: 'avatar-group',
     componentName: 'DsAvatarGroup',
     displayName: 'AvatarGroup',
-    description: 'Groupe d\'avatars empilés avec un compteur de débordement.',
+    description: 'Stacked group of avatars with an overflow counter.',
     category: 'Display',
     defaultProps: { max: 4, size: 'md' },
     controls: [
@@ -2136,14 +2136,14 @@ export const componentDocs: ComponentDoc[] = [
       { name: 'max', label: 'Max visible', type: 'number', default: 4 },
     ],
     propDefs: [
-      { name: 'items', type: 'DsAvatarGroupItem[]', default: '[]', description: 'Liste d\'avatars { src?, alt?, initials? }.' },
-      { name: 'max', type: 'number', default: '4', description: 'Nombre maximum d\'avatars affichés avant le compteur.' },
-      { name: 'size', type: '"xs" | "sm" | "md" | "lg"', default: '"md"', description: 'Taille des avatars.' },
+      { name: 'items', type: 'DsAvatarGroupItem[]', default: '[]', description: 'Avatar list { src?, alt?, initials? }.' },
+      { name: 'max', type: 'number', default: '4', description: 'Maximum number of avatars displayed before the overflow counter.' },
+      { name: 'size', type: '"xs" | "sm" | "md" | "lg"', default: '"md"', description: 'Avatar size.' },
     ],
     examples: [],
     skeleton: { componentName: 'DsAvatarGroupSkeleton', examples: [{ label: 'Default (4)', props: { count: 4 } }, { label: 'Large (6)', props: { count: 6 } }] },
     accessibility: [
-      'Chaque avatar a un title pour le nom.',
+      'Each avatar has a title attribute for the name.',
     ],
   },
 
@@ -2152,7 +2152,7 @@ export const componentDocs: ComponentDoc[] = [
     slug: 'date-range-picker',
     componentName: 'DsDateRangePicker',
     displayName: 'DateRangePicker',
-    description: 'Sélecteur de plage de dates avec deux calendriers côte à côte.',
+    description: 'Date range selector with two side-by-side calendars.',
     category: 'Form',
     defaultProps: { placeholder: 'Pick a date range' },
     controls: [
@@ -2160,15 +2160,15 @@ export const componentDocs: ComponentDoc[] = [
       { name: 'disabled', label: 'Disabled', type: 'boolean', default: false },
     ],
     propDefs: [
-      { name: 'modelValue', type: '{ start: Date | null, end: Date | null }', default: '{ start: null, end: null }', description: 'Plage sélectionnée (v-model).' },
-      { name: 'placeholder', type: 'string', default: '"Pick a date range"', description: 'Texte affiché quand rien n\'est sélectionné.' },
-      { name: 'disabled', type: 'boolean', default: 'false', description: 'Désactive le composant.' },
+      { name: 'modelValue', type: '{ start: Date | null, end: Date | null }', default: '{ start: null, end: null }', description: 'Selected range (v-model).' },
+      { name: 'placeholder', type: 'string', default: '"Pick a date range"', description: 'Placeholder text when nothing is selected.' },
+      { name: 'disabled', type: 'boolean', default: 'false', description: 'Disable the component.' },
     ],
     examples: [],
     skeleton: { componentName: 'DsDateRangePickerSkeleton', examples: [{ label: 'Default', props: {} }] },
     accessibility: [
-      'Cliquer hors du calendrier le ferme.',
-      'Keyboard navigation supportée.',
+      'Clicking outside the calendar closes it.',
+      'Keyboard navigation supported.',
     ],
   },
 
@@ -2177,7 +2177,7 @@ export const componentDocs: ComponentDoc[] = [
     slug: 'time-picker',
     componentName: 'DsTimePicker',
     displayName: 'TimePicker',
-    description: 'Sélecteur d\'heure avec format 12h ou 24h, secondes optionnelles.',
+    description: 'Time picker with 12h or 24h format, optional seconds.',
     category: 'Form',
     defaultProps: { format: '24', placeholder: '--:--' },
     controls: [
@@ -2186,16 +2186,16 @@ export const componentDocs: ComponentDoc[] = [
       { name: 'disabled', label: 'Disabled', type: 'boolean', default: false },
     ],
     propDefs: [
-      { name: 'modelValue', type: 'string', default: 'undefined', description: 'Valeur HH:MM ou HH:MM:SS (v-model).' },
-      { name: 'format', type: '"12" | "24"', default: '"24"', description: 'Format d\'affichage.' },
-      { name: 'showSeconds', type: 'boolean', default: 'false', description: 'Affiche la saisie des secondes.' },
-      { name: 'disabled', type: 'boolean', default: 'false', description: 'Désactive le composant.' },
+      { name: 'modelValue', type: 'string', default: 'undefined', description: 'HH:MM or HH:MM:SS value (v-model).' },
+      { name: 'format', type: '"12" | "24"', default: '"24"', description: 'Display format.' },
+      { name: 'showSeconds', type: 'boolean', default: 'false', description: 'Show the seconds input.' },
+      { name: 'disabled', type: 'boolean', default: 'false', description: 'Disable the component.' },
     ],
     examples: [],
     skeleton: { componentName: 'DsTimePickerSkeleton', examples: [{ label: 'Default', props: {} }] },
     accessibility: [
-      'Chaque spinner heure/minute/seconde est un input numérique natif.',
-      'Escape ou clic extérieur ferme le sélecteur.',
+      'Each hour/minute/second spinner is a native number input.',
+      'Escape or outside click closes the picker.',
     ],
   },
 
@@ -2204,7 +2204,7 @@ export const componentDocs: ComponentDoc[] = [
     slug: 'status-badge',
     componentName: 'DsStatusBadge',
     displayName: 'StatusBadge',
-    description: 'Badge avec indicateur de statut coloré (online, offline, busy, away, pending).',
+    description: 'Badge with colored status indicator (online, offline, busy, away, pending).',
     category: 'Display',
     defaultProps: { status: 'online', showLabel: true, pulse: false, size: 'md' },
     controls: [
@@ -2214,11 +2214,11 @@ export const componentDocs: ComponentDoc[] = [
       { name: 'pulse', label: 'Pulse animation', type: 'boolean', default: false },
     ],
     propDefs: [
-      { name: 'status', type: '"online" | "offline" | "busy" | "away" | "pending"', default: '"online"', description: 'Statut affiché.' },
-      { name: 'label', type: 'string', default: 'auto', description: 'Label personnalisé (remplace le label par défaut du statut).' },
-      { name: 'showLabel', type: 'boolean', default: 'true', description: 'Affiche ou cache le label.' },
-      { name: 'pulse', type: 'boolean', default: 'false', description: 'Animation ping pour le statut online.' },
-      { name: 'size', type: '"sm" | "md" | "lg"', default: '"md"', description: 'Taille.' },
+      { name: 'status', type: '"online" | "offline" | "busy" | "away" | "pending"', default: '"online"', description: 'Status displayed.' },
+      { name: 'label', type: 'string', default: 'auto', description: 'Custom label (overrides the default status label).' },
+      { name: 'showLabel', type: 'boolean', default: 'true', description: 'Show or hide the label.' },
+      { name: 'pulse', type: 'boolean', default: 'false', description: 'Ping animation for online status.' },
+      { name: 'size', type: '"sm" | "md" | "lg"', default: '"md"', description: 'Size.' },
     ],
     examples: [
       { label: 'Online', props: { status: 'online', showLabel: true } },
@@ -2230,7 +2230,7 @@ export const componentDocs: ComponentDoc[] = [
       { label: 'Dot only', props: { status: 'online', showLabel: false } },
     ],
     skeleton: { componentName: 'DsStatusBadgeSkeleton', examples: [{ label: 'Default', props: {} }] },
-    accessibility: ['Le point de couleur est purement décoratif (aria-hidden implicite). Le label texte porte l\'information.'],
+    accessibility: ['The color dot is purely decorative (implicitly aria-hidden). The text label carries the information.'],
   },
 
   // ─── NotificationItem ────────────────────────────────────────────────────
@@ -2238,7 +2238,7 @@ export const componentDocs: ComponentDoc[] = [
     slug: 'notification-item',
     componentName: 'DsNotificationItem',
     displayName: 'NotificationItem',
-    description: 'Élément de liste de notifications avec avatar, titre, description et heure.',
+    description: 'Notification list item with avatar, title, description, and timestamp.',
     category: 'Display',
     defaultProps: { title: 'New message', description: 'You have a new message from Alice.', time: '2 min ago', read: false, avatarInitials: 'AL' },
     controls: [
@@ -2248,12 +2248,12 @@ export const componentDocs: ComponentDoc[] = [
       { name: 'read', label: 'Read', type: 'boolean', default: false },
     ],
     propDefs: [
-      { name: 'title', type: 'string', default: 'undefined', description: 'Titre de la notification.' },
-      { name: 'description', type: 'string', default: 'undefined', description: 'Description / contenu.' },
-      { name: 'time', type: 'string', default: 'undefined', description: 'Timestamp affiché.' },
-      { name: 'read', type: 'boolean', default: 'false', description: 'Indique si la notification a été lue (pas de point bleu).' },
-      { name: 'avatarSrc', type: 'string', default: 'undefined', description: 'URL de l\'image avatar.' },
-      { name: 'avatarInitials', type: 'string', default: 'undefined', description: 'Initiales si pas d\'image.' },
+      { name: 'title', type: 'string', default: 'undefined', description: 'Notification title.' },
+      { name: 'description', type: 'string', default: 'undefined', description: 'Description / content.' },
+      { name: 'time', type: 'string', default: 'undefined', description: 'Timestamp displayed.' },
+      { name: 'read', type: 'boolean', default: 'false', description: 'Indicates whether the notification has been read (no blue dot).' },
+      { name: 'avatarSrc', type: 'string', default: 'undefined', description: 'Avatar image URL.' },
+      { name: 'avatarInitials', type: 'string', default: 'undefined', description: 'Initials if no image is provided.' },
     ],
     examples: [
       { label: 'Unread', props: { title: 'New message', description: 'You have a new message from Alice.', time: '2 min ago', read: false, avatarInitials: 'AL' } },
@@ -2261,8 +2261,8 @@ export const componentDocs: ComponentDoc[] = [
     ],
     skeleton: { componentName: 'DsNotificationItemSkeleton', examples: [{ label: 'Default (3 items)', props: { count: 3 } }] },
     accessibility: [
-      'role="listitem" sur chaque notification.',
-      'Le bouton dismiss a un aria-label.',
+      'role="listitem" on each notification.',
+      'The dismiss button has an aria-label.',
     ],
   },
 
@@ -2271,7 +2271,7 @@ export const componentDocs: ComponentDoc[] = [
     slug: 'banner',
     componentName: 'DsBanner',
     displayName: 'Banner',
-    description: 'Barre d\'annonce dismissible, idéale pour les messages globaux en haut de page.',
+    description: 'Dismissible announcement bar, ideal for global messages at the top of the page.',
     category: 'Overlay',
     defaultProps: { variant: 'info', dismissible: true },
     controls: [
@@ -2279,8 +2279,8 @@ export const componentDocs: ComponentDoc[] = [
       { name: 'dismissible', label: 'Dismissible', type: 'boolean', default: true },
     ],
     propDefs: [
-      { name: 'variant', type: '"default" | "info" | "success" | "warning" | "danger"', default: '"info"', description: 'Couleur et icône du banner.' },
-      { name: 'dismissible', type: 'boolean', default: 'true', description: 'Affiche le bouton de fermeture.' },
+      { name: 'variant', type: '"default" | "info" | "success" | "warning" | "danger"', default: '"info"', description: 'Color and icon of the banner.' },
+      { name: 'dismissible', type: 'boolean', default: 'true', description: 'Show the close button.' },
     ],
     examples: [
       { label: 'Info', props: { variant: 'info', dismissible: true }, slot: 'New version 2.0 is available. Read the changelog.' },
@@ -2290,8 +2290,8 @@ export const componentDocs: ComponentDoc[] = [
     ],
     skeleton: { componentName: 'DsBannerSkeleton', examples: [{ label: 'Default', props: {} }] },
     accessibility: [
-      'role="alert" pour annoncer le message aux lecteurs d\'écran.',
-      'Le bouton dismiss a aria-label="Dismiss".',
+      'role="alert" to announce the message to screen readers.',
+      'The dismiss button has aria-label="Dismiss".',
     ],
   },
 
@@ -2300,7 +2300,7 @@ export const componentDocs: ComponentDoc[] = [
     slug: 'confirm-dialog',
     componentName: 'DsConfirmDialog',
     displayName: 'ConfirmDialog',
-    description: 'Boîte de dialogue de confirmation simplifiée avec variante danger ou primary.',
+    description: 'Simplified confirmation dialog with danger or primary variant.',
     category: 'Overlay',
     defaultProps: { title: 'Are you sure?', description: 'This action cannot be undone.', confirmLabel: 'Confirm', cancelLabel: 'Cancel', variant: 'danger' },
     controls: [
@@ -2311,20 +2311,20 @@ export const componentDocs: ComponentDoc[] = [
       { name: 'cancelLabel', label: 'Cancel label', type: 'text', default: 'Cancel' },
     ],
     propDefs: [
-      { name: 'modelValue', type: 'boolean', default: 'false', description: 'Contrôle l\'ouverture (v-model).' },
-      { name: 'title', type: 'string', default: '"Are you sure?"', description: 'Titre de la boîte de dialogue.' },
+      { name: 'modelValue', type: 'boolean', default: 'false', description: 'Controls the open/closed state (v-model).' },
+      { name: 'title', type: 'string', default: '"Are you sure?"', description: 'Dialog title.' },
       { name: 'description', type: 'string', default: '"This action cannot be undone."', description: 'Description.' },
-      { name: 'confirmLabel', type: 'string', default: '"Confirm"', description: 'Label du bouton de confirmation.' },
-      { name: 'cancelLabel', type: 'string', default: '"Cancel"', description: 'Label du bouton d\'annulation.' },
-      { name: 'variant', type: '"danger" | "primary"', default: '"danger"', description: 'Couleur du bouton de confirmation.' },
-      { name: 'loading', type: 'boolean', default: 'false', description: 'État de chargement pendant la confirmation.' },
+      { name: 'confirmLabel', type: 'string', default: '"Confirm"', description: 'Label for the confirm button.' },
+      { name: 'cancelLabel', type: 'string', default: '"Cancel"', description: 'Label for the cancel button.' },
+      { name: 'variant', type: '"danger" | "primary"', default: '"danger"', description: 'Color of the confirm button.' },
+      { name: 'loading', type: 'boolean', default: 'false', description: 'Loading state during confirmation.' },
     ],
     examples: [],
     skeleton: { componentName: 'DsConfirmDialogSkeleton', examples: [{ label: 'Default', props: {} }] },
     accessibility: [
-      'role="alertdialog" et aria-modal="true".',
-      'Escape ferme la boîte de dialogue.',
-      'Clic sur le backdrop annule.',
+      'role="alertdialog" and aria-modal="true".',
+      'Escape closes the dialog.',
+      'Clicking the backdrop cancels.',
     ],
   },
 
@@ -2333,7 +2333,7 @@ export const componentDocs: ComponentDoc[] = [
     slug: 'loading-overlay',
     componentName: 'DsLoadingOverlay',
     displayName: 'LoadingOverlay',
-    description: 'Overlay de chargement qui se pose sur son contenu parent.',
+    description: 'Loading overlay that overlays its parent content.',
     category: 'Overlay',
     defaultProps: { visible: false, blur: true },
     controls: [
@@ -2342,14 +2342,14 @@ export const componentDocs: ComponentDoc[] = [
       { name: 'blur', label: 'Blur backdrop', type: 'boolean', default: true },
     ],
     propDefs: [
-      { name: 'visible', type: 'boolean', default: 'false', description: 'Affiche ou cache l\'overlay.' },
-      { name: 'label', type: 'string', default: 'undefined', description: 'Texte affiché sous le spinner.' },
-      { name: 'blur', type: 'boolean', default: 'true', description: 'Applique un blur au contenu en dessous.' },
+      { name: 'visible', type: 'boolean', default: 'false', description: 'Show or hide the overlay.' },
+      { name: 'label', type: 'string', default: 'undefined', description: 'Text displayed below the spinner.' },
+      { name: 'blur', type: 'boolean', default: 'true', description: 'Apply a blur effect to the content below.' },
     ],
     examples: [],
     skeleton: { componentName: 'DsLoadingOverlaySkeleton', examples: [{ label: 'Default', props: {} }] },
     accessibility: [
-      'aria-busy="true" et aria-live="polite" indiquent le chargement.',
+      'aria-busy="true" and aria-live="polite" indicate loading state.',
     ],
   },
 
@@ -2358,18 +2358,18 @@ export const componentDocs: ComponentDoc[] = [
     slug: 'navigation-menu',
     componentName: 'DsNavigationMenu',
     displayName: 'NavigationMenu',
-    description: 'Menu de navigation horizontal avec sous-menus déroulants.',
+    description: 'Horizontal navigation menu with dropdown sub-menus.',
     category: 'Navigation',
     defaultProps: { items: [] },
     controls: [],
     propDefs: [
-      { name: 'items', type: 'DsNavMenuItem[]', default: '[]', description: 'Items de navigation { label, href?, description?, children? }.' },
+      { name: 'items', type: 'DsNavMenuItem[]', default: '[]', description: 'Navigation items { label, href?, description?, children? }.' },
     ],
     examples: [],
     skeleton: { componentName: 'DsNavigationMenuSkeleton', examples: [{ label: 'Default', props: {} }] },
     accessibility: [
-      'Navigation keyboard supportée.',
-      'Les sous-menus s\'ouvrent au survol ou au clic.',
+      'Keyboard navigation supported.',
+      'Sub-menus open on hover or click.',
     ],
   },
 
@@ -2378,19 +2378,19 @@ export const componentDocs: ComponentDoc[] = [
     slug: 'menubar',
     componentName: 'DsMenubar',
     displayName: 'Menubar',
-    description: 'Barre de menus style application desktop (Fichier / Édition / Affichage…).',
+    description: 'Desktop application-style menu bar (File / Edit / View…).',
     category: 'Navigation',
     defaultProps: { menus: [] },
     controls: [],
     propDefs: [
-      { name: 'menus', type: 'DsMenubarMenu[]', default: '[]', description: 'Liste de menus { label, items[] }. Chaque item : { label, shortcut?, disabled?, separator?, action? }.' },
+      { name: 'menus', type: 'DsMenubarMenu[]', default: '[]', description: 'List of menus { label, items[] }. Each item: { label, shortcut?, disabled?, separator?, action? }.' },
     ],
     examples: [],
     skeleton: { componentName: 'DsMenubarSkeleton', examples: [{ label: 'Default', props: {} }] },
     accessibility: [
-      'Escape ferme le menu ouvert.',
-      'Clic en dehors ferme le menu.',
-      'Les raccourcis clavier sont affichés à droite de chaque item.',
+      'Escape closes the open menu.',
+      'Click outside closes the menu.',
+      'Keyboard shortcuts are displayed to the right of each item.',
     ],
   },
 
@@ -2399,7 +2399,7 @@ export const componentDocs: ComponentDoc[] = [
     slug: 'code-block',
     componentName: 'DsCodeBlock',
     displayName: 'CodeBlock',
-    description: 'Bloc de code avec syntax highlighting, numéros de ligne et bouton Copy.',
+    description: 'Code block with syntax highlighting, line numbers, and a copy button.',
     category: 'Display',
     defaultProps: { language: 'typescript', copyable: true, showLineNumbers: false },
     controls: [
@@ -2409,16 +2409,16 @@ export const componentDocs: ComponentDoc[] = [
       { name: 'copyable', label: 'Copyable', type: 'boolean', default: true },
     ],
     propDefs: [
-      { name: 'code', type: 'string', default: '""', description: 'Code à afficher.' },
-      { name: 'language', type: 'string', default: '"plaintext"', description: 'Langage pour l\'affichage (ex: typescript, vue, bash).' },
-      { name: 'filename', type: 'string', default: 'undefined', description: 'Nom du fichier affiché dans l\'en-tête.' },
-      { name: 'showLineNumbers', type: 'boolean', default: 'false', description: 'Affiche les numéros de ligne.' },
-      { name: 'copyable', type: 'boolean', default: 'true', description: 'Affiche le bouton Copy.' },
+      { name: 'code', type: 'string', default: '""', description: 'Code to display.' },
+      { name: 'language', type: 'string', default: '"plaintext"', description: 'Language for syntax highlighting (e.g. typescript, vue, bash).' },
+      { name: 'filename', type: 'string', default: 'undefined', description: 'Filename displayed in the header.' },
+      { name: 'showLineNumbers', type: 'boolean', default: 'false', description: 'Show line numbers.' },
+      { name: 'copyable', type: 'boolean', default: 'true', description: 'Show the Copy button.' },
     ],
     examples: [],
     skeleton: { componentName: 'DsCodeBlockSkeleton', examples: [{ label: 'Default (6 lines)', props: {} }, { label: 'Short (3 lines)', props: { lines: 3 } }] },
     accessibility: [
-      'Le bouton Copy a un label visible "Copy" / "Copied".',
+      'The Copy button has a visible label "Copy" / "Copied".',
     ],
   },
 
@@ -2427,19 +2427,19 @@ export const componentDocs: ComponentDoc[] = [
     slug: 'tree-view',
     componentName: 'DsTreeView',
     displayName: 'TreeView',
-    description: 'Arborescence hiérarchique interactive avec expand/collapse et sélection.',
+    description: 'Interactive hierarchical tree with expand/collapse and selection.',
     category: 'Display',
     defaultProps: { nodes: [] },
     controls: [],
     propDefs: [
-      { name: 'nodes', type: 'DsTreeNode[]', default: '[]', description: 'Noeuds { id, label, children?, disabled? }. Récursif.' },
-      { name: 'selected', type: 'string', default: 'undefined', description: 'ID du noeud sélectionné.' },
+      { name: 'nodes', type: 'DsTreeNode[]', default: '[]', description: 'Nodes { id, label, children?, disabled? }. Recursive.' },
+      { name: 'selected', type: 'string', default: 'undefined', description: 'ID of the selected node.' },
     ],
     examples: [],
     skeleton: { componentName: 'DsTreeViewSkeleton', examples: [{ label: 'Default', props: {} }] },
     accessibility: [
-      'role="tree" sur le conteneur, role="treeitem" sur chaque noeud.',
-      'aria-expanded reflète l\'état expand/collapse des dossiers.',
+      'role="tree" on the container, role="treeitem" on each node.',
+      'aria-expanded reflects the expand/collapse state of folders.',
     ],
   },
 
@@ -2467,17 +2467,17 @@ export const componentDocs: ComponentDoc[] = [
     slug: 'aspect-ratio',
     componentName: 'DsAspectRatio',
     displayName: 'AspectRatio',
-    description: 'Wrapper qui maintient un ratio largeur/hauteur fixe pour son contenu.',
+    description: 'Wrapper that maintains a fixed width/height ratio for its content.',
     category: 'Display',
     defaultProps: { ratio: 1.777 },
     controls: [
       { name: 'ratio', label: 'Ratio (width/height)', type: 'number', default: 1.777 },
     ],
     propDefs: [
-      { name: 'ratio', type: 'number', default: '16/9', description: 'Ratio largeur/hauteur (ex: 16/9 = 1.777, 1/1 = 1, 4/3 = 1.333).' },
+      { name: 'ratio', type: 'number', default: '16/9', description: 'Width/height ratio (e.g. 16/9 = 1.777, 1/1 = 1, 4/3 = 1.333).' },
     ],
     examples: [],
-    accessibility: ['Composant purement structurel, pas d\'impact sur l\'accessibilité.'],
+    accessibility: ['Purely structural component, no accessibility impact.'],
   },
 
   // ─── RadarChart ──────────────────────────────────────────────────────────
@@ -2485,7 +2485,7 @@ export const componentDocs: ComponentDoc[] = [
     slug: 'radar-chart',
     componentName: 'DsRadarChart',
     displayName: 'RadarChart',
-    description: 'Graphique radar / toile d\'araignée en SVG, zéro dépendance.',
+    description: 'SVG radar / spider web chart, zero dependencies.',
     category: 'Charts',
     defaultProps: { data: [], color: '#7f00ff', size: 280, showLabels: true, showGrid: true },
     controls: [
@@ -2496,16 +2496,511 @@ export const componentDocs: ComponentDoc[] = [
     ],
     propDefs: [
       { name: 'data', type: 'DsRadarChartAxis[]', default: '[]', description: 'Axes { label, value (0-100) }.' },
-      { name: 'color', type: 'string', default: '"#7f00ff"', description: 'Couleur principale du graphique.' },
-      { name: 'size', type: 'number', default: '280', description: 'Taille du SVG en pixels.' },
-      { name: 'showLabels', type: 'boolean', default: 'true', description: 'Affiche les labels des axes.' },
-      { name: 'showGrid', type: 'boolean', default: 'true', description: 'Affiche la grille en arrière-plan.' },
+      { name: 'color', type: 'string', default: '"#7f00ff"', description: 'Main chart color.' },
+      { name: 'size', type: 'number', default: '280', description: 'SVG size in pixels.' },
+      { name: 'showLabels', type: 'boolean', default: 'true', description: 'Show axis labels.' },
+      { name: 'showGrid', type: 'boolean', default: 'true', description: 'Show the background grid.' },
     ],
     examples: [],
     skeleton: { componentName: 'DsRadarChartSkeleton', examples: [{ label: 'Default', props: {} }] },
     accessibility: [
-      'SVG avec aria-hidden="true" et role="img".',
-      'Fournir une description via aria-label ou aria-labelledby sur le conteneur parent.',
+      'SVG with aria-hidden="true" and role="img".',
+      'Provide a description via aria-label or aria-labelledby on the parent container.',
+    ],
+  },
+
+  /* ── AreaChart ── */
+  {
+    slug: 'area-chart',
+    componentName: 'DsAreaChart',
+    displayName: 'Area Chart',
+    description: 'Gradient area chart. Supports multiple series, stacked mode, and interactive tooltips.',
+    category: 'Charts',
+    defaultProps: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+      datasets: [
+        { label: 'Revenue', data: [4000, 3000, 5000, 2780, 1890, 6390], color: '#7f00ff' },
+        { label: 'Expenses', data: [2400, 1398, 9800, 3908, 4800, 3800], color: '#06b6d4' },
+      ],
+      showGrid: true,
+      showLegend: true,
+      stacked: false,
+      height: 240,
+    },
+    controls: [
+      { name: 'showGrid', label: 'Show Grid', type: 'boolean', default: true },
+      { name: 'showLegend', label: 'Show Legend', type: 'boolean', default: true },
+      { name: 'showDots', label: 'Show Dots', type: 'boolean', default: false },
+      { name: 'stacked', label: 'Stacked', type: 'boolean', default: false },
+      { name: 'height', label: 'Height (px)', type: 'number', default: 240 },
+    ],
+    propDefs: [
+      { name: 'labels', type: 'string[]', required: true, description: 'X-axis labels.' },
+      { name: 'datasets', type: 'DsAreaChartDataset[]', required: true, description: 'Data series.' },
+      { name: 'showGrid', type: 'boolean', default: 'true', description: 'Show the grid.' },
+      { name: 'showDots', type: 'boolean', default: 'false', description: 'Show data points.' },
+      { name: 'showLegend', type: 'boolean', default: 'true', description: 'Show the legend.' },
+      { name: 'stacked', type: 'boolean', default: 'false', description: 'Stacked area mode.' },
+      { name: 'height', type: 'number', default: '240', description: 'Chart height in px.' },
+    ],
+    examples: [
+      {
+        label: 'Single series',
+        props: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+          datasets: [{ label: 'Visitors', data: [1200, 1900, 1400, 2200, 1800, 2800], color: '#7f00ff' }],
+          height: 200,
+        },
+      },
+      {
+        label: 'Stacked',
+        props: {
+          labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+          datasets: [
+            { label: 'Product A', data: [3000, 4000, 3500, 5000], color: '#7f00ff' },
+            { label: 'Product B', data: [2000, 2500, 3000, 2800], color: '#06b6d4' },
+            { label: 'Product C', data: [1000, 1500, 1200, 1800], color: '#22c55e' },
+          ],
+          stacked: true,
+          height: 220,
+        },
+      },
+    ],
+    skeleton: { componentName: 'DsAreaChartSkeleton', examples: [{ label: 'Default', props: {} }] },
+    accessibility: [
+      'SVG chart with accessible hover tooltip.',
+      'Use aria-label on the container to describe the chart.',
+    ],
+  },
+
+  /* ── GaugeChart ── */
+  {
+    slug: 'gauge-chart',
+    componentName: 'DsGaugeChart',
+    displayName: 'Gauge Chart',
+    description: 'Animated circular SVG gauge. Ideal for displaying a KPI, a progress indicator, or a bounded metric.',
+    category: 'Charts',
+    defaultProps: { value: 72, min: 0, max: 100, label: 'Score', size: 180, showValue: true, showMinMax: true },
+    controls: [
+      { name: 'value', label: 'Value', type: 'number', default: 72 },
+      { name: 'min', label: 'Min', type: 'number', default: 0 },
+      { name: 'max', label: 'Max', type: 'number', default: 100 },
+      { name: 'label', label: 'Label', type: 'text', default: 'Score' },
+      { name: 'size', label: 'Size (px)', type: 'number', default: 180 },
+      { name: 'showValue', label: 'Show Value', type: 'boolean', default: true },
+      { name: 'showMinMax', label: 'Show Min/Max', type: 'boolean', default: true },
+      { name: 'thickness', label: 'Thickness', type: 'number', default: 14 },
+      { name: 'color', label: 'Color', type: 'color', default: '#7f00ff' },
+    ],
+    propDefs: [
+      { name: 'value', type: 'number', required: true, description: 'Current value.' },
+      { name: 'min', type: 'number', default: '0', description: 'Minimum value.' },
+      { name: 'max', type: 'number', default: '100', description: 'Maximum value.' },
+      { name: 'label', type: 'string', description: 'Label displayed below the value.' },
+      { name: 'unit', type: 'string', description: 'Suffix (e.g. %, °C).' },
+      { name: 'size', type: 'number', default: '180', description: 'SVG size in px.' },
+      { name: 'color', type: 'string', description: 'Gauge color (default: violet).' },
+      { name: 'showValue', type: 'boolean', default: 'true', description: 'Display the value in the center.' },
+      { name: 'showMinMax', type: 'boolean', default: 'true', description: 'Display min/max values.' },
+      { name: 'thickness', type: 'number', default: '14', description: 'Arc thickness.' },
+    ],
+    examples: [
+      { label: 'CPU Usage', props: { value: 45, label: 'CPU', unit: '%', size: 160 } },
+      { label: 'High value', props: { value: 93, label: 'Performance', color: '#22c55e', size: 160 } },
+      { label: 'Warning', props: { value: 81, label: 'Memory', color: '#f97316', size: 160 } },
+      { label: 'Custom range', props: { value: 1400, min: 0, max: 2000, label: 'RPM', size: 160 } },
+    ],
+    skeleton: { componentName: 'DsGaugeChartSkeleton', examples: [{ label: 'Default', props: {} }] },
+    accessibility: [
+      'SVG with role="img" and dynamic aria-label.',
+      'The value is also visible as text for screen readers.',
+    ],
+  },
+
+  /* ── NumberTicker ── */
+  {
+    slug: 'number-ticker',
+    componentName: 'DsNumberTicker',
+    displayName: 'Number Ticker',
+    description: 'Animated counter that interpolates to a target value. Ideal for displaying statistics or KPIs.',
+    category: 'Display',
+    defaultProps: { value: 12345, duration: 1200, decimals: 0, prefix: '', suffix: '', easing: 'ease-out' },
+    controls: [
+      { name: 'value', label: 'Value', type: 'number', default: 12345 },
+      { name: 'duration', label: 'Duration (ms)', type: 'number', default: 1200 },
+      { name: 'decimals', label: 'Decimals', type: 'number', default: 0 },
+      { name: 'prefix', label: 'Prefix', type: 'text', default: '' },
+      { name: 'suffix', label: 'Suffix', type: 'text', default: '' },
+      { name: 'easing', label: 'Easing', type: 'select', options: ['linear', 'ease-out', 'ease-in-out'], default: 'ease-out' },
+    ],
+    propDefs: [
+      { name: 'value', type: 'number', required: true, description: 'Target value.' },
+      { name: 'duration', type: 'number', default: '1200', description: 'Animation duration (ms).' },
+      { name: 'decimals', type: 'number', default: '0', description: 'Number of decimal places.' },
+      { name: 'prefix', type: 'string', description: 'Prefix (e.g. $, €).' },
+      { name: 'suffix', type: 'string', description: 'Suffix (e.g. %, k).' },
+      { name: 'separator', type: 'string', default: '","', description: 'Thousands separator.' },
+      { name: 'easing', type: "'linear' | 'ease-out' | 'ease-in-out'", default: '"ease-out"', description: 'Easing curve.' },
+    ],
+    examples: [
+      { label: 'Revenue', props: { value: 98432, prefix: '$', duration: 1500 }, description: 'Counter with currency prefix.' },
+      { label: 'Percentage', props: { value: 94.5, decimals: 1, suffix: '%', duration: 800 }, description: 'Decimal value with suffix.' },
+      { label: 'Linear', props: { value: 1000, easing: 'linear', duration: 2000 }, description: 'Linear animation.' },
+    ],
+    skeleton: { componentName: 'DsNumberTickerSkeleton', examples: [{ label: 'Default', props: {} }] },
+    accessibility: [
+      'The text is directly readable by screen readers.',
+      'Respects prefers-reduced-motion: if enabled, the value is displayed instantly.',
+    ],
+  },
+
+  /* ── Resizable ── */
+  {
+    slug: 'resizable',
+    componentName: 'DsResizable',
+    displayName: 'Resizable',
+    description: 'Resizable panel via a drag-and-drop separator. Supports horizontal and vertical orientations.',
+    category: 'Layout',
+    defaultProps: { direction: 'horizontal', initialSize: 50, minSize: 15, maxSize: 85 },
+    controls: [
+      { name: 'direction', label: 'Direction', type: 'select', options: ['horizontal', 'vertical'], default: 'horizontal' },
+      { name: 'initialSize', label: 'Initial size (%)', type: 'number', default: 50 },
+      { name: 'minSize', label: 'Min size (%)', type: 'number', default: 15 },
+      { name: 'maxSize', label: 'Max size (%)', type: 'number', default: 85 },
+    ],
+    propDefs: [
+      { name: 'direction', type: "'horizontal' | 'vertical'", default: '"horizontal"', description: 'Separator orientation.' },
+      { name: 'initialSize', type: 'number', default: '50', description: 'Initial size of panel A (%).' },
+      { name: 'minSize', type: 'number', default: '15', description: 'Minimum size of panel A (%).' },
+      { name: 'maxSize', type: 'number', default: '85', description: 'Maximum size of panel A (%).' },
+    ],
+    examples: [
+      { label: 'Horizontal', props: { direction: 'horizontal', initialSize: 40 } },
+      { label: 'Vertical', props: { direction: 'vertical', initialSize: 40 } },
+    ],
+    skeleton: { componentName: 'DsResizableSkeleton', examples: [{ label: 'Default', props: {} }] },
+    accessibility: [
+      'The separator has role="separator" with aria-orientation, aria-valuenow, aria-valuemin, and aria-valuemax.',
+      'Supports mouse drag and touch on mobile.',
+    ],
+  },
+
+  /* ── VirtualList ── */
+  {
+    slug: 'virtual-list',
+    componentName: 'DsVirtualList',
+    displayName: 'Virtual List',
+    description: 'Virtualized list: only visible elements are rendered in the DOM. Optimal performance for large collections.',
+    category: 'Data',
+    defaultProps: { items: [], itemHeight: 56, containerHeight: 300, overscan: 3 },
+    controls: [
+      { name: 'itemHeight', label: 'Item height (px)', type: 'number', default: 56 },
+      { name: 'containerHeight', label: 'Container height (px)', type: 'number', default: 300 },
+      { name: 'overscan', label: 'Overscan', type: 'number', default: 3 },
+    ],
+    propDefs: [
+      { name: 'items', type: 'T[]', required: true, description: 'Array of data to virtualize.' },
+      { name: 'itemHeight', type: 'number', required: true, description: 'Fixed height of each item (px).' },
+      { name: 'containerHeight', type: 'number', default: '400', description: 'Height of the scrollable container (px).' },
+      { name: 'overscan', type: 'number', default: '3', description: 'Number of additional items rendered outside the viewport.' },
+      { name: 'keyField', type: 'string', description: 'Field used as unique key.' },
+    ],
+    examples: [],
+    skeleton: { componentName: 'DsVirtualListSkeleton', examples: [{ label: 'Default', props: {} }] },
+    accessibility: [
+      'Use aria-rowcount and aria-rowindex on items to indicate position in the total list.',
+      'Add role="list" on the container and role="listitem" on each item.',
+    ],
+  },
+
+  /* ── Kanban ── */
+  {
+    slug: 'kanban',
+    componentName: 'DsKanban',
+    displayName: 'Kanban',
+    description: 'Kanban board with drag-and-drop columns and cards. Supports priorities, tags, and column customization.',
+    category: 'Data',
+    defaultProps: {
+      draggable: true,
+      columns: [
+        {
+          id: 'todo',
+          title: 'To Do',
+          color: '#94a3b8',
+          cards: [
+            { id: '1', title: 'Design new landing page', description: 'Create wireframes and mockups', tags: ['design', 'ui'], priority: 'high' },
+            { id: '2', title: 'Set up CI/CD pipeline', tags: ['devops'], priority: 'medium' },
+          ],
+        },
+        {
+          id: 'in-progress',
+          title: 'In Progress',
+          color: '#7f00ff',
+          cards: [
+            { id: '3', title: 'Implement auth module', description: 'JWT + refresh token', tags: ['backend', 'auth'], priority: 'high' },
+          ],
+        },
+        {
+          id: 'done',
+          title: 'Done',
+          color: '#22c55e',
+          cards: [
+            { id: '4', title: 'Database schema', tags: ['backend'], priority: 'low' },
+            { id: '5', title: 'Project setup', tags: ['setup'], priority: 'low' },
+          ],
+        },
+      ],
+    },
+    controls: [
+      { name: 'draggable', label: 'Draggable', type: 'boolean', default: true },
+    ],
+    propDefs: [
+      { name: 'columns', type: 'DsKanbanColumn[]', required: true, description: 'Board columns.' },
+      { name: 'draggable', type: 'boolean', default: 'true', description: 'Enable drag-and-drop.' },
+    ],
+    examples: [],
+    skeleton: { componentName: 'DsKanbanSkeleton', examples: [{ label: 'Default', props: {} }] },
+    accessibility: [
+      'Drag-and-drop is keyboard accessible via move buttons.',
+      'Each column has an aria label and cards have appropriate roles.',
+    ],
+  },
+
+  /* ── QRCode ── */
+  {
+    slug: 'qr-code',
+    componentName: 'DsQRCode',
+    displayName: 'QR Code',
+    description: 'Dependency-free SVG QR code generator. Implements ISO 18004 standard versions 1–6, ECC level L (up to 134 bytes).',
+    category: 'Display',
+    defaultProps: { value: 'https://dds.dev', size: 180, quiet: 2 },
+    controls: [
+      { name: 'value', label: 'Value', type: 'text', default: 'https://dds.dev' },
+      { name: 'size', label: 'Size (px)', type: 'number', default: 180 },
+      { name: 'quiet', label: 'Quiet zone', type: 'number', default: 2 },
+      { name: 'foreground', label: 'Foreground', type: 'color', default: 'currentColor' },
+      { name: 'label', label: 'Label', type: 'text', default: '' },
+    ],
+    propDefs: [
+      { name: 'value', type: 'string', required: true, description: 'Text/URL to encode (max 134 bytes for V6-L).' },
+      { name: 'size', type: 'number', default: '200', description: 'Rendered SVG size in pixels.' },
+      { name: 'moduleSize', type: 'number', default: '8', description: 'Size of each module (cell) in px.' },
+      { name: 'foreground', type: 'string', default: '"currentColor"', description: 'Color of dark modules.' },
+      { name: 'background', type: 'string', default: '"transparent"', description: 'Background color.' },
+      { name: 'quiet', type: 'number', default: '2', description: 'Quiet zone size (modules).' },
+      { name: 'label', type: 'string', description: 'Text displayed below the QR code.' },
+    ],
+    examples: [
+      { label: 'URL', props: { value: 'https://dds.dev', size: 160, label: 'dds.dev' } },
+      { label: 'Short text', props: { value: 'Hello, DDS!', size: 160 } },
+      { label: 'Custom colors', props: { value: 'DDS Design', size: 160, foreground: '#7f00ff', background: '#f0e6ff' } },
+    ],
+    skeleton: { componentName: 'DsQRCodeSkeleton', examples: [{ label: 'Default', props: {} }] },
+    accessibility: [
+      'SVG with role="img" and aria-label describing the content.',
+      'Always provide a label or alternative text near the QR code.',
+    ],
+  },
+
+  /* ── CopyButton ── */
+  {
+    slug: 'copy-button',
+    componentName: 'DsCopyButton',
+    displayName: 'Copy Button',
+    description: 'Button that copies text to the clipboard with animated visual feedback. Uses the Clipboard API with fallback.',
+    category: 'Display',
+    defaultProps: { text: 'npm install design-system-antoinegourgue', label: 'Copy', successLabel: 'Copied!', variant: 'outline', size: 'md' },
+    controls: [
+      { name: 'text', label: 'Text to copy', type: 'text', default: 'npm install design-system-antoinegourgue' },
+      { name: 'label', label: 'Label', type: 'text', default: 'Copy' },
+      { name: 'successLabel', label: 'Success label', type: 'text', default: 'Copied!' },
+      { name: 'variant', label: 'Variant', type: 'select', options: ['default', 'ghost', 'outline'], default: 'outline' },
+      { name: 'size', label: 'Size', type: 'select', options: ['sm', 'md', 'lg'], default: 'md' },
+    ],
+    propDefs: [
+      { name: 'text', type: 'string', required: true, description: 'Text to copy to the clipboard.' },
+      { name: 'label', type: 'string', default: '"Copy"', description: 'Button label.' },
+      { name: 'successLabel', type: 'string', default: '"Copied!"', description: 'Label after successful copy.' },
+      { name: 'variant', type: "'default' | 'ghost' | 'outline'", default: '"outline"', description: 'Visual style.' },
+      { name: 'size', type: "'sm' | 'md' | 'lg'", default: '"md"', description: 'Button size.' },
+      { name: 'timeout', type: 'number', default: '1800', description: 'Duration to display success state (ms).' },
+    ],
+    examples: [
+      { label: 'Ghost', props: { text: 'Hello world', variant: 'ghost', label: 'Copy snippet' } },
+      { label: 'Small', props: { text: 'Copy me', size: 'sm' } },
+      { label: 'Large', props: { text: 'Large button text', size: 'lg', variant: 'default' } },
+    ],
+    skeleton: { componentName: 'DsCopyButtonSkeleton', examples: [{ label: 'Default', props: {} }] },
+    accessibility: [
+      'aria-label is dynamically updated (copied state vs. normal).',
+      'Visual feedback (checkmark icon + green color) is paired with a label change.',
+    ],
+  },
+
+  /* ── FormField ── */
+  {
+    slug: 'form-field',
+    componentName: 'DsFormField',
+    displayName: 'Form Field',
+    description: 'Form field wrapper: label, description, animated error message. Provides context (id, error, disabled) to child components.',
+    category: 'Form',
+    defaultProps: { label: 'Email address', description: 'We will never share your email.', error: '', required: false, disabled: false },
+    controls: [
+      { name: 'label', label: 'Label', type: 'text', default: 'Email address' },
+      { name: 'description', label: 'Description', type: 'text', default: 'We will never share your email.' },
+      { name: 'error', label: 'Error message', type: 'text', default: '' },
+      { name: 'required', label: 'Required', type: 'boolean', default: false },
+      { name: 'disabled', label: 'Disabled', type: 'boolean', default: false },
+      { name: 'orientation', label: 'Orientation', type: 'select', options: ['vertical', 'horizontal'], default: 'vertical' },
+    ],
+    propDefs: [
+      { name: 'label', type: 'string', description: 'Label displayed above the field.' },
+      { name: 'description', type: 'string', description: 'Helper text displayed below the label.' },
+      { name: 'error', type: 'string', description: 'Error message (shows error state on the field).' },
+      { name: 'required', type: 'boolean', default: 'false', description: 'Mark the field as required.' },
+      { name: 'disabled', type: 'boolean', default: 'false', description: 'Disable the field.' },
+      { name: 'id', type: 'string', description: 'Custom ID (auto-generated if not provided).' },
+      { name: 'orientation', type: "'vertical' | 'horizontal'", default: '"vertical"', description: 'Label / input layout.' },
+    ],
+    examples: [
+      { label: 'With error', props: { label: 'Username', error: 'This username is already taken.', required: true } },
+      { label: 'Horizontal', props: { label: 'Full name', description: 'As it appears on your ID.', orientation: 'horizontal' } },
+      { label: 'Disabled', props: { label: 'API Key', description: 'Read-only.', disabled: true } },
+    ],
+    skeleton: { componentName: 'DsFormFieldSkeleton', examples: [{ label: 'Default', props: {} }, { label: 'With description', props: { showDescription: true } }] },
+    accessibility: [
+      'The label is linked to the field via htmlFor/for.',
+      'The error message has role="alert" to announce it to screen readers.',
+      'The ID is auto-generated if not provided.',
+    ],
+  },
+
+  /* ── FloatingActionButton ── */
+  {
+    slug: 'floating-action-button',
+    componentName: 'DsFloatingActionButton',
+    displayName: 'Floating Action Button',
+    description: 'Floating Action Button (FAB). Supports a speed dial mode with animated secondary actions.',
+    category: 'Layout',
+    defaultProps: { label: 'Add item', size: 'md', variant: 'primary', fixed: false, actions: [] },
+    controls: [
+      { name: 'label', label: 'Label', type: 'text', default: 'Add item' },
+      { name: 'size', label: 'Size', type: 'select', options: ['sm', 'md', 'lg'], default: 'md' },
+      { name: 'variant', label: 'Variant', type: 'select', options: ['primary', 'secondary', 'ghost'], default: 'primary' },
+      { name: 'fixed', label: 'Fixed position', type: 'boolean', default: false },
+    ],
+    propDefs: [
+      { name: 'label', type: 'string', default: '"Open actions"', description: 'Aria-label for the button.' },
+      { name: 'position', type: "'bottom-right' | 'bottom-left' | 'top-right' | 'top-left'", default: '"bottom-right"', description: 'Position in the corner.' },
+      { name: 'size', type: "'sm' | 'md' | 'lg'", default: '"md"', description: 'Button size.' },
+      { name: 'variant', type: "'primary' | 'secondary' | 'ghost'", default: '"primary"', description: 'Visual style.' },
+      { name: 'actions', type: 'DsFabAction[]', default: '[]', description: 'Speed dial actions (empty = emits click).' },
+      { name: 'fixed', type: 'boolean', default: 'true', description: 'Fixed position (vs. absolute).' },
+    ],
+    examples: [
+      { label: 'Simple', props: { label: 'Create', size: 'md', variant: 'primary', fixed: false } },
+      { label: 'Secondary', props: { size: 'md', variant: 'secondary', fixed: false } },
+      { label: 'Small', props: { size: 'sm', fixed: false } },
+    ],
+    skeleton: { componentName: 'DsFloatingActionButtonSkeleton', examples: [{ label: 'Default', props: {} }] },
+    accessibility: [
+      'aria-label describes the main action.',
+      'aria-expanded indicates the open state of the speed dial.',
+      'Secondary actions each have their own aria-label.',
+    ],
+  },
+
+  /* ── VerticalNav ── */
+  {
+    slug: 'vertical-nav',
+    componentName: 'DsVerticalNav',
+    displayName: 'Vertical Nav',
+    description: 'Vertical sidebar navigation with groups, icons, badges, and sub-menus. Supports collapsed mode.',
+    category: 'Navigation',
+    defaultProps: {
+      activeId: 'dashboard',
+      collapsed: false,
+      groups: [
+        {
+          id: 'main',
+          title: 'Main',
+          items: [
+            { id: 'dashboard', label: 'Dashboard', icon: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6' },
+            { id: 'analytics', label: 'Analytics', badge: 'New', icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z' },
+            { id: 'settings', label: 'Settings', icon: 'M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z' },
+          ],
+        },
+        {
+          id: 'content',
+          title: 'Content',
+          items: [
+            { id: 'posts', label: 'Posts', badge: 12, icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z' },
+            { id: 'users', label: 'Users', icon: 'M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z', disabled: true },
+          ],
+        },
+      ],
+    },
+    controls: [
+      { name: 'activeId', label: 'Active item ID', type: 'text', default: 'dashboard' },
+      { name: 'collapsed', label: 'Collapsed', type: 'boolean', default: false },
+    ],
+    propDefs: [
+      { name: 'groups', type: 'DsVerticalNavGroup[]', required: true, description: 'Navigation groups.' },
+      { name: 'activeId', type: 'string', description: 'ID of the active item.' },
+      { name: 'collapsed', type: 'boolean', default: 'false', description: 'Collapsed mode (icons only).' },
+    ],
+    examples: [
+      {
+        label: 'Default',
+        props: {
+          activeId: 'dashboard',
+          collapsed: false,
+          groups: [
+            {
+              id: 'main',
+              title: 'Main',
+              items: [
+                { id: 'dashboard', label: 'Dashboard', icon: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6' },
+                { id: 'analytics', label: 'Analytics', badge: 'New', icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z' },
+                { id: 'settings', label: 'Settings', icon: 'M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z' },
+              ],
+            },
+            {
+              id: 'content',
+              title: 'Content',
+              items: [
+                { id: 'posts', label: 'Posts', badge: 12, icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z' },
+                { id: 'users', label: 'Users', icon: 'M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z', disabled: true },
+              ],
+            },
+          ],
+        },
+      },
+      {
+        label: 'Collapsed',
+        props: {
+          activeId: 'dashboard',
+          collapsed: true,
+          groups: [
+            {
+              id: 'main',
+              title: 'Main',
+              items: [
+                { id: 'dashboard', label: 'Dashboard', icon: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6' },
+                { id: 'analytics', label: 'Analytics', icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z' },
+                { id: 'settings', label: 'Settings', icon: 'M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z' },
+              ],
+            },
+          ],
+        },
+      },
+    ],
+    skeleton: { componentName: 'DsVerticalNavSkeleton', examples: [{ label: 'Default', props: {} }] },
+    accessibility: [
+      '<nav> element with role="navigation".',
+      'aria-current="page" on the active item.',
+      'aria-disabled on disabled items.',
+      'title displayed as tooltip in collapsed mode.',
     ],
   },
 ]

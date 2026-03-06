@@ -1,7 +1,7 @@
 # design-system-antoinegourgue — Monorepo
 
 A premium Design System for Nuxt 4 and Vue 3.
-60+ components, design tokens, Tailwind CSS preset, dark mode, skeleton loaders.
+87+ components, design tokens, Tailwind CSS preset, dark mode, skeleton loaders.
 
 Published on npm: [`design-system-antoinegourgue`](https://www.npmjs.com/package/design-system-antoinegourgue)
 
@@ -124,6 +124,20 @@ export default {
 All `Ds*` components are auto-imported globally. No explicit imports needed.
 
 ---
+
+## Component categories
+
+| Category   | Components |
+|------------|------------|
+| Actions    | Button, Toggle, ToggleGroup |
+| Form       | FormField, Input, Textarea, Select, Checkbox, Switch, Slider, RadioGroup, NumberInput, OtpInput, Combobox, MultiSelect, TagInput, DatePicker, DateRangePicker, TimePicker, ColorPicker, PhoneInput, FileUpload, Label, HelpText |
+| Feedback   | Alert, AlertDialog, Badge, Progress, Rating, Spinner, Toast, Tooltip |
+| Display    | Card, Avatar, AvatarGroup, Skeleton, StatCard, StatusBadge, Tag, Kbd, Carousel, CodeBlock, CopyButton, EmptyState, HoverCard, NotificationItem, NumberTicker, QRCode, ScrollArea, Separator, Timeline, TreeView, AspectRatio, VisuallyHidden |
+| Charts     | AreaChart, BarChart, DonutChart, GaugeChart, LineChart, RadarChart, Sparkline |
+| Data       | Table, DataTable, Calendar, Kanban, Stepper, VirtualList |
+| Navigation | Accordion, Breadcrumb, Dropdown, Menubar, NavigationMenu, Pagination, Tabs, VerticalNav |
+| Layout     | FloatingActionButton, Resizable |
+| Overlay    | Modal, Drawer, Sheet, Popover, Banner, Collapsible, ConfirmDialog, ContextMenu, CommandPalette, LoadingOverlay |
 
 ## Adding a new component
 

@@ -44,7 +44,7 @@ Built with:
 
 ## Features
 
-- 76 components covering actions, forms, feedback, navigation, overlays, data display, and charts
+- 87 components covering actions, forms, feedback, navigation, overlays, data display, charts, and layout
 - Full TypeScript support with exported prop types for every component
 - Tailwind CSS preset that maps all design tokens to utility classes
 - CSS variable token system — override the entire theme with a few lines of CSS
@@ -208,6 +208,7 @@ export default defineNuxtConfig({
 
 | Component           | Description                                             |
 |---------------------|---------------------------------------------------------|
+| `DsFormField`       | Form field wrapper with label, description, and animated error message |
 | `DsInput`           | Text input with size and state variants                 |
 | `DsTextarea`        | Multi-line text input                                   |
 | `DsSelect`          | Native dropdown select                                  |
@@ -244,58 +245,73 @@ export default defineNuxtConfig({
 
 ### Display
 
-| Component            | Description                                           |
-|----------------------|-------------------------------------------------------|
-| `DsCard`             | Compound card — header, content, footer slots         |
-| `DsAvatar`           | User avatar with image or initials fallback           |
-| `DsAvatarGroup`      | Stacked group of avatars with overflow counter        |
-| `DsSkeleton`         | Base skeleton loader                                  |
-| `DsStatCard`         | KPI / stat card with trend indicator                  |
-| `DsStatusBadge`      | Status indicator with dot and label                   |
-| `DsTag`              | Dismissible chip/tag                                  |
-| `DsKbd`              | Keyboard shortcut display                             |
-| `DsCarousel`         | Image and content carousel                            |
-| `DsCodeBlock`        | Syntax-highlighted code block with copy button        |
-| `DsEmptyState`       | Empty state with icon, title, description, and action |
-| `DsHoverCard`        | Hover-triggered card popover                          |
-| `DsNotificationItem` | Notification list item with avatar and timestamp      |
-| `DsScrollArea`       | Custom scrollable area                                |
-| `DsSeparator`        | Horizontal or vertical divider                        |
-| `DsTimeline`         | Vertical timeline with steps                          |
-| `DsTreeView`         | Recursive tree view with expand/collapse              |
-| `DsAspectRatio`      | Enforce an aspect ratio on any content                |
-| `DsVisuallyHidden`   | Visually hidden text for screen readers               |
+| Component            | Description                                                      |
+|----------------------|------------------------------------------------------------------|
+| `DsCard`             | Compound card — header, content, footer slots                    |
+| `DsAvatar`           | User avatar with image or initials fallback                      |
+| `DsAvatarGroup`      | Stacked group of avatars with overflow counter                   |
+| `DsSkeleton`         | Base skeleton loader                                             |
+| `DsStatCard`         | KPI / stat card with trend indicator                             |
+| `DsStatusBadge`      | Status indicator with dot and label                              |
+| `DsTag`              | Dismissible chip/tag                                             |
+| `DsKbd`              | Keyboard shortcut display                                        |
+| `DsCarousel`         | Image and content carousel                                       |
+| `DsCodeBlock`        | Syntax-highlighted code block with copy button                   |
+| `DsCopyButton`       | One-click clipboard copy with animated success state             |
+| `DsEmptyState`       | Empty state with icon, title, description, and action            |
+| `DsHoverCard`        | Hover-triggered card popover                                     |
+| `DsNotificationItem` | Notification list item with avatar and timestamp                 |
+| `DsNumberTicker`     | Animated number counter with easing and prefix/suffix            |
+| `DsQRCode`           | SVG QR code generator (zero dependencies, ISO 18004 v1 ECC-M)   |
+| `DsScrollArea`       | Custom scrollable area                                           |
+| `DsSeparator`        | Horizontal or vertical divider                                   |
+| `DsTimeline`         | Vertical timeline with steps                                     |
+| `DsTreeView`         | Recursive tree view with expand/collapse                         |
+| `DsAspectRatio`      | Enforce an aspect ratio on any content                           |
+| `DsVisuallyHidden`   | Visually hidden text for screen readers                          |
 
 ### Charts (SVG, zero dependencies)
 
-| Component       | Description                                          |
-|-----------------|------------------------------------------------------|
-| `DsLineChart`   | Animated line chart with multiple series             |
-| `DsBarChart`    | Vertical bar chart with labels and tooltips          |
-| `DsDonutChart`  | Donut and pie chart with legend                      |
-| `DsRadarChart`  | Radar/spider chart for multi-axis data               |
-| `DsSparkline`   | Compact inline sparkline for KPIs                    |
+| Component       | Description                                                   |
+|-----------------|---------------------------------------------------------------|
+| `DsAreaChart`   | Area chart with gradient fill and optional stacked mode       |
+| `DsBarChart`    | Vertical bar chart with labels and tooltips                   |
+| `DsDonutChart`  | Donut and pie chart with legend                               |
+| `DsGaugeChart`  | Circular gauge chart for KPIs and metrics                     |
+| `DsLineChart`   | Line chart with multiple series and area mode                 |
+| `DsRadarChart`  | Radar/spider chart for multi-axis data                        |
+| `DsSparkline`   | Compact inline sparkline for KPIs                             |
 
 ### Data
 
-| Component      | Description                                                           |
-|----------------|-----------------------------------------------------------------------|
-| `DsTable`      | Simple data table — striped, hoverable, responsive (cards on mobile)  |
-| `DsDataTable`  | Advanced table with search, sort, pagination, responsive card view    |
-| `DsCalendar`   | Interactive calendar with single/range date selection                 |
-| `DsStepper`    | Multi-step progress indicator                                         |
+| Component       | Description                                                           |
+|-----------------|-----------------------------------------------------------------------|
+| `DsTable`       | Simple data table — striped, hoverable, responsive (cards on mobile)  |
+| `DsDataTable`   | Advanced table with search, sort, pagination, responsive card view    |
+| `DsCalendar`    | Interactive calendar with single/range date selection                 |
+| `DsKanban`      | Kanban board with drag-and-drop cards and customizable columns         |
+| `DsStepper`     | Multi-step progress indicator                                         |
+| `DsVirtualList` | Virtualized list for large datasets — only visible items are rendered  |
 
 ### Navigation
 
-| Component           | Description                                           |
-|---------------------|-------------------------------------------------------|
-| `DsAccordion`       | Collapsible sections with single or multiple open     |
-| `DsBreadcrumb`      | Breadcrumb navigation                                 |
-| `DsDropdown`        | Dropdown menu with items, dividers, and icons         |
-| `DsMenubar`         | Horizontal application menu bar                       |
-| `DsNavigationMenu`  | Accessible top navigation menu                        |
-| `DsPagination`      | Page navigation with ellipsis                         |
-| `DsTabs`            | Tabbed navigation with panel content                  |
+| Component           | Description                                               |
+|---------------------|-----------------------------------------------------------|
+| `DsAccordion`       | Collapsible sections with single or multiple open         |
+| `DsBreadcrumb`      | Breadcrumb navigation                                     |
+| `DsDropdown`        | Dropdown menu with items, dividers, and icons             |
+| `DsMenubar`         | Horizontal application menu bar                           |
+| `DsNavigationMenu`  | Accessible top navigation menu                            |
+| `DsPagination`      | Page navigation with ellipsis                             |
+| `DsTabs`            | Tabbed navigation with panel content                      |
+| `DsVerticalNav`     | Sidebar navigation with groups, icons, badges, sub-items  |
+
+### Layout
+
+| Component                  | Description                                              |
+|----------------------------|----------------------------------------------------------|
+| `DsFloatingActionButton`   | FAB with optional speed dial of secondary actions        |
+| `DsResizable`              | Resizable split panels (horizontal or vertical)          |
 
 ### Overlay
 

@@ -37,6 +37,7 @@ export const nav: NavGroup[] = [
     title: 'Form',
     items: [
       { title: 'Checkbox', href: '/components/checkbox' },
+      { title: 'FormField', href: '/components/form-field' },
       { title: 'ColorPicker', href: '/components/color-picker' },
       { title: 'Combobox', href: '/components/combobox' },
       { title: 'DatePicker', href: '/components/date-picker' },
@@ -75,6 +76,9 @@ export const nav: NavGroup[] = [
     title: 'Display',
     items: [
       { title: 'AspectRatio', href: '/components/aspect-ratio' },
+      { title: 'CopyButton', href: '/components/copy-button' },
+      { title: 'NumberTicker', href: '/components/number-ticker' },
+      { title: 'QRCode', href: '/components/qr-code' },
       { title: 'Avatar', href: '/components/avatar' },
       { title: 'AvatarGroup', href: '/components/avatar-group' },
       { title: 'Card', href: '/components/card' },
@@ -98,8 +102,10 @@ export const nav: NavGroup[] = [
   {
     title: 'Charts',
     items: [
+      { title: 'AreaChart', href: '/components/area-chart' },
       { title: 'BarChart', href: '/components/bar-chart' },
       { title: 'DonutChart', href: '/components/donut-chart' },
+      { title: 'GaugeChart', href: '/components/gauge-chart' },
       { title: 'LineChart', href: '/components/line-chart' },
       { title: 'RadarChart', href: '/components/radar-chart' },
       { title: 'Sparkline', href: '/components/sparkline' },
@@ -110,8 +116,10 @@ export const nav: NavGroup[] = [
     items: [
       { title: 'Calendar', href: '/components/calendar' },
       { title: 'DataTable', href: '/components/data-table' },
+      { title: 'Kanban', href: '/components/kanban' },
       { title: 'Stepper', href: '/components/stepper' },
       { title: 'Table', href: '/components/table' },
+      { title: 'VirtualList', href: '/components/virtual-list' },
     ],
   },
   {
@@ -124,6 +132,14 @@ export const nav: NavGroup[] = [
       { title: 'NavigationMenu', href: '/components/navigation-menu' },
       { title: 'Pagination', href: '/components/pagination' },
       { title: 'Tabs', href: '/components/tabs' },
+      { title: 'VerticalNav', href: '/components/vertical-nav' },
+    ],
+  },
+  {
+    title: 'Layout',
+    items: [
+      { title: 'FloatingActionButton', href: '/components/floating-action-button' },
+      { title: 'Resizable', href: '/components/resizable' },
     ],
   },
   {

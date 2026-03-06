@@ -207,6 +207,29 @@ const componentList = [
   // Charts
   'DsRadarChart',
   'DsRadarChartSkeleton',
+  // New components
+  'DsAreaChart',
+  'DsAreaChartSkeleton',
+  'DsGaugeChart',
+  'DsGaugeChartSkeleton',
+  'DsNumberTicker',
+  'DsNumberTickerSkeleton',
+  'DsResizable',
+  'DsResizableSkeleton',
+  'DsVirtualList',
+  'DsVirtualListSkeleton',
+  'DsKanban',
+  'DsKanbanSkeleton',
+  'DsQRCode',
+  'DsQRCodeSkeleton',
+  'DsCopyButton',
+  'DsCopyButtonSkeleton',
+  'DsFormField',
+  'DsFormFieldSkeleton',
+  'DsFloatingActionButton',
+  'DsFloatingActionButtonSkeleton',
+  'DsVerticalNav',
+  'DsVerticalNavSkeleton',
 ]
 
 export default defineNuxtModule<ModuleOptions>({

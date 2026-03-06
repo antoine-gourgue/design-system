@@ -49,6 +49,7 @@ const compoundSlugs = [
   'avatar-group', 'tree-view', 'notification-item',
   'banner', 'confirm-dialog', 'loading-overlay', 'navigation-menu', 'menubar',
   'code-block', 'aspect-ratio', 'visually-hidden',
+  'floating-action-button', 'virtual-list',
 ]
 const isCompound = computed(() => compoundSlugs.includes(doc.value?.slug ?? ''))
 
@@ -2264,6 +2265,87 @@ const visuallyHiddenCode = `<button type="button" aria-label="Close">
           </div>
           <div class="border-t border-ds-border">
             <DocsCodeBlock :code="visuallyHiddenCode" language="vue" />
+          </div>
+        </div>
+      </div>
+
+      <!-- FloatingActionButton examples -->
+      <div v-else-if="doc.slug === 'floating-action-button'" class="space-y-6">
+        <!-- Simple FAB -->
+        <div class="rounded-ds-xl border border-ds-border overflow-hidden">
+          <div class="px-4 py-2.5 border-b border-ds-border bg-ds-bg"><span class="text-xs font-medium text-ds-fg-muted font-ds">Simple</span></div>
+          <div class="relative bg-ds-bg-subtle/50 h-40 overflow-hidden rounded-b-ds-xl">
+            <DsFloatingActionButton label="Create" size="md" variant="primary" :fixed="false" />
+          </div>
+          <div class="border-t border-ds-border">
+            <DocsCodeBlock :code="`<DsFloatingActionButton label=&quot;Create&quot; variant=&quot;primary&quot; />`" language="vue" />
+          </div>
+        </div>
+        <!-- Speed Dial FAB -->
+        <div class="rounded-ds-xl border border-ds-border overflow-hidden">
+          <div class="px-4 py-2.5 border-b border-ds-border bg-ds-bg"><span class="text-xs font-medium text-ds-fg-muted font-ds">Speed dial</span></div>
+          <div class="relative bg-ds-bg-subtle/50 h-56 overflow-hidden rounded-b-ds-xl">
+            <DsFloatingActionButton
+              label="Open actions"
+              :fixed="false"
+              :actions="[
+                { id: 'edit', label: 'Edit', icon: 'M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z' },
+                { id: 'share', label: 'Share', icon: 'M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z' },
+                { id: 'delete', label: 'Delete', icon: 'M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16' },
+              ]"
+            />
+          </div>
+          <div class="border-t border-ds-border">
+            <DocsCodeBlock
+              :code="`<DsFloatingActionButton\n  label=&quot;Open actions&quot;\n  :actions=&quot;[\n    { id: 'edit', label: 'Edit', icon: '...' },\n    { id: 'share', label: 'Share', icon: '...' },\n  ]&quot;\n/>`"
+              language="vue"
+            />
+          </div>
+        </div>
+        <!-- Variants -->
+        <div class="rounded-ds-xl border border-ds-border overflow-hidden">
+          <div class="px-4 py-2.5 border-b border-ds-border bg-ds-bg"><span class="text-xs font-medium text-ds-fg-muted font-ds">Variants &amp; sizes</span></div>
+          <div class="relative bg-ds-bg-subtle/50 h-32 overflow-hidden rounded-b-ds-xl flex items-center justify-center gap-6">
+            <DsFloatingActionButton label="Small" size="sm" variant="primary" :fixed="false" position="top-left" />
+            <DsFloatingActionButton label="Medium" size="md" variant="secondary" :fixed="false" position="top-left" />
+            <DsFloatingActionButton label="Large" size="lg" variant="ghost" :fixed="false" position="top-left" />
+          </div>
+        </div>
+      </div>
+
+      <!-- VirtualList examples -->
+      <div v-else-if="doc.slug === 'virtual-list'" class="space-y-6">
+        <div class="rounded-ds-xl border border-ds-border overflow-hidden">
+          <div class="px-4 py-2.5 border-b border-ds-border bg-ds-bg flex items-center justify-between">
+            <span class="text-xs font-medium text-ds-fg-muted font-ds">10 000 items — only visible rows rendered</span>
+            <span class="text-xs text-ds-fg-subtle font-ds">Scroll to see virtualization</span>
+          </div>
+          <div class="p-6 bg-ds-bg">
+            <DsVirtualList
+              :items="Array.from({ length: 10000 }, (_, i) => ({ id: i + 1, label: `Item ${i + 1}`, color: i % 3 === 0 ? 'primary' : i % 3 === 1 ? 'success' : 'warning' }))"
+              :item-height="56"
+              :container-height="320"
+              :overscan="3"
+              key-field="id"
+            >
+              <template #default="{ item, index }">
+                <div class="flex items-center gap-3 px-4 h-14 border-b border-ds-border/40 hover:bg-ds-bg-muted/50 transition-colors">
+                  <span class="size-8 rounded-full bg-ds-primary-subtle text-ds-primary text-xs font-semibold flex items-center justify-center shrink-0 font-ds">
+                    {{ (item as any).id }}
+                  </span>
+                  <div class="min-w-0">
+                    <p class="text-sm font-medium text-ds-fg truncate font-ds">{{ (item as any).label }}</p>
+                    <p class="text-xs text-ds-fg-muted font-ds">Index {{ index }}</p>
+                  </div>
+                </div>
+              </template>
+            </DsVirtualList>
+          </div>
+          <div class="border-t border-ds-border">
+            <DocsCodeBlock
+              :code="`<DsVirtualList\n  :items=&quot;myItems&quot;\n  :item-height=&quot;56&quot;\n  :container-height=&quot;320&quot;\n  key-field=&quot;id&quot;\n>\n  <template #default=&quot;{ item, index }&quot;>\n    <div class=&quot;flex items-center gap-3 px-4 h-14&quot;>\n      {{ item.label }}\n    </div>\n  </template>\n</DsVirtualList>`"
+              language="vue"
+            />
           </div>
         </div>
       </div>
