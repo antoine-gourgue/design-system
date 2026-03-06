@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { cn } from '../utils/cn'
+import { resolveDsIconName } from '../utils/icon'
 
 type DsIconSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | number | `${number}px` | `${number}rem` | `${number}em`
 type DsIconTone = 'current' | 'default' | 'muted' | 'subtle' | 'primary' | 'success' | 'warning' | 'danger'
@@ -45,15 +46,7 @@ const props = withDefaults(defineProps<DsIconProps>(), {
   decorative: true,
 })
 
-const resolvedName = computed(() => (
-  props.name.toLowerCase().startsWith('si:')
-    ? `simple-icons:${props.name.slice(3)}`
-    : props.name.includes(':')
-      ? props.name
-      : props.name.toLowerCase().startsWith('flag-')
-        ? `flagpack:${props.name.slice(5).toLowerCase()}`
-        : `lucide:${props.name}`
-))
+const resolvedName = computed(() => resolveDsIconName(props.name))
 
 const tokenSizeClass = computed(() => {
   if (typeof props.size !== 'string')

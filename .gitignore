@@ -8,6 +8,8 @@ dist
 *.local
 .env
 coverage
+playwright-report
+test-results
 nuxt4_best_practices.md
 .vercel
 .idea

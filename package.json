@@ -13,6 +13,8 @@
     "typecheck": "npm run typecheck --workspace=packages/ui",
     "lint": "npm run lint --workspace=packages/ui",
     "lint:fix": "npm run lint:fix --workspace=packages/ui",
+    "test": "npm run test --workspace=packages/ui",
+    "test:e2e": "playwright test",
     "format": "npm run format --workspace=packages/ui",
     "changeset": "changeset",
     "version": "changeset version",
@@ -23,6 +25,7 @@
     "prepare": "husky"
   },
   "devDependencies": {
+    "@playwright/test": "^1.54.2",
     "@changesets/cli": "^2.27.12",
     "husky": "^9.1.7",
     "typescript": "^5.8.0"
