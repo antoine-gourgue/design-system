@@ -19,10 +19,12 @@
     "release": "npm run build && changeset publish",
     "pack:ui": "npm pack --workspace=packages/ui",
     "publish:ui:dry": "npm publish --workspace=packages/ui --dry-run",
-    "publish:ui": "npm publish --workspace=packages/ui"
+    "publish:ui": "npm publish --workspace=packages/ui",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.12",
+    "husky": "^9.1.7",
     "typescript": "^5.8.0"
   },
   "engines": {

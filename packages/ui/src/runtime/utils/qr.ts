@@ -66,7 +66,7 @@ function rsECC(data: number[], eccLen: number): number[] {
   // Build generator polynomial
   let g: number[] = [1]
   for (let i = 0; i < eccLen; i++) {
-    const newG = Array.from<number>({ length: g.length + 1 }, () => 0)
+    const newG: number[] = Array.from({ length: g.length + 1 }, () => 0)
     for (let j = 0; j < g.length; j++) {
       newG[j] ^= g[j]
       newG[j + 1] ^= gfMul(g[j], EXP[i])
@@ -74,7 +74,7 @@ function rsECC(data: number[], eccLen: number): number[] {
     g = newG
   }
   // Polynomial division
-  const msg = [...data, ...Array.from<number>({ length: eccLen }, () => 0)]
+  const msg: number[] = [...data, ...Array.from({ length: eccLen }, () => 0)]
   for (let i = 0; i < data.length; i++) {
     const coef = msg[i]
     if (coef !== 0) {
@@ -197,8 +197,8 @@ export function generateQRMatrix(text: string): boolean[][] | null {
   for (let i = 0; i < REMAINDER_BITS[version - 1]; i++) finalBits.push(0)
 
   // ── Build 21+… × 21+… matrix ─────────────────────────────────────────────
-  const mat: number[][] = Array.from({ length: size }, () => Array.from<number>({ length: size }, () => -1))
-  const fn: boolean[][] = Array.from({ length: size }, () => Array.from<boolean>({ length: size }, () => false))
+  const mat: number[][] = Array.from({ length: size }, () => Array.from({ length: size }, () => -1) as number[])
+  const fn: boolean[][] = Array.from({ length: size }, () => Array.from({ length: size }, () => false) as boolean[])
 
   // Finder patterns + separators
   placeFinder(mat, fn, size, 0, 0) // top-left
