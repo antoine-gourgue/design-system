@@ -19,52 +19,66 @@ async function copy() {
 
 /** Syntax highlight for Vue/HTML template strings */
 function highlight(raw: string): string {
+  // Step 1 — escape HTML entities
   let out = raw
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
 
+  // Step 2 — collect all regions with a placeholder so later regexes
+  // never re-process already-tagged content.
+  // Placeholders use \x02 / \x03 which never appear in user code.
+  const spans: string[] = []
+  function wrap(cls: string, text: string): string {
+    const idx = spans.length
+    spans.push(`<span class="${cls}">${text}</span>`)
+    return `\x02${idx}\x03`
+  }
+
   // Comments
   out = out.replace(
     /(&lt;!--[\s\S]*?--&gt;)/g,
-    '<span class="hl-comment">$1</span>',
+    (_, m) => wrap('hl-comment', m),
   )
-  // Closing tag names
+  // Closing tag names: </Foo>
   out = out.replace(
     /(&lt;\/)([A-Za-z][A-Za-z0-9-]*)(&gt;)/g,
-    '$1<span class="hl-tag">$2</span>$3',
+    (_, open, name, close) => wrap('hl-tag', open) + wrap('hl-tag', name) + wrap('hl-tag', close),
   )
-  // Opening tag names
+  // Opening tag names: <Foo  or  <Foo>  or  <Foo/>
   out = out.replace(
     /(&lt;)([A-Za-z][A-Za-z0-9.-]*)(\s|\/&gt;|&gt;)/g,
-    '$1<span class="hl-tag">$2</span>$3',
+    (_, lt, name, after) => wrap('hl-tag', lt) + wrap('hl-tag', name) + after,
   )
   // v- directives
   out = out.replace(
     /\b(v-[\w:-]+)(?==)/g,
-    '<span class="hl-directive">$1</span>',
+    (_, m) => wrap('hl-directive', m),
   )
-  // Shorthand binding :prop, @event, #slot
+  // Shorthand bindings :prop, @event, #slot
   out = out.replace(
-    /\s([@:#][\w:-]+)(?==)/g,
-    ' <span class="hl-shorthand">$1</span>',
+    /( )([@:#][\w:-]+)(?==)/g,
+    (_, sp, m) => sp + wrap('hl-shorthand', m),
   )
-  // Static attribute names
+  // Static attribute names (only outside already-wrapped placeholders)
   out = out.replace(
-    /\s([a-zA-Z][\w-]*)(?==)/g,
-    ' <span class="hl-attr">$1</span>',
+    /( )([a-zA-Z][\w-]*)(?==)/g,
+    (_, sp, m) => sp + wrap('hl-attr', m),
   )
   // Attribute values "..."
   out = out.replace(
-    /=(&quot;[^&]*&quot;)/g,
-    '=<span class="hl-string">$1</span>',
+    /=(&quot;[^&\x02]*&quot;)/g,
+    (_, v) => '=' + wrap('hl-string', v),
   )
   // Self-closing />
-  out = out.replace(/(\/&gt;)/g, '<span class="hl-tag">$1</span>')
-  // Remaining > and <
-  out = out.replace(/(&gt;)/g, '<span class="hl-tag">$1</span>')
-  out = out.replace(/(&lt;)/g, '<span class="hl-tag">$1</span>')
+  out = out.replace(/(\/&gt;)/g, (_, m) => wrap('hl-tag', m))
+  // Remaining &gt; and &lt;
+  out = out.replace(/(&gt;)/g, (_, m) => wrap('hl-tag', m))
+  out = out.replace(/(&lt;)/g, (_, m) => wrap('hl-tag', m))
+
+  // Step 3 — restore all placeholders
+  out = out.replace(/\x02(\d+)\x03/g, (_, i) => spans[Number(i)] ?? '')
 
   return out
 }

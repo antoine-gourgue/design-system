@@ -101,8 +101,8 @@ const sizeClasses = computed(() => ({
       :disabled="disabled"
       :placeholder="placeholder"
       :class="cn(
-        'flex-1 min-w-0 bg-transparent text-center tabular-nums text-ds-fg h-full px-1',
-        'outline-none appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none',
+        'ds-number-input flex-1 min-w-0 bg-transparent text-center tabular-nums text-ds-fg h-full px-1',
+        'outline-none',
         sizeClasses.input,
       )"
       @input="emit('update:modelValue', clamp(Number(($event.target as HTMLInputElement).value)))"
@@ -127,3 +127,16 @@ const sizeClasses = computed(() => ({
     </button>
   </div>
 </template>
+
+<style>
+/* Remove native browser spin buttons on all browsers */
+input.ds-number-input::-webkit-outer-spin-button,
+input.ds-number-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input.ds-number-input {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+</style>

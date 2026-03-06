@@ -21,6 +21,7 @@ export interface DsDataTableProps {
   bordered?: boolean
   compact?: boolean
   perPage?: number
+  responsive?: boolean
   class?: string
 }
 
@@ -31,6 +32,7 @@ const props = withDefaults(defineProps<DsDataTableProps>(), {
   bordered: false,
   compact: false,
   perPage: 10,
+  responsive: true,
 })
 
 const search = ref('')
@@ -103,6 +105,7 @@ const alignClass: Record<string, string> = {
 
 <template>
   <div :class="cn('w-full space-y-3', props.class)">
+
     <!-- Search bar -->
     <div v-if="searchable" class="flex items-center gap-2">
       <div class="relative flex-1 max-w-sm">
@@ -120,8 +123,57 @@ const alignClass: Record<string, string> = {
       <span v-if="search" class="text-xs text-ds-fg-muted">{{ filtered.length }} result{{ filtered.length !== 1 ? 's' : '' }}</span>
     </div>
 
-    <!-- Table -->
-    <div class="w-full overflow-x-auto rounded-ds-xl border border-ds-border">
+    <!-- ── MOBILE: card view ── -->
+    <div
+      v-if="responsive"
+      class="flex flex-col gap-3 sm:hidden"
+    >
+      <!-- Empty -->
+      <div
+        v-if="paginated.length === 0"
+        class="rounded-ds-xl border border-ds-border px-5 py-10 text-center text-sm text-ds-fg-muted bg-ds-bg"
+      >
+        No results found
+      </div>
+
+      <div
+        v-for="(row, i) in paginated"
+        :key="i"
+        :class="cn(
+          'rounded-ds-xl border border-ds-border bg-ds-bg overflow-hidden',
+          'hover:border-ds-primary/30 hover:bg-ds-primary-subtle/20 transition-colors',
+          striped && i % 2 !== 0 ? 'bg-ds-bg-muted/30' : '',
+        )"
+      >
+        <div
+          v-for="(col, j) in columns"
+          :key="col.key"
+          :class="cn(
+            'flex items-start justify-between gap-4 px-4 py-3',
+            j < columns.length - 1 && 'border-b border-ds-border',
+          )"
+        >
+          <!-- Label -->
+          <span class="text-xs font-medium text-ds-fg-muted uppercase tracking-wide shrink-0 pt-px">
+            {{ col.label }}
+          </span>
+          <!-- Value -->
+          <span class="text-sm text-ds-fg text-right">
+            <slot :name="`cell-${col.key}`" :value="(row as Record<string, unknown>)[col.key]" :row="row">
+              {{ getCellValue(row as Record<string, unknown>, col) }}
+            </slot>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── DESKTOP: table view ── -->
+    <div
+      :class="cn(
+        'w-full overflow-x-auto rounded-ds-xl border border-ds-border',
+        responsive ? 'hidden sm:block' : 'block',
+      )"
+    >
       <table class="w-full text-sm">
         <thead>
           <tr class="border-b border-ds-border bg-ds-bg-muted">
@@ -174,7 +226,7 @@ const alignClass: Record<string, string> = {
               v-for="col in columns"
               :key="col.key"
               :class="cn(
-                'px-4 py-3 text-ds-fg',
+                'px-4 text-ds-fg',
                 compact ? 'py-2' : 'py-3',
                 alignClass[col.align ?? 'left'],
               )"
@@ -232,5 +284,6 @@ const alignClass: Record<string, string> = {
         </button>
       </div>
     </div>
+
   </div>
 </template>
