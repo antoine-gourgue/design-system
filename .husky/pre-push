@@ -1,0 +1,5 @@
+#!/bin/sh
+echo "Running e2e tests..."
+npm run test:e2e || exit 1
+
+echo "E2E tests passed!"

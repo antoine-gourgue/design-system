@@ -5,4 +5,7 @@ npm run lint -w packages/ui || exit 1
 echo "Running typecheck..."
 npm run typecheck -w packages/ui || exit 1
 
+echo "Running unit tests..."
+npm run test -w packages/ui || exit 1
+
 echo "All checks passed!"
