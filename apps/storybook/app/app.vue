@@ -1,9 +1,20 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import { useHead } from '#imports'
 import { useTheme } from '~/composables/useTheme'
 
 const sidebarOpen = ref(false)
 const searchOpen = ref(false)
+  useHead({
+    script: [
+      {
+        key: 'umami-analytics',
+        src: 'https://umami.antoinegourgue.dev/script.js',
+        async: true,
+        'data-website-id': '5b2dea89-0050-4568-885f-a4e46272184b',
+      },
+    ],
+  })
 
 // Initialize theme on client — light is the default, dark only if explicitly saved
 const { dark } = useTheme()
