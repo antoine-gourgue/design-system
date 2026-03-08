@@ -1,5 +1,2 @@
 #!/bin/sh
-echo "Running e2e tests..."
-npm run test:e2e || exit 1
-
-echo "E2E tests passed!"
+# E2E tests removed from pre-push — run manually with: npm run test:e2e

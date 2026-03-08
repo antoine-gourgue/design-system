@@ -23,9 +23,11 @@ describe('dsAccordion', () => {
 describe('dsAccordionItem', () => {
   function mountWithAccordion(itemProps = {}) {
     return mount(DsAccordion, {
+      global: {
+        components: { DsAccordionItem },
+      },
       slots: {
         default: {
-          components: { DsAccordionItem },
           template: `<DsAccordionItem value="item1" title="Section 1" v-bind='${JSON.stringify(itemProps)}'>Content here</DsAccordionItem>`,
         },
       },
